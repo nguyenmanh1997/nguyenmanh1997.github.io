@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="PHP là ngôn ngữ được sử dụng rất nhiều trong lập trình web. Dưới đây là những ví dụ thực tế tốt nhất mà mọi lập trình viên đều nên biết và làm theo.
+Từng là một lập trình viên PHP, cũng làm những dự án lớn nhỏ của cá nhân, của công ty các thứ. Thì sau một thời gian dựa vào kinh nghiệm bản thân cũng như tìm hiểu qua bác google, mình cũng đúc rút ra được một số thứ hay ho muốn chia sẻ cho mọi người cùng đọc.">
+
+
+<meta property="og:description" content="PHP là ngôn ngữ được sử dụng rất nhiều trong lập trình web. Dưới đây là những ví dụ thực tế tốt nhất mà mọi lập trình viên đều nên biết và làm theo.
+Từng là một lập trình viên PHP, cũng làm những dự án lớn nhỏ của cá nhân, của công ty các thứ. Thì sau một thời gian dựa vào kinh nghiệm bản thân cũng như tìm hiểu qua bác google, mình cũng đúc rút ra được một số thứ hay ho muốn chia sẻ cho mọi người cùng đọc.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Những ví dụ thực tế tốt nhất mà mọi lập trình viên php nên biết">
+<meta name="twitter:title" content="Những ví dụ thực tế tốt nhất mà mọi lập trình viên php nên biết">
+<meta property="og:url" content="https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+<meta property="twitter:url" content="https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="PHP là ngôn ngữ được sử dụng rất nhiều trong lập trình web. Dưới đây là những ví dụ thực tế tốt nhất mà mọi lập trình viên đều nên biết và làm theo.
+Từng là một lập trình viên PHP, cũng làm những dự án lớn nhỏ của cá nhân, của công ty các thứ. Thì sau một thời gian dựa vào kinh nghiệm bản thân cũng như tìm hiểu qua bác google, mình cũng đúc rút ra được một số thứ hay ho muốn chia sẻ cho mọi người cùng đọc.">
+<meta name="twitter:description" content="PHP là ngôn ngữ được sử dụng rất nhiều trong lập trình web. Dưới đây là những ví dụ thực tế tốt nhất mà mọi lập trình viên đều nên biết và làm theo.
+Từng là một lập trình viên PHP, cũng làm những dự án lớn nhỏ của cá nhân, của công ty các thứ. Thì sau một thời gian dựa vào kinh nghiệm bản thân cũng như tìm hiểu qua bác google, mình cũng đúc rút ra được một số thứ hay ho muốn chia sẻ cho mọi người cùng đọc.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-07-23T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-07-23T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="php">
+    
+  
+  
+    
+      <meta property="article:tag" content="php">
+    
+      <meta property="article:tag" content="web">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/PHPSS.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/PHPSS.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Những ví dụ thực tế tốt nhất mà mọi lập trình viên php nên biết</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Những ví dụ thực tế tốt nhất mà mọi lập trình viên php nên biết
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-07-23T00:00:00Z">
+        
+  tháng 7 23, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/php">php</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p><code>PHP là ngôn ngữ được sử dụng rất nhiều trong lập trình web. Dưới đây là những ví dụ thực tế tốt nhất mà mọi lập trình viên đều nên biết và làm theo.</code></p>
+<p>Từng là một lập trình viên PHP, cũng làm những dự án lớn nhỏ của cá nhân, của công ty các thứ. Thì sau một thời gian dựa vào kinh nghiệm bản thân cũng như tìm hiểu qua bác google, mình cũng đúc rút ra được một số thứ hay ho muốn chia sẻ cho mọi người cùng đọc. Cụ thể ở bài này sẽ là <code>Những ví dụ thực tế tốt nhất mà mọi lập trình viên php nên biết</code>.</p>
+<h2 id="bật-cảnh-báo-lỗi-error-reporting-trong-quá-trình-phát-triển">Bật cảnh báo lỗi (error reporting) trong quá trình phát triển</h2>
+<p>Trong quá trình phát triển, cảnh báo lỗi (error reporting) là công cụ tốt. Các cảnh báo lỗi này giúp bạn tìm ra những lỗi chính tả trong biến, phát hiện hàm sử dụng sai và rất nhiều thứ khác nữa. Tuy nhiên, khi web project đã được đưa lên chạy thực tế thì bạn cần phải tắt nó đi, vì nó có thể cho người dùng biết rất nhiều thứ về trang web của bạn như: phần mềm bạn sử dụng, cấu trúc folder, &hellip;</p>
+<p>Bạn có thể dử sử dụng hàm <code>error_reporting(0);</code> để tắt cảnh báo.</p>
+<p><strong>Một lần nữa, mình xin nhắc lại là khi project của bạn đã public thì bạn nên tắt <code>error reporting</code> đi, vì nếu không tắt đi thì các lỗi có trong project sẽ hiển thị lên cho người dùng thấy, và kéo theo đó bao nhiêu vấn đề.</strong></p>
+<h2 id="khuyến-khích-sử-dụng-php-">Khuyến khích sử dụng <!-- raw HTML omitted --></h2>
+<p>Có một số cách để để viết code php như:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">//-------- kiểu 1 --------
+<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>; <span style="color:#75715e">?&gt;</span>
+
+//-------- kiểu 2 --------
+<span style="color:#75715e">&lt;?</span>   <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>; <span style="color:#75715e">?&gt;</span>
+
+//-------- kiểu 3 --------
+<span style="color:#75715e">&lt;?</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>; <span style="color:#75715e">?&gt;</span>
+
+//-------- kiểu 4 --------
+<span style="color:#960050;background-color:#1e0010">&lt;</span>% echo &#34;manhnv.com&#34;; %&gt;
+</code></pre></div><p>Tất cả 4 kiểu trên đều hiển thị ra là <code>manhnv.com</code>. Nhưng chỉ có một kiểu <code>&lt;?php ?&gt;</code> là mặc định, còn lại những kiểu còn lại đều bị vô hiệu hóa, nếu bạn muốn sử dụng thì bắt buộc bạn phải kích hoạt nó lên bằng cách cấu hình server PHP với tùy chọn <code>short_open_tag</code>. Do đó, cách tốt nhất để đảm bảo code của bạn chạy tốt trên tất cả mọi server, cũng như mọi phiên bản nếu có cập nhật lên cao hơn nữa, thì mình khuyên bạn nên sử dụng định dạng <code>&lt;?php ?&gt;</code>.</p>
+<p>Nhưng nếu tự triển khai một server PHP của bản thân, hoặc một server bạn có quyền điều khiển, và muốn sử dụng kiểu 1,2,3 thì bạn có thể tự cấu hình cho server của mình sử dụng thẻ nào ngắn gọn và thuận tiện hơn. Nhưng hãy nhớ rằng thẻ <code>&lt;? ?&gt;</code> có thể xung đột với XML và <code>&lt;% %&gt;</code> là kiểu viết của ASP.</p>
+<h2 id="sử-dụng-tên-biến-tên-class-có-ý-nghĩa-và-nhất-quán">Sử dụng tên biến, tên class có ý nghĩa và nhất quán</h2>
+<p>Có hai chuẩn đặt tên phổ biến:</p>
+<ul>
+<li><strong>camelCase:</strong> Chữ cái đầu tiên của mỗi từ được viết hoa, trừ từ đầu tiên.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$urlBlog = &#34;https://manhnv.com&#34;;
+
+function showUrlBlog(){
+    echo $urlBlog;
+}
+</code></pre></div><ul>
+<li><strong>underscores:</strong> Thêm dấu gạch dưới giữa các từ.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$url_blog = &#34;https://manhnv.com&#34;;
+
+function show_url_blog(){
+    echo $url_blog;
+}
+</code></pre></div><p>Trên đây là 2 chuẩn phổ biến nhất, bạn nên chọn cho mình 1 trong 2 quy ước để code. Tuy nhiên, hãy dùng một cách nhất quá, tức là dùng 1 chuẩn cho từ đầu đến cuối project, không nên dùng nửa vời kiểu này sang kiểu kia.</p>
+<p>Mình thì lúc code php mình sẽ dùng kiểu <code>camelCase</code> nhưng lúc code ngôn ngữ khác như python thì lại dùng <code>underscores</code>.</p>
+<p>Hoặc các bạn cũng có thể kết hợp 2 chuẩn lại với nhau theo kiểu: biến thì chuẩn <code>underscores</code> và các function chuẩn <code>camelCase</code>, và ngược lại. Nhưng chắc chắn rằng bạn phải đảm bảo code nhất quán trong project, ví dụ: biến dùng <code>underscores</code> thì phải dùng <code>underscores</code> từ đầu cho đến cuối project.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$url_blog = &#34;https://manhnv.com&#34;;
+
+function showUrlBlog(){
+    echo $url_blog;
+}
+</code></pre></div><h2 id="đừng-nên-viết-code-lồng-nhau-quá-nhiều-mức">Đừng nên viết code lồng nhau quá nhiều mức</h2>
+<p>Lồng nhau quá nhiều mức sẽ làm cho code trở nên khó đọc, ví dụ như vầy:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">function writeFileFunction() {
+// ...
+if (is_writable($folder)) {
+    if ($fp = fopen($file_path,&#39;w&#39;)) {
+       if ($stuff = extractSomeStuff()) {
+         if (fwrite($fp,$stuff)) {
+         // ...
+         } else {
+            return false;
+         }
+      } else {
+       return false;
+     }
+    } else {
+     return false;
+    }
+  } else {
+   return false;
+ }
+}
+</code></pre></div><p>Các có thấy, đoạn code trên rất khó đọc, khó hiểu, và khó maintain. Để code dễ đọc hơn, dễ maintain hơn thì hãy giảm mức độ lồng nhau lại, như:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">function writeFileFunction() {
+// ...
+  if (!is_writable($folder)) {
+    return false;
+  }
+
+  if (!$fp = fopen($file_path,&#39;w&#39;)) {
+    return false;
+  }
+
+  if (!$stuff = extractSomeStuff()) {
+    return false;
+  }
+
+  if (fwrite($fp,$stuff)) {
+   // ...
+  } else {
+    return false;
+  }
+}
+</code></pre></div><h2 id="hãy-nhớ-comment-comment-và-comment-đầy-đủ-khi-code">Hãy nhớ Comment, Comment và Comment đầy đủ khi code.</h2>
+<p>Hãy nhớ <code>Comment</code> đẩy đủ khi code. Nó rất là quan trọng khi dự án có thể dài hơi kéo dài tận 5, 10 hay 15 năm thì chắc chắn đội phát triển dự án sẽ thay đổi rất nhiều và khi bạn comment thì những người vào dự án sau sẽ hiểu được code của bạn đã từng code như thế nào, và khi dự án đã relase nhưng sau một thời gian xảy ra lỗi thì đội phát triển nhận project để maintain có thể hiểu code nó hoạt động như thế nào, và sửa lỗi một cách nhanh chóng và dễ dàng.</p>
+<p>Và cả khi dự án là của cá nhân, không cần làm việc nhóm thì bạn cũng nên comment lại chức năng mình làm, vì có thể sau một thời gian đọc lại code mà không có comment thì bạn sẽ không biết là mình đã từng code cái gì nữa.</p>
+<p>Ví dụ đây là một chức năng tạo mới user:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            &#39;name&#39; =&gt; $data[&#39;name&#39;],
+            &#39;email&#39; =&gt; $data[&#39;email&#39;],
+            &#39;password&#39; =&gt; Hash::make($data[&#39;password&#39;]),
+        ]);
+    }
+</code></pre></div><h2 id="không-đặt-phpinfo-trong-webroot-của-bạn">Không đặt phpinfo() trong webroot của bạn</h2>
+<p>Phpinfo là một chức năng rất hữu ích. Đơn giản là bạn tạo một tệp PHP có</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span> <span style="color:#a6e22e">phpinfo</span>(); <span style="color:#75715e">?&gt;</span>
+</code></pre></div><p>và bạn đặt nó vào ở đâu đó trên server, bạn có thể biết mọi thứ về môi trường server của mình. Tuy nhiên, rất nhiều lập trình viên sẽ đặt tệp chứa <code>phpinfo()</code> trong webroot. Thực tế điều này sẽ không an toàn một tý nào. Hãy xóa nó sau khi bạn xem xong thông tin cần thiết.</p>
+<h2 id="không-bao-giờ-tin-tưởng-người-dùng">Không bao giờ tin tưởng người dùng</h2>
+<p>Nếu ứng dụng của bạn có chỗ cho người dùng nhập dữ liệu vào, bạn phải luôn nghĩ là họ sẽ cố gắng nhập mọi thứ gây lỗi cho hệ thống. Cách tốt nhất để giữ cho trang web của bạn không bị các hacker tấn công XSS hay <a href="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/" title="Mô tả SQL Injection là gì và cách kiểm tra">SQLinjection</a>, là luôn kiểm tra mọi dữ liệu người dùng nhập vào.</p>
+<p>Ví dụ một đoạn code thể hiện chức năng lấy thông tin một bài viết không kiểm tra đầu vào và dẫn tới lỗ hổng SQLinjection:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  $server = &#34;localhost&#34;;
+  $user = &#34;manhnv.com&#34;;
+  $password = &#34;manhnv.com&#34;;
+  $db = &#34;manhnv.com&#34;;
+
+  // // Create connection
+  $conn = new mysqli($server, $user, $password, $db);
+  // Check connection
+  if ($conn-&gt;connect_error) {
+    die(&#34;Connection failed: &#34; . $conn-&gt;connect_error);
+  }
+
+  // Câu lệnh sql có lỗi sql injection
+  $query = &#34;SELECT * FROM posts WHERE id=&#34;. $_GET[&#39;id&#39;];
+  $result = $conn-&gt;query($query);
+  // var_dump($result-&gt;fetch_assoc());
+
+  if ($result-&gt;num_rows &gt; 0) {
+    // output data of each row
+    while($row = $result-&gt;fetch_assoc()) {
+        echo &#34;id: &#34; . $row[&#34;id&#34;]. &#34; - title: &#34; . $row[&#34;content&#34;]. &#34; &#34; . $row[&#34;description&#34;]. &#34;&lt;<span style="color:#f92672">br</span>&gt;&#34;;
+    }
+  } else {
+    echo &#34;0 results&#34;;
+  }
+  $conn-&gt;close();
+</code></pre></div><p>Các bạn có thể thấy câu lệnh <code>$sql = &quot;SELECT * FROM posts WHERE id=&quot;. $_GET['id'];</code> biến <code>$_GET['id']</code> được lấy trực tiếp truy vấn vào database mà không lọc dữ liệu, những kẻ tấn công có thể dựa vào đó thể injection nhưng câu lệnh sql đọc hại vào.</p>
+<p>Sau đây mình có 3 cách để bảo vệ được câu lệnh trên:</p>
+<ul>
+<li>Dùng PDO PHP Data Objects)</li>
+</ul>
+<p>PDO là một phần tiện ích mở rộng của PHP, nó giúp website bạn trở nên nhanh và an toàn hơn</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$results = $db-&gt;prepare(&#39;SELECT * FROM posts WHERE id = :id&#39;);
+
+$results-&gt;execute(array(&#39;:id&#39; =&gt; $_GET[&#39;id&#39;]));
+
+$rows = $results-&gt;fetchAll();
+</code></pre></div><ul>
+<li>Sử dụng hàm <code>mysqli_real_escape_string()</code></li>
+</ul>
+<p>Hàm này giúp bạn loại bỏ những kí tự không cần thiết trước khi xử lí câu lệnh SQL.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  $con=nmysqli_connect(&#34;localhost&#34;,&#34;my_user&#34;,&#34;my_password&#34;,&#34;my_db&#34;);
+  $id = mysql_real_escape_string($conn, $_GET[&#39;id&#39;]);
+
+  $query = mysql_query($conn, &#34;SELECT * FROM posts where id = &#34;&#39; .$id. &#39;&#34;);
+</code></pre></div><ul>
+<li>Sử dụng hàm <code>preg_replace()</code></li>
+</ul>
+<p><code>preg_replace()</code> giúp bạn loại bỏ những kí tự được chỉ định giúp câu lệnh trở nên an toàn hơn.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// Câu lệnh giúp bạn loại bỏ các chữ số chính xác là từ 0-9.
+$id = preg_replace(&#34;/[^0-9]/&#34;,&#34;&#34;, $_GET[&#39;id&#39;]);
+
+$query = mysqli_query($conn, &#34;SELECT * FROM posts where id = &#34;&#39; .$id. &#39;&#34;);
+</code></pre></div><h2 id="sử-dụng-cơ-chế-bộ-nhớ-cache">Sử dụng cơ chế bộ nhớ cache</h2>
+<p>Bộ nhớ cache web (hoặc bộ nhớ cache HTTP) hay còn gọi là Web caching là một công nghệ thông tin để lưu trữ tạm thời (lưu trữ) các dữ liệu web như: các trang và hình ảnh HTML, để giảm tải băng thông, giảm tải máy chủ. Một hệ thống lưu trữ web lưu trữ bản sao các dữ liệu đi qua nó.</p>
+<p>Một số hệ thống bộ nhớ cache mạnh mẽ có miễn phí:</p>
+<ul>
+<li><a href="http://www.danga.com/memcached/" title="Memcached">Memcached</a></li>
+<li><a href="https://www.php.net/manual/en/intro.apc.php" title="APC">APC</a></li>
+<li><a href="http://files.zend.com/help/Zend-Platform/zend_cache_api.htm" title="Zend Cache">Zend Cache</a></li>
+<li><a href="http://eaccelerator.net/" title="eAccelerator">eAccelerator</a></li>
+</ul>
+<h2 id="giữ-các-function-chạy-ở-bên-ngoài-vòng-lặp-loops">Giữ các function chạy ở bên ngoài vòng lặp (loops)</h2>
+<p>Project của bạn sẽ giảm hiệu suất rất nhiều khi bạn lạm dụng đưa các function vào bên trong vòng lặp. Vòng lặp càng lớn, thời gian thực hiện càng lâu. Vì vậy nên đặt các function bên ngoài vòng lặp nếu có thể.</p>
+<p>Một ví dụ tệ hết sức tệ khi đặt function vào trong vòng lặp:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">for ($i = 0; $i &lt; <span style="color:#f92672">count</span><span style="color:#960050;background-color:#1e0010">($</span><span style="color:#a6e22e">array</span><span style="color:#960050;background-color:#1e0010">);</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">i</span><span style="color:#960050;background-color:#1e0010">++)</span> <span style="color:#960050;background-color:#1e0010">{</span>
+  <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#a6e22e">manhnv</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">com</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">phần</span> <span style="color:#a6e22e">code</span> <span style="color:#a6e22e">cần</span> <span style="color:#a6e22e">chạy</span>
+<span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><p>Bạn có thể viết lại đoạn code trên để code tường mình cũng như hiệu suất tốt hơn.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$count = count($array);
+
+for($i = 0; $i <span style="color:#960050;background-color:#1e0010">&lt;</span> $count; $i++) {
+  //manhnv.com @phần code cần chạy
+}
+</code></pre></div><h2 id="không-sao-chép-các-biến-phụ-nếu-không-cần-thiết">Không sao chép các biến phụ nếu không cần thiết</h2>
+<p>Một số bạn muốn làm cho code trông kinh khủng hơn, nhiều dòng hơn (để người khác nhìn vào cho ngầu) bằng cách sao chép các biến có trước vào một biến mới. Tuy nhiên, thực sự không tốt khi làm như vậy vì nó làm giảm hiệu suất và khả năng tăng gấp đôi bộ nhớ khi chạy lệnh.</p>
+<p>Một ví dụ minh họa cho điều mình nói bên trên:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$description = strip_tags($_POST[&#39;description&#39;]);
+
+echo $description;
+</code></pre></div><p>Các bạn có thể viết thành như vầy để code được tối ưu hơn nè:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">echo strip_tags($_POST[&#39;description&#39;]);
+</code></pre></div><h2 id="sử-dụng-framework">Sử dụng framework</h2>
+<p>Một khi bạn đã biết cơ bản về PHP rồi thì mình khuyên bạn nên học lấy 1 framework của PHP để làm việc tốt hơn. Có rất nhiều framework PHP khác nhau. Tuy nhiên, đã số được thiết kế dựa trên kiến trúc Model-View-Controller (MVC). Một trong framework đang được sử dụng phổ biến đó là bởi vì kiến trúc MVC đảm bảo sự phân chia rõ ràng giữa dữ liệu. logic và template, đảm bảo dễ dàng duy trì và phát triển. Ngoài ra còn một số điểm mạnh khác như:</p>
+<ul>
+<li><strong>Mất ít thời gian hơn để phát triển dự án hơn:</strong> Với framwork, bạn đã có một khung sườn làm việc. Bạn không mất thời gian phân tích kiến trúc ứng dụng để “sáng tạo” những thứ người khác đã làm rất tốt, viết lại những thứ quá đỗi nhàm chán.</li>
+<li><strong>Bạn sẽ có một ứng dụng với mã nguồn sạch đẹp, dễ dàng phát triển, bảo trì.</strong></li>
+<li><strong>Hiệu năng cũng như bảo mật sẽ được cập nhật thường xuyên nhờ cộng đồng phát triển framework đó.</strong></li>
+</ul>
+<p>Và còn nhiều, nhiều hơn nữa các lợi ích mà framework mang lại.</p>
+<p>Một số framework php:</p>
+<ol>
+<li>Laravel: <code>Đây là framework ưa chuộng của mình</code></li>
+<li>Symfony</li>
+<li>CodeIgniter</li>
+<li>Yii 2</li>
+<li>Phalcon</li>
+<li>CakePHP</li>
+<li>Zend Framework</li>
+<li>Slim</li>
+<li>FuelPHP</li>
+<li>PHPixie</li>
+</ol>
+<p><strong>CUỐI CÙNG:</strong> Trên đây là một số ví dụ dựa trên kinh nghiệm thực tế mình đi làm học hỏi được cũng như tìm hiểu được mà mình muốn chia sẻ cho các bạn đọc cùng được biết.</p>
+<p><strong>Nếu các bạn có thêm kinh nghiệm nào, mẹo nhỏ nào có thể comment phía bên dưới cho mình được biết, cũng như chia sẻ cho nhiều bạn hơn được biết. Để chúng ta cùng giúp đỡ nhau học tập, tìm hiểu và phát triển</strong></p>
+<p>=&gt; Chúc mọi người code càng ngày càng đẹp hơn, sịn xò hơn, hiệu năng cao hơn và tạo ra được nhiều sản phẩm thú vị hơn. Thân!</p>
+<p><code>Hãy ghé thăm blog của mình thường xuyên để đọc nhiều bài mình chia sẻ hơn nữa, và mình là</code> <a href="https://manhnv.com">manhnv</a></p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/php/">php</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/web/">web</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/" data-tooltip="Săn tìm tài khoản mạng xã hội bằng công cụ sherlock">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/07/cve-2019-7164-sqlalchemy-dinh-loi-sqlinjection-thong-qua-tham-so-cua-orderby/" data-tooltip="CVE-2019-7164: Lỗ hổng trong SQLALchemy (version 1.2.17 và 1.3.x đến 1.3.0b2) cho phép SQL injection thông qua tham số order_by.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/" data-tooltip="Săn tìm tài khoản mạng xã hội bằng công cụ sherlock">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/07/cve-2019-7164-sqlalchemy-dinh-loi-sqlinjection-thong-qua-tham-so-cua-orderby/" data-tooltip="CVE-2019-7164: Lỗ hổng trong SQLALchemy (version 1.2.17 và 1.3.x đến 1.3.0b2) cho phép SQL injection thông qua tham số order_by.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F07%2Fnhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F07%2Fnhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F07%2Fnhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/07\/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet\/';
+          
+            this.page.identifier = '\/2019\/07\/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

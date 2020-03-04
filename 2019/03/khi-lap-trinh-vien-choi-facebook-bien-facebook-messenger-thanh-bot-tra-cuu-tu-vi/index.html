@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi Giới thiệu Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội có vẻ lặp từ xã hội - nhưng kệ đi =)). Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá!">
+
+
+<meta property="og:description" content="Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi Giới thiệu Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội có vẻ lặp từ xã hội - nhưng kệ đi =)). Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi ">
+<meta name="twitter:title" content="Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi ">
+<meta property="og:url" content="https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+<meta property="twitter:url" content="https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi Giới thiệu Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội có vẻ lặp từ xã hội - nhưng kệ đi =)). Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá!">
+<meta name="twitter:description" content="Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi Giới thiệu Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội có vẻ lặp từ xã hội - nhưng kệ đi =)). Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá!">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-03-28T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-03-28T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="python tools">
+    
+  
+  
+    
+      <meta property="article:tag" content="Facebook api">
+    
+      <meta property="article:tag" content="python">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/tuvi.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/tuvi.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi </title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi 
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-03-28T00:00:00Z">
+        
+  tháng 3 28, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/python-tools">python tools</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h1 id="khi-lập-trình-viên-chơi-facebook---biến-facebook-messager-thành-bot-tra-cứu-tử-vi">Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi</h1>
+<h2 id="giới-thiệu">Giới thiệu</h2>
+<p>Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội <code>có vẻ lặp từ xã hội - nhưng kệ đi =))</code>. Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá! Với mình là một lập trình viên <code>à mà có là lập trình viên không ta? chắc chỉ là thằng đi code thôi =((</code> thì hôm nay, tại đây mình sẽ hưóng dẫn các bạn chơi facebook một cách thật ngầu, thật chất.</p>
+<p>=&gt; Xàm xàm thế đủ rồi, bắt đầu thôi nào =))
+=&gt; Sản phẩm của mình làm ra trong hôm nay chính là: Biến &ldquo;Messager cá nhân trên facebook của bạn thành một bot đa năng =)) &quot;</p>
+<h2 id="demo">Demo</h2>
+<p><img src="https://lh3.googleusercontent.com/FlgmybdtEIrVSEvByPJgomzxAs0RyehliwCEoYenjg51FX4ynUaeIwjbnQNA6hGwCKDvGsjAEsrtvHbcVyEcJw84LC27Z8G7c4vnYQpOmNFYJ-GFE4nNbRuoG7UZGqE57Y0-7MwMBN4zZBwYVWxap9ee2QiwVUSTe0jyAnXSB-3wz1xTddwpihOt_lMw6rXwoiTzL9K6Kw29Zppn5jfDLyCodGOZKpjuexX7twHJDaGrXk1H604-vwUD8n6NYsSuxMQ8TH3X-Wsw04Kw1HaqBoLK2M1CM_9lbaH0ayYdCsabXzgcknfrmT9-tX43FYwqRciFBEZesQHYIIkeH4h-nAQXQn8T9ismb1ozh1LhmsnIQ1m-fTDJqkLU0givE5jTyvlBx4zkLYUd08ZpbLqgDo6gSMly_3S6sG_qC4b50Uzt8lhTNrN1sdtbEDsiH67aEHbcVaS56w3JKzTuNdM7y11qr14O2a_aULYfva8RWzedhdt-i5iudtQcMiM2_O55CtyULzqkX3Ysf8K_PQrfv9NPq_FNNexh8H42dRAoFzwC807W_Zb1BTVh1N8qB4kcNIeAbLFEaDapz2U70XHUYB6RPPPtNoPAQyThOESPHRJFJ-EQCfCC4pv1V1B5mDlJHj-g5krwCMOYdC4EkfH25Wlj8dhGYA=w690-h524-no" alt="alt text" title="Demo bot"></p>
+<h2 id="bắt-đầu">Bắt đầu</h2>
+<p>Thì với mình là một thằng code Python nên trong bài viết này mình xin được phép sẽ dùng Python để múa rìu qua mắt thợ.</p>
+<ul>
+<li>
+<p>Chuẩn bị: <code>Những thứ chuẩn bị ở đây anh/em code python chắc chắn biết cài rồi nên mình chỉ liệt kê mà không hưóng dẫn nữa nhé</code></p>
+<ul>
+<li>Python 3.6</li>
+<li>Cài đặt thư viện fbchat và requests:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ pip install fbchat requests
+</code></pre></div><ul>
+<li>Tạo một <code>folder project</code>: Chắc chắn rồi, khi code chúng ta cần vứt code vào 1 folder ở đây mình đặt tên folder là <code>nguyenmanh_messager_bot</code>.</li>
+<li>Tạo file <code>main.py</code>: * Đây chính là file mình sẽ code chương trình chính trong này =)) <code>nói những thứ thừa thãi v**</code></li>
+<li>Tạo file <code>tu_vi.py</code>: Dùng để code mấy thứ liên quan tới API tử vi</li>
+<li>Tạo file <code>session.json</code>: Dùng lưu session facebook</li>
+<li>Tạo file <code>nguyen_manh_bot.py</code>: Dùng để code bot messager
+<img src="https://lh3.googleusercontent.com/sSQNDl4XGK4FekGcPFbt8VH4vqcCTtiOuQsFTC2H9VTpYZolfH83W4EFr2Ufp8VPiH7YEDhwmM3l-lvPinOZ566SezrIun__I8513Lv7tT05pIEP4mZo4ZPQCFsOTqA7GCFN-aS2br680I3hopBUZJAeJpl91ZtylsVigx4LiO1dZ2hCHjSwUD1BSQD-CP19bmSmYUNFVQdSlgcdfIEpIPya4n95aLzrbzNg_HpT5h2Jw8nA64ysmFNe8a6sVWFTSOKYCs2c6AyOYiVbeZ-3c-q8s72aTkWsmOZ6rGdz3ONAgPylV7Hs9KSN2xfBkVdTkaoPyPmTfKY_lAJ360jxKyAYJlNYAB07OdQYVw_e_lPkaJhLlNvYSLPJq4iAdbtdYxEDMQEk0i9zbQRgRL11zkvTo-WDANFhhwV1t-XA7z3stNU5DKXGa260gmpgGO9FHsQCwpkEnPJvkuBJpxKvfx49HQa_vczOIz8IMMvMRXIsZAfOxxm4dEIoQzqsURxUEKtbT8K-3nVILqQTftj-jtwylZdv3KMQ_suKiIc8gqKFYHhl_zdArRWglcrJFlNZ5zHLR8LLBBE5wdIZUlkWsuD8Zz1VHZLRAWMnvnWd1RDbXHIywPNMIemIoUgAnSovW2tmOLUITypY-SRanL4jaTKWDTMQBg=w339-h235-no" alt="alt text" title="Folder"></li>
+</ul>
+</li>
+<li>
+<p>Danh sách API dùng trong bài viết:</p>
+<ul>
+<li>Tử vi cung hoàng đạo hằng ngày: <code>https://api.kma-chatbot.com/cunghoangdao.php?cung=&lt;Tên cung hoàng đạo&gt;</code>
+<ul>
+<li>Ví dụ cung hoàng đạo: Song ngư</li>
+</ul>
+</li>
+<li>Tử vi 12 con giáp hằng ngày: <code>https://api.kma-chatbot.com/tuvi.php?tuoi=&lt;con giáp&gt;</code>
+<ul>
+<li>Ví dụ con giáp: Sửu</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="triển-khai-code">Triển khai code</h2>
+<ul>
+<li>Code <code>tu_vi.py</code>:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">
+<span style="color:#f92672">import</span> requests
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TuVi</span>():
+    <span style="color:#66d9ef">def</span> __init__(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">con_giap</span>(self, Cgiap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
+        url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://api.kma-chatbot.com/tuvi.php?tuoi={}&#39;</span><span style="color:#f92672">.</span>format(Cgiap<span style="color:#f92672">.</span>strip())
+        loi_phan <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>  <span style="color:#75715e"># Lời phán</span>
+
+        <span style="color:#66d9ef">try</span>:
+            r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+            data_json <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>json()
+
+            set_attributes <span style="color:#f92672">=</span> data_json<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;set_attributes&#39;</span>)
+
+            <span style="color:#66d9ef">if</span> set_attributes:
+                loi_phan <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-----{}-----</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">- {}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">- {}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">- {}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">- {}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(
+                    set_attributes<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;tvcongiap&#39;</span>),
+                    set_attributes<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;congviec&#39;</span>),
+                    set_attributes<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;tinhcam&#39;</span>),
+                    set_attributes<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;taivan&#39;</span>),
+                    set_attributes<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;cantrong&#39;</span>)
+                )
+        <span style="color:#66d9ef">except</span>:
+            loi_phan <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Có thể con giáp bạn nhập bị sai :(&#39;</span>
+
+        <span style="color:#66d9ef">return</span> loi_phan
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cung_hoang_dao</span>(self, cung_hd<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>):
+        <span style="color:#75715e"># Cái này mình cho API rồi các bạn tự viết nha =)) Lười!</span>
+        <span style="color:#66d9ef">pass</span>
+
+</code></pre></div><ul>
+<li>Code <code>nguyen_manh_bot.py</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">
+<span style="color:#75715e"># -*- coding: UTF-8 -*-</span>
+<span style="color:#f92672">from</span> fbchat.models <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> fbchat <span style="color:#f92672">import</span> log, Client
+
+<span style="color:#f92672">from</span> tu_vi <span style="color:#f92672">import</span> TuVi
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NguyenManhBot</span>(Client):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">onMessage</span>(self, author_id, message_object, thread_id, thread_type, <span style="color:#f92672">**</span>kwargs):
+        self<span style="color:#f92672">.</span>markAsDelivered(thread_id, message_object<span style="color:#f92672">.</span>uid)
+        self<span style="color:#f92672">.</span>markAsRead(thread_id)
+
+        log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;{} from {} in {}&#34;</span><span style="color:#f92672">.</span>format(message_object, thread_id, thread_type<span style="color:#f92672">.</span>name))
+
+        <span style="color:#66d9ef">if</span> author_id <span style="color:#f92672">!=</span> self<span style="color:#f92672">.</span>uid:
+            <span style="color:#66d9ef">if</span> message_object<span style="color:#f92672">.</span>text:
+                <span style="color:#66d9ef">if</span> message_object<span style="color:#f92672">.</span>text <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/Getid&#39;</span> <span style="color:#f92672">or</span> message_object<span style="color:#f92672">.</span>text <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/getid&#39;</span>:
+                    self<span style="color:#f92672">.</span>send(Message(text<span style="color:#f92672">=</span>message_object<span style="color:#f92672">.</span>author), thread_id<span style="color:#f92672">=</span>thread_id, thread_type<span style="color:#f92672">=</span>thread_type)
+
+                <span style="color:#66d9ef">elif</span> <span style="color:#e6db74">&#39;/tuvi&#39;</span> <span style="color:#f92672">in</span> message_object<span style="color:#f92672">.</span>text:
+                    tuoi <span style="color:#f92672">=</span> message_object<span style="color:#f92672">.</span>text[message_object<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#39;/tuvi&#39;</span>) <span style="color:#f92672">+</span> len(<span style="color:#e6db74">&#39;/tuvi&#39;</span>):]
+                    tuvi <span style="color:#f92672">=</span> TuVi()
+                    loi_phan <span style="color:#f92672">=</span> tuvi<span style="color:#f92672">.</span>con_giap(Cgiap<span style="color:#f92672">=</span>tuoi)
+                    self<span style="color:#f92672">.</span>send(Message(text<span style="color:#f92672">=</span>loi_phan), thread_id<span style="color:#f92672">=</span>thread_id, thread_type<span style="color:#f92672">=</span>thread_type)
+                <span style="color:#66d9ef">else</span>:
+                    self<span style="color:#f92672">.</span>send(Message(
+                        text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">🙂 Tôi là Nguyễn Mạnh. </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">- Tôi sẽ rep sau khi đi công việc về </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">- Nếu xem tử vi gõ /tuvi &lt;tuổi&gt;; ví dụ: /tuvi sửu. </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">- Tin nhắn của bạn: {0}&#39;</span><span style="color:#f92672">.</span>format(
+                            message_object<span style="color:#f92672">.</span>text)),
+                        thread_id<span style="color:#f92672">=</span>thread_id,
+                        thread_type<span style="color:#f92672">=</span>thread_type
+                    )
+
+</code></pre></div><ul>
+<li>Code <code>main.py</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">
+<span style="color:#f92672">import</span> json
+
+<span style="color:#f92672">from</span> nguyen_manh_bot <span style="color:#f92672">import</span> NguyenManhBot
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    <span style="color:#75715e"># Load session đăng nhập từ trước nếu có</span>
+    <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;session.json&#39;</span>) <span style="color:#66d9ef">as</span> f:
+        session_cookies <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+
+    client <span style="color:#f92672">=</span> NguyenManhBot(<span style="color:#e6db74">&#39;username&#39;</span>, <span style="color:#e6db74">&#39;password&#39;</span>, session_cookies<span style="color:#f92672">=</span>session_cookies)
+
+    <span style="color:#75715e"># Lấy session và lưu vào file để lần sau dùng cho đăng nhập</span>
+    session_cookies_new <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>getSession()
+    <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;session.json&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> outfile:
+        json<span style="color:#f92672">.</span>dump(session_cookies_new, outfile)
+
+    <span style="color:#75715e"># Lắng nghe phản hồi từ messager</span>
+    client<span style="color:#f92672">.</span>listen()
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    main()
+
+</code></pre></div><h2 id="đưa-code-lên-heroku">Đưa code lên heroku</h2>
+<p>Bây giờ bạn đã có một bot khá ok rồi, bạn có thể chạy trên local nhưng để chuyên nghiệp hơn thì chúng ta nên đưa nó lên heroku để không phải bật máy cho nó listen mãi =))</p>
+<ul>
+<li>
+<p>Bước 1: Vào heroku tạo một tài khoản</p>
+<ul>
+<li>Vào <a href="https://signup.heroku.com/login">https://signup.heroku.com/login</a> đăng ký một tài khoản
+<img src="https://lh3.googleusercontent.com/Sod1dF409cebqKzfzIbtBM9slXT5pJfNR9rrrEUGXPh71VBPGocvEicYzkANIH_k7lKpeiNoN8nHue9wcOWb6QvQfjoRMF24_wti6gPtn4NBIZqqUMSE1G422u9KWQzb7LpYPzt6BuJ7RoZnUNgNmbWalfda0_9LO3UYrEl7rolqSMXa5G7bOlUzHqg353AfzFTMs6VOxRn684dXPHt2PFn-9nufkLTIq_u_e5OUEkI0Mir0pRlGTN5Qb6WfYwxooXwY5t_KlJjXmPdBmI6idErQqiJiaj-ZNtYmZxEJo-1KBntye86-xZZQP9NqHUmcsoMroe7BG9rGcZ2AaTg_iuziJR2XagJ4rOKEL663wSRM7GNdkjx9_aX4MG0I5Hl9cvxO4imEsi61ZWNEH_C2v0MLWEQkPibU-zu2j6QQHSDqZb-c8_UW4AcsoU30LxooMAf64EtkWZL9-y5CNBKitP8KlbGnbqejWBwD_SNPkyU6zIsOb0IVj8Kpf5XNtQrcIA0i9wf4kk-PPVQ-XZXZt_5i2RGHb6mBLMUaFl2VDBWYFEx16pQ7NamoCgFlHdCz_bi62XxK0k3FonsG6u1AS895NTec0yIDoo_W0omp4GHa3d0fcr4Rzta4uNecGK1RikdMH7RZ5pGJsGig8vmuxrCJ4T0XoA=w1249-h630-no" alt="alt text" title="Đăng ký heroku"></li>
+</ul>
+</li>
+<li>
+<p>Bước 2: Tạo app heroku</p>
+<ul>
+<li>Sau khi đăng ký tài khoản xong và <a href="https://dashboard.heroku.com/apps">https://dashboard.heroku.com/apps</a> để tạo một app
+<img src="https://lh3.googleusercontent.com/5JCgW_MbRY2jIVriky874asT9PNR5BB4y8fbHGzodYTgBEP_QM-n538aZBMnshK82HJPVv_0U6-Rrv6oOQskT9vNQez_9j8z9q3WGsQkdsM6lOhAxdEIVW7RbaR_Md1_13-_Tj5Lv3VxdpOawaDPl93IkqfVqfbH8rIohppHDZBcqbCWQ5iEoZH9hemImRkACLlDyCWnDnYiBYqOqu-b0jXPRKHzvx7C7s9aiZ_5fqobxmEEqfRKAnqwWDozh1Bd52e9bqZA-tbrpOtV8yawSPB8QPxPDWb60WEbKScRcNNhZWHYVwm_GAieL-8aSpFI1steQr9hmLfvSfkcYedk3E2rTteY-zpNelRzK58pLlhjUdmAuP20YWxMEopCRdSd2cS42lk6g6cqWfC1qydqOQ_3UsVxqxhsJab1zOctlCXk0a8PjVtelBsWMQiWXIqkRmthg0Ma_rAF3b_iPVVxfrYlSNBQRT95ABTx2Rb6ejrI4lT9nPiQdmF2GoSDs7f1W9hcyDoDGJwZUwyAZ2koCKBiza2-NJNWig66Uow7c0gc7FkWqbQP3JClcs2AlIOO5r3Fv1AszFFUaB2r8Nm0pH2Eu-DqT7aVtuunOSh83JjFIsvsGu8Xyjf-OCtSDDhFbvuTtZEWJ149_kPhVX0TQiwQtTEJIA=w1362-h625-no" alt="alt text" title="Tạo app"></li>
+</ul>
+</li>
+<li>
+<p>Bước 3: Cài git và heroku lên máy</p>
+<ul>
+<li>
+<p>Heroku có dùng git nên chúng ta cài git lên máy nhé</p>
+<ul>
+<li>Window thì download: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></li>
+<li>Linux thì chạy lệnh: <code>sudo apt-get install git</code></li>
+</ul>
+</li>
+<li>
+<p>Cài heroku</p>
+<ul>
+<li>Window: <a href="https://devcenter.heroku.com/articles/heroku-cli">https://devcenter.heroku.com/articles/heroku-cli</a></li>
+<li>Linux: <code>sudo snap install --classic heroku</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Bước 4: Deploy code lên heroku</p>
+<ul>
+<li>Để heroku chạy được code bạn thì cần phải tạo 1 file &lsquo;Procfile&rsquo; trong project với nội dung</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">worker: python test.py
+</code></pre></div><ul>
+<li>
+<p>Làm theo các bưóc sau để đưa code lên</p>
+<ul>
+<li>Đăng nhập heroku</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ heroku login
+</code></pre></div><ul>
+<li>Khởi tạo git</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git init
+</code></pre></div><ul>
+<li>Add remote của heroku vào git
+Thay <code>nguyen-manh-messager</code> bằng tên app bạn tạo trên heroku</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ heroku git:remote -a nguyen-manh-messager
+</code></pre></div><ul>
+<li>Deploy app của bạn</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git add .
+$ git commit -am <span style="color:#e6db74">&#34;Lần đầu làm chuyện ấy&#34;</span>
+$ git push heroku master
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="kết-quả">Kết quả</h2>
+<ul>
+<li>Source code: <a href="https://github.com/nguyenmanh1997/nguyenmanh-messager">https://github.com/nguyenmanh1997/nguyenmanh-messager</a></li>
+<li>Sau khi làm theo như mình hướng dẫn bên trên thì bạn đã có một con <code>bot tra cứu tử vi</code> trên messager cá nhân của bạn rồi. Giờ vào tận hưởng thành quả đi nào.</li>
+<li>Các bạn dựa vào code mình làm và nâng cấp thêm nhiều chức năng mới nhé.</li>
+<li>Chúc các bạn thành công!</li>
+</ul>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/facebook-api/">Facebook api</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/python/">python</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/" data-tooltip="Hướng dẫn xóa database khách hàng đúng cách! và cú lừa thời đại 4.0">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/" data-tooltip="Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/" data-tooltip="Hướng dẫn xóa database khách hàng đúng cách! và cú lừa thời đại 4.0">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/" data-tooltip="Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F03%2Fkhi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F03%2Fkhi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F03%2Fkhi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/03\/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi\/';
+          
+            this.page.identifier = '\/2019\/03\/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

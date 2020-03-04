@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="Lỗ hổng SQL Injection (SQLI) là một trong những vấn đề bảo mật web lâu đời và phổ biến nhất. Mình đã có một bài viết Mô tả SQL Injection là gì và cách kiểm tra, các bạn có thể đọc kỹ hơn để biết.
+Trong bài viết này mình sẽ nói đến một trong các loại SQL injection đó là Blind SQL injection.
+Blind SQL injection là gì? Blind SQL injection là một kiểu tấn công SQL injection truy vấn cơ sở dữ liệu sử dụng các mệnh đề để đoán biết.">
+
+
+<meta property="og:description" content="Lỗ hổng SQL Injection (SQLI) là một trong những vấn đề bảo mật web lâu đời và phổ biến nhất. Mình đã có một bài viết Mô tả SQL Injection là gì và cách kiểm tra, các bạn có thể đọc kỹ hơn để biết.
+Trong bài viết này mình sẽ nói đến một trong các loại SQL injection đó là Blind SQL injection.
+Blind SQL injection là gì? Blind SQL injection là một kiểu tấn công SQL injection truy vấn cơ sở dữ liệu sử dụng các mệnh đề để đoán biết.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blind SQL injection là gì? Blind injection khác với các loại SQL injection khác như thế nào?">
+<meta name="twitter:title" content="Blind SQL injection là gì? Blind injection khác với các loại SQL injection khác như thế nào?">
+<meta property="og:url" content="https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+<meta property="twitter:url" content="https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Lỗ hổng SQL Injection (SQLI) là một trong những vấn đề bảo mật web lâu đời và phổ biến nhất. Mình đã có một bài viết Mô tả SQL Injection là gì và cách kiểm tra, các bạn có thể đọc kỹ hơn để biết.
+Trong bài viết này mình sẽ nói đến một trong các loại SQL injection đó là Blind SQL injection.
+Blind SQL injection là gì? Blind SQL injection là một kiểu tấn công SQL injection truy vấn cơ sở dữ liệu sử dụng các mệnh đề để đoán biết.">
+<meta name="twitter:description" content="Lỗ hổng SQL Injection (SQLI) là một trong những vấn đề bảo mật web lâu đời và phổ biến nhất. Mình đã có một bài viết Mô tả SQL Injection là gì và cách kiểm tra, các bạn có thể đọc kỹ hơn để biết.
+Trong bài viết này mình sẽ nói đến một trong các loại SQL injection đó là Blind SQL injection.
+Blind SQL injection là gì? Blind SQL injection là một kiểu tấn công SQL injection truy vấn cơ sở dữ liệu sử dụng các mệnh đề để đoán biết.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-05-24T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-05-24T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Pentest web">
+    
+  
+  
+    
+      <meta property="article:tag" content="pentest web">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/blind-SQL-injection-la-gi-blind-injection-khac-voi-cac-loai-SQL-injection-khac-nhu-the-nao/blind-sql.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/blind-SQL-injection-la-gi-blind-injection-khac-voi-cac-loai-SQL-injection-khac-nhu-the-nao/blind-sql.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Blind SQL injection là gì? Blind injection khác với các loại SQL injection khác như thế nào?</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Blind SQL injection là gì? Blind injection khác với các loại SQL injection khác như thế nào?
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-24T00:00:00Z">
+        
+  tháng 5 24, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/pentest-web">Pentest web</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Lỗ hổng SQL Injection (SQLI) là một trong những vấn đề bảo mật web lâu đời và phổ biến nhất. Mình đã có một bài viết <a href="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">Mô tả SQL Injection là gì và cách kiểm tra</a>, các bạn có thể đọc kỹ hơn để biết.</p>
+<p>Trong bài viết này mình sẽ nói đến một trong các loại SQL injection đó là <strong>Blind SQL injection</strong>.</p>
+<h2 id="blind-sql-injection-là-gì">Blind SQL injection là gì?</h2>
+<p>Blind SQL injection là một kiểu tấn công SQL injection truy vấn cơ sở dữ liệu sử dụng các mệnh đề để đoán biết. Cách tấn công này thường được sử dụng khi mà một ứng dụng (web, apps) được cấu hình để chỉ hiển thị những thông báo lỗi chung chung, không hiển thị ra lỗi của SQL.
+Blind SQL Injection đôi khi được gọi là SQL Inferential SQL.</p>
+<p>Có hai biến thể chính để thực hiện Blind SQL injection:
+* Blind SQL injejction dựa vào nội dung phản hồi.
+* Blind SQL injejction dựa vào độ trễ của thời gian phản hồi.</p>
+<h2 id="các-kiểm-tra-blind-sql-injection">Các kiểm tra Blind SQL injection.</h2>
+<h3 id="blind-sql-injejction-dựa-vào-nội-dung-phản-hồi">Blind SQL injejction dựa vào nội dung phản hồi.</h3>
+<p>Trong trường hợp tấn công Blind SQL injection dựa trên nội dung, kẻ tấn công thực hiện các truy vấn SQL khác nhau để hỏi các câu hỏi TRUE hoặc FALSE của cơ sở dữ liệu. Sau đó, họ phân tích sự khác biệt trong câu trả lòi giữa các câu lệnh TRUE và FALSE.</p>
+<p>Sau đây là một ví dụ về một web bán hàng online, nơi hiển thị thông tin sản phẩm được bán.</p>
+<pre><code class="language-url" data-lang="url">http://www.shop-online.com/product_detail.php?id=1
+</code></pre><p>Liên kết trên sẽ hiển thị thông tin chi tiết của sản phẩm có <code>id=1</code> được lấy từ cơ sở dữ liệu. Câu lệnh SQL cho liên kết này khi được yêu cầu là:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> products <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">--hoặc
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">column_name</span>, column_name_2 <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>Kẻ tấn công sẽ sửa lại truy vấn bằng các sửa url thành:</p>
+<pre><code class="language-url" data-lang="url">http://www.shop-online.com/product_detail.php?id=1 and 1 = 2
+</code></pre><p>Câu lệnh SQL sẽ đổi thành:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> products <span style="color:#66d9ef">WHERE</span> ID <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+
+<span style="color:#75715e">--hoặc
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">column_name</span>, column_name_2 <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">WHERE</span> ID <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</code></pre></div><p>Điều này sẽ khiến truy vấn trả về sai và không có mục nào được hiển thị trong thông tin sản phẩm. Kẻ tấn công sau đó tiến hành thay đổi yêu cầu thành:</p>
+<pre><code class="language-url" data-lang="url">http://www.shop-online.com/product_detail.php?id=1 and 1 = 1
+</code></pre><p>Và câu lệnh SQL lúc này lại đổi thành:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> products <span style="color:#66d9ef">WHERE</span> ID <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">--hoặc
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">column_name</span>, column_name_2 <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">WHERE</span> ID <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">and</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>Điều này trả về TRUE và các chi tiết của sản phẩm có <code>id=1</code> hiển thị. Đây là một dấu hiệu rõ ràng rằng ứng dụng này đang gặp lỗi SQL injection và chúng tôi đã dùng Blind SQL injection để tấn công.</p>
+<h3 id="blind-sql-injejction-dựa-vào-độ-trễ-của-thời-gian-phản-hồi">Blind SQL injejction dựa vào độ trễ của thời gian phản hồi.</h3>
+<p>Trong trường hợp này các cuộc tấn công dựa trên thời gian, kẻ tấn công làm cho cơ sở dữ liệu thực hiện một hành động tốn thời gian. Nếu ứng dụng không trả về phản hồi ngay lập tức, ứng dụng này dễ bị Blind SQL injection. Một hành động phổ biến dùng cho thời gian là <code>sleep</code>.</p>
+<p>Dựa trên ví dụ trước, kẻ tấn công trước tiên sẽ đánh giá thời gian phản hồi của máy chủ web cho mộ truy vấn thông thường. Yêu cầu kẻ tấn công đưa ra là:</p>
+<pre><code class="language-url" data-lang="url">http://www.shop-online.com/product_detail.php?id=1 and if(1=1, sleep(10), false)
+</code></pre><p>Nếu ứng dụng gặp lỗi SQL injection thì phản hồi sẽ bị trễ 10 giây.</p>
+<h2 id="hậu-quả-của-blind-sql-injection">Hậu quả của Blind SQL injection.</h2>
+<p>Các Blind SQL injection thường được sử dụng để xây dựng lược đồ cơ sở dữ liệu và lấy tất cả dữ liệu trong cơ sở dữ liệu. Điều này được thực hiện bằng cách sử dụng các kỹ thuật <code>brute force</code> và yêu cầu nhiều <code>requests</code> nhưng có thể được tự động hóa bởi những kẻ tấn công sử dụng các công cụ SQL injection như: SQLmap ..v..v..v..</p>
+<h2 id="sự-khác-nhau-giữa-blind-sql-injection-và-các-loại-sql-injection-khác">Sự khác nhau giữa Blind SQL injection và các loại SQL injection khác.</h2>
+<p>Đối với SQL injection thông thường cho phép chúng ta khai thác thông tin trực tiếp từ cơ sở dữ liệu. Đối với Blind, chúng ta phải đoán thông tin dần dần dựa theo kết quả trả về là TRUE FALSE. Do đó sẽ dẫn tới một vấn để đó là nếu thông tin chúng ta cần lấy. ví dụ: tên cơ sở dữ liệu, tên bảng, tên user quá dài thì việc đoán sẽ gặp trở ngại lớn về thời gian.</p>
+<h2 id="tổng-kết">Tổng kết.</h2>
+<ul>
+<li>Qua bài viết này mình đã trả lời cho các bạn 2 câu hỏi:
+<ul>
+<li>Blind SQL injection là gì?</li>
+<li>Blind injection khác với các loại SQL injection khác như thế nào?</li>
+</ul>
+</li>
+<li>Những ví dụ trên mình đưa ra chỉ là một số ví dụ cơ bản của Blind SQL injection, vậy bạn đọc có thể áp dụng nó và có thể tìm hiểu thêm một số dùng khác với: UNION, SUBSTRING .v.v.v.. để khai thác Blind SQL injection một cách hiệu quả.</li>
+</ul>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/pentest-web/">pentest web</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/thuc-thi-ma-tu-xa-remote-code-execution/" data-tooltip="Thực thi mã từ xa - Remote code execution">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/" data-tooltip="Mô tả SQL Injection là gì và cách kiểm tra">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/thuc-thi-ma-tu-xa-remote-code-execution/" data-tooltip="Thực thi mã từ xa - Remote code execution">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/" data-tooltip="Mô tả SQL Injection là gì và cách kiểm tra">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F05%2Fblind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F05%2Fblind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F05%2Fblind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/05\/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao\/';
+          
+            this.page.identifier = '\/2019\/05\/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/categories/python/</link>
+    <description>Recent content in python on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://manhnv.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Có PDB, debug python không còn khó khăn.</title>
+      <link>https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/</guid>
+      <description>PDB là viết tắt của &amp;quot;Python Debugger&amp;quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...
+Giới thiệu Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm.</description>
+    </item>
+    
+  </channel>
+</rss>

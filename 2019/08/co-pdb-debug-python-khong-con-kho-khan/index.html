@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="PDB là viết tắt của &quot;Python Debugger&quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...
+Giới thiệu Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm.">
+
+
+<meta property="og:description" content="PDB là viết tắt của &quot;Python Debugger&quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...
+Giới thiệu Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Có PDB, debug python không còn khó khăn.">
+<meta name="twitter:title" content="Có PDB, debug python không còn khó khăn.">
+<meta property="og:url" content="https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+<meta property="twitter:url" content="https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="PDB là viết tắt của &quot;Python Debugger&quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...
+Giới thiệu Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm.">
+<meta name="twitter:description" content="PDB là viết tắt của &quot;Python Debugger&quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...
+Giới thiệu Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-08-27T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-08-27T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="python">
+    
+  
+  
+    
+      <meta property="article:tag" content="python">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/python/co-PDB-debug-python-khong-con-kho-khan/debug.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/python/co-PDB-debug-python-khong-con-kho-khan/debug.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Có PDB, debug python không còn khó khăn.</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Có PDB, debug python không còn khó khăn.
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-08-27T00:00:00Z">
+        
+  tháng 8 27, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/python">python</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p><code>PDB là viết tắt của &quot;Python Debugger&quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...</code></p>
+<h2 id="giới-thiệu">Giới thiệu</h2>
+<p>Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm. Chắc chắn trong giai đoạn phát triển, mọi lập trình viên đều phải tự debug mã của mình, điều này là không thể tránh khỏi.</p>
+<p>Có rất nhiều cách để debug một ứng dụng viết ra. Một phương pháp được sử dụng rất phổ biến đó là sử dụng câu lệnh &ldquo;print&rdquo; trong các trường hợp để xem nó chạy như thế nào trong khi thực thi chương trình. Tuy nhiên, phương pháp này xảy ra nhiều vấn đề, chẳng hạn như việc muốn in được các giá trị của biến thì phải thêm code vào, v.v.. =&gt; Quá phức tạp. Hơn nữa cách này chỉ dùng tạm bợ cho những chương trình nhỏ, tầm trăm dòng code trở lại thì ok, khi mà sang một chương trình lớn hơn, có nhiều file hơn, thì nó lại là một vấn đề lớn lớn lớn.</p>
+<p>Vậy thì, chúng ta đã có trình gỡ lỗi để giải quyết vấn đề đó cho. Nó giúp chúng ta tìm các lỗi trong một ứng dụng bằng các lệnh bên ngoài, do đó không có thay đổi nào đối với code. Như đã đề cập ở trên, mình muốn giới thiệu các bạn module PDB - một module tích hợp bên trong python (không cần phải cài đặt từ nguồn bên ngoài), thông qua bài viết &ldquo;Có PDB, debug python không còn khó khăn&rdquo;.</p>
+<p>Mời các bạn đọc tiếp.</p>
+<h2 id="các-lệnh-thao-tác-cơ-bản">Các lệnh thao tác cơ bản</h2>
+<p>Để hiểu các lệnh hoặc công cụ chính có trong PDB, mình sẽ viết một đoạn chương trình nho nhỏ, vui vui, cơ bản, sau đó thử debug bằng các lệnh PDB. Bằng các này, chúng ta sẽ thấy được một cách rõ ràng hơn, chính xác hơn mỗi lệnh của PDB sẽ làm gì.</p>
+<p><code># Filename: loves.py</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">list_crush <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Lê&#39;</span>, <span style="color:#e6db74">&#39;Thi&#39;</span>, <span style="color:#e6db74">&#39;Thiên&#39;</span>, <span style="color:#e6db74">&#39;Mỹ&#39;</span>]
+love_codes <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1111112</span>, <span style="color:#ae81ff">2111014</span>, <span style="color:#ae81ff">3451524</span>, <span style="color:#ae81ff">4512244</span>]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_list_crush</span>():
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;List crush: &#39;</span>)
+    <span style="color:#66d9ef">for</span> crush <span style="color:#f92672">in</span> list_crush:
+        <span style="color:#66d9ef">print</span>(crush)
+
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Code of loves: &#34;</span>)
+    <span style="color:#66d9ef">for</span> code <span style="color:#f92672">in</span> love_codes:
+        <span style="color:#66d9ef">print</span>(code)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    show_list_crush()
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    main()
+</code></pre></div><p>Kết quả của đoạn script trên:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">List crush:
+Lê
+Thi
+Thiên
+Mỹ
+code of loves:
+1111112
+2111014
+3451524
+4512244
+</code></pre></div><p>Đoạn mã trên chắc mình cũng không cần phải giải thích nhiều, vì nó là basic đối với một người làm về python rồi, nó không có gì khó cũng như cú pháp phức tạp cả. Bạn không cần phải hiểu đoạn lệnh trên thực hiện, mục đích chính của mình thực hiện một số lệnh PDB dựa trên chương trình này. Ok, bắt đầu thôi.</p>
+<p>Sử dụng PDB yêu cầu sử dụng Command Line Interface (CLI), do đó bạn phải chạy ứng dụng của mình từ <code>terminal</code> hoặc <code>command</code>.</p>
+<p>Chạy lệnh dưới đây trong CLI của bạn:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python -m pdb loves.py
+</code></pre></div><p>Trong lệnh trên, tên tệp <code>loves.py</code>, vì vậy bạn sẽ cần chèn tên tệp của bạn thay cho <code>loves.py</code>.</p>
+<p><strong>Lưu ý:</strong> <code>-m</code> là một cờ và nó thông báo cho Python rằng một mô-đun cần phải được imported; cờ này được theo sau bởi tên của mô-đun, trong trường hợp của trên của mình là pdb.</p>
+<p>Chạy xong lệnh sẽ hiển thị như thế này:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; list_crush <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Lê&#39;</span>, <span style="color:#e6db74">&#39;Thi&#39;</span>, <span style="color:#e6db74">&#39;Thiên&#39;</span>, <span style="color:#e6db74">&#39;Mỹ&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Đầu ra sẽ luôn có cùng cấu trúc. Nó sẽ bắt đầu với đường dẫn thư mục đến tệp mã nguồn. Sau đó, trong ngoặc, nó sẽ cho biết số dòng từ tệp mà PDB hiện đang trỏ tới, trong trường hợp của mình là <code>(1)</code>. Dòng tiếp theo, bắt đầu bằng ký hiệu <code>-&gt;</code>, cho biết dòng đang được trỏ đến.</p>
+<p>Để đóng PDB, chỉ cần nhập <code>quit</code> hoặc <code>exit</code>.</p>
+<p>Một vài điều cần lưu ý, nếu chương trình của bạn có các tham số đầu vào, bạn cũng có thể chuyển chúng qua command line. Ví dụ, nếu chương trình của mình yêu cầu 3 đầu vào từ người dùng, thì lệnh của mình sẽ như thế này:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python -m pdb loves.py var1 var2 var3
+</code></pre></div><p>Tiếp tục, nếu trước đó bạn đã đóng PDB thông qua lệnh <code>quit</code> hoặc <code>exit</code>, sau đó chạy lại tệp code thông qua PDB. Sau đó, chạy lệnh sau trong command line PDB:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> list
+</code></pre></div><p>Đầu ra trông như thế này:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#ae81ff">1</span>  -&gt; list_crush <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Lê&#39;</span>, <span style="color:#e6db74">&#39;Thi&#39;</span>, <span style="color:#e6db74">&#39;Thiên&#39;</span>, <span style="color:#e6db74">&#39;Mỹ&#39;</span><span style="color:#f92672">]</span>
+  <span style="color:#ae81ff">2</span>     love_codes <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>1111112, 2111014, 3451524, 4512244<span style="color:#f92672">]</span>
+  <span style="color:#ae81ff">3</span>  
+  <span style="color:#ae81ff">4</span>     def show_list_crush<span style="color:#f92672">()</span>:
+  <span style="color:#ae81ff">5</span>         print<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;List crush: &#39;</span><span style="color:#f92672">)</span>
+  <span style="color:#ae81ff">6</span>         <span style="color:#66d9ef">for</span> crush in list_crush:
+  <span style="color:#ae81ff">7</span>             print<span style="color:#f92672">(</span>crush<span style="color:#f92672">)</span>
+  <span style="color:#ae81ff">8</span>  
+  <span style="color:#ae81ff">9</span>         print<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;code of loves: &#34;</span><span style="color:#f92672">)</span>
+ <span style="color:#ae81ff">10</span>         <span style="color:#66d9ef">for</span> code in love_codes:
+ <span style="color:#ae81ff">11</span>             print<span style="color:#f92672">(</span>code<span style="color:#f92672">)</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Hiển thị 11 dòng đầu tiên của chương trình cho bạn, với dấu <code>-&gt;</code> hướng về dòng hiện tại đang được debug. Tiếp theo, hãy thử lệnh này trong command line PDB.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> list 4, <span style="color:#ae81ff">6</span>
+</code></pre></div><p>Lệnh này sẽ chỉ hiển thị các dòng được chọn, trong trường hợp này là các dòng 4 đến 6. Đây là đầu ra:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  <span style="color:#ae81ff">4</span>     def show_list_crush<span style="color:#f92672">()</span>:
+  <span style="color:#ae81ff">5</span>         print<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;List crush: &#39;</span><span style="color:#f92672">)</span>
+  <span style="color:#ae81ff">6</span>         <span style="color:#66d9ef">for</span> crush in list_crush:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="debugging-với-break-points">Debugging với Break points</h2>
+<p>Một thứ quan trọng tiếp theo mà chúng ta sẽ tìm hiểu là <code>Breakpoint</code>. <code>Breakpoint</code> thường được sử dụng cho các chương trình lớn hơn, nhưng để hiểu rõ hơn về nó, chúng ta sẽ tìm hiểu cách nó hoạt động dựa trên ví dụ cơ bản bên trên. <code>Breakpoint</code> là các vị trí cụ thể mà chúng tôi khai báo trong code của mình. Code của tôi chạy đến vị trí đó và sau đó tạm dừng. Những điểm này được tự động gán số bởi PDB.</p>
+<p>Có các tùy chọn sau đây để tạo <code>Breakpoint</code>:</p>
+<ol>
+<li>Theo số dòng (By line number)</li>
+<li>Bằng cách khai báo hàm (By function declaration)</li>
+<li>Bởi một điều kiện (By a condition)</li>
+</ol>
+<p>Để khai báo <code>Breakpoint</code> theo số dòng, hãy chạy lệnh sau trong commandline PDB:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> break loves.py:9
+</code></pre></div><p>Lệnh này chèn một <code>Breakpoint</code> ở dòng code thứ 8, nó sẽ tạm dừng chương trình một khi nó chạy tới điểm đó. Đầu ra lệnh này được hiển thị là:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Breakpoint <span style="color:#ae81ff">1</span> at /home/nguyenmanh/projects/test/loves.py:9
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Để khai báo các <code>Breakpoint</code> trên một hàm, hãy chạy lệnh sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> break loves.show_list_crush
+</code></pre></div><p>Để chèn một điểm dừng theo cách này, bạn phải khai báo nó bằng tên tệp và sau đó là tên hàm. Điều này xuất ra như sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Breakpoint <span style="color:#ae81ff">2</span> at /home/nguyenmanh/projects/test/loves.py:4
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Như bạn thấy, <code>Breakpoint</code> này đã được được tự động gán số 2 và số dòng là 4 - chính là tại dòng hàm được khai báo.</p>
+<p><code>Breakpoint</code> cũng có thể được khai báo bởi một điều kiện. Trong trường hợp đó, chương trình sẽ chạy cho đến khi điều kiện sai và sẽ tạm dừng khi điều kiện đó trở thành đúng. Chạy lệnh sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> break loves.py:6, crush <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Thi&#34;</span>
+</code></pre></div><p>Điều này sẽ theo dõi giá trị của biến <code>crush</code> trong suốt quá trình thực thi và chỉ ngắt khi giá trị của nó là &ldquo;Thi&rdquo; ở dòng 6.</p>
+<p>Để xem tất cả các <code>Breakpoint</code> mà mình đã khai báo dưới dạng danh sách, hãy chạy lệnh</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> break
+</code></pre></div><p>Kết quả sẽ có dạng:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Num Type         Disp Enb   Where
+<span style="color:#ae81ff">1</span>   breakpoint   keep yes   at /home/nguyenmanh/projects/test/loves.py:9
+<span style="color:#ae81ff">2</span>   breakpoint   keep yes   at /home/nguyenmanh/projects/test/loves.py:4
+<span style="color:#ae81ff">3</span>   breakpoint   keep yes   at /home/nguyenmanh/projects/test/loves.py:6
+        stop only <span style="color:#66d9ef">if</span> crush <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Thi&#34;</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Cuối cùng, làm thế nào chúng ta có thể vô hiệu hóa, kích hoạt và xóa một <code>Breakpoint</code> cụ thể tại bất kỳ trường hợp nào. Chạy lệnh sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> disable <span style="color:#ae81ff">2</span>
+</code></pre></div><p>Lệnh trên sẽ vô hiệu hóa <code>Breakpoint</code> 2, nhưng sẽ không xóa nó khỏi phiên bản debug.</p>
+<p>Bạn sẽ thấy số <code>Breakpoint</code> bị vô hiệu hóa.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Disabled breakpoint <span style="color:#ae81ff">2</span> at /home/nguyenmanh/projects/test/loves.py:4
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Cho phép xem lại danh sách tất cả các <code>Breakpoint</code> để xem giá trị &ldquo;End&rdquo; cho <code>Breakpoint</code> 2:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> break
+</code></pre></div><p>Đầu ra:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ae81ff">1</span>   breakpoint   keep yes   at /home/nguyenmanh/projects/test/loves.py:9
+<span style="color:#ae81ff">2</span>   breakpoint   keep no    at /home/nguyenmanh/projects/test/loves.py:4 <span style="color:#75715e"># you can see here that the &#34;ENB&#34; column for #2 shows &#34;no&#34;</span>
+<span style="color:#ae81ff">3</span>   breakpoint   keep yes   at /home/nguyenmanh/projects/test/loves.py:6
+        stop only <span style="color:#66d9ef">if</span> crush <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Thi&#34;</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Để kích hoạt <code>Breakpoint</code> 2:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> enable <span style="color:#ae81ff">2</span>
+</code></pre></div><p>Và một lần nữa, đây là đầu ra:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Enabled breakpoint <span style="color:#ae81ff">2</span> at /home/nguyenmanh/projects/test/loves.py:4
+</code></pre></div><p>Bây giờ, nếu bạn in danh sách tất cả các điểm break, giá trị &ldquo;End&rdquo; của breakpoint 2 sẽ hiển thị <code>yes</code>.</p>
+<p>Bây giờ chúng ta hãy xóa breakpoint 1:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> clear <span style="color:#ae81ff">1</span>
+</code></pre></div><p>Kết quả:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Deleted breakpoint <span style="color:#ae81ff">1</span> at /home/nguyenmanh/projects/test/loves.py:9
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Nếu chúng ta in lại danh sách các breakpoint, thì bây giờ sẽ chỉ hiển thị 2 breakpoint. Hãy kiểm tra bằng lệnh <code>break</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Num Type         Disp Enb   Where
+<span style="color:#ae81ff">2</span>   breakpoint   keep yes   at /home/nguyenmanh/projects/test/loves.py:4
+<span style="color:#ae81ff">3</span>   breakpoint   keep yes   at /home/nguyenmanh/projects/test/loves.py:6
+        stop only <span style="color:#66d9ef">if</span> crush <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Thi&#34;</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Đúng như mong đợi.</p>
+<p>Trước khi làm điều tiếp theo, tôi muốn hiển thị ra kết quả khi chạy code cho đến khi breakpoint được đặt. Để làm điều đó, hãy xóa tất cả các breakpoint trước đó và khai báo một breakpoint khác thông qua commandline PDB:</p>
+<ol>
+<li>
+<p>Xóa tất cả các breakpoint</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> clear
+</code></pre></div><p>Sau đó, nhập &ldquo;y&rdquo; và nhấn &ldquo;ENter&rdquo;. Bạn sẽ thấy kết quả xuất hiện:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Deleted breakpoint <span style="color:#ae81ff">2</span> at /home/nguyenmanh/projects/test/loves.py:4
+Deleted breakpoint <span style="color:#ae81ff">3</span> at /home/nguyenmanh/projects/test/loves.py:6
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div></li>
+<li>
+<p>Khai báo một breakpoint mới</p>
+<p>Mình sẽ chạy cho đến khi giá trị của biến <code>crush</code> bằng &ldquo;Thi&rdquo;. Vì vậy, về cơ bản, chương trình sẽ tạm dừng trước chữ &ldquo;Lê&rdquo;.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> break loves.py:6, crush <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Thi&#34;</span>
+</code></pre></div></li>
+<li>
+<p>Chạy cho đến breakpoint</p>
+</li>
+</ol>
+<p>Để chạy code, sử dụng <code>continue</code>, lệnh này sẽ thực thi code cho đến khi chạm breakpoint hoặc kết thúc:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> <span style="color:#66d9ef">continue</span>
+</code></pre></div><p>Bạn sẽ thấy:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Lê
+Thi
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>6<span style="color:#f92672">)</span>show_list_crush<span style="color:#f92672">()</span>
+-&gt; <span style="color:#66d9ef">for</span> crush in list_crush:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Chương trình chạy cho đến breakpoint và tạm dừng, bây giờ tùy thuộc vào chúng ta muốn thay đổi bất cứ điều gì, kiểm tra các kiến hoặc nếu chúng ta muốn chạy tập lệnh cho đến khi hết hoàn thành. Hãy chạy lệnh <code>continue</code>.</p>
+<p>Kết quả:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Thiên
+Mỹ
+code of loves:
+<span style="color:#ae81ff">1111112</span>
+<span style="color:#ae81ff">2111014</span>
+<span style="color:#ae81ff">3451524</span>
+<span style="color:#ae81ff">4512244</span>
+The program finished and will be restarted
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; list_crush <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Lê&#39;</span>, <span style="color:#e6db74">&#39;Thi&#39;</span>, <span style="color:#e6db74">&#39;Thiên&#39;</span>, <span style="color:#e6db74">&#39;Mỹ&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Trong kết quả trên, có thể thấy chương trình tiếp tục từ breakpoint, chạy phần còn lại và sau đó khởi động lại để cho phép chúng ta debug thêm nếu muốn. Bây giờ chuyển sang phần tiếp nha.</p>
+<p><strong>Lưu ý quan trọng:</strong> Trước khi di chuyển về phía trước, hãy xóa tất cả các breakpoint bằng cách chạy lệnh <code>clear</code>, sau đó nhập <code>y</code> vào commandline PDB.</p>
+<h2 id="chức-năng-next-và-step">Chức năng Next và Step</h2>
+<p>Cuối cùng, nhưng không kém phần quan trọng, chúng ta nghiên cứu tới <code>next</code> và <code>step</code>. Chúng ta sẽ sử dụng rất thường xuyên khi bạn bắt đầu debug các ứng dụng của mình, vì vậy hãy tìm hiểu kỹ về nó nhé.</p>
+<p>Các hàm <code>next</code> và <code>step</code> được sử dụng để lặp trong suốt quá dòng code của chúng ta theo từng dòng. Có sự khác biệt giữa cả hai. Trong khi lặp, nếu <code>step</code> gặp lệnh gọi hàm, nó sẽ di chuyển đến dòng đầu tiên nơi định nghĩa hàm đó và cho chúng ta chính xác những gì có ở bên trong hàm. trong khi đó, <code>next</code> khi được gọi nó sẽ chạy tất cả các dòng của hàm đó trong một lần duy nhất và tạm dừng ở lệnh gọi hàm tiếp theo.</p>
+<p>Bối rối? Hãy xem điều đó trong một ví dụ.</p>
+<p>Chạy lại chương trình:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python -m pdb loves.py
+</code></pre></div><p>Bây giờ gõ vào <code>step</code> và tiếp tục cho đến khi kết thúc chương trình.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; list_crush <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Lê&#39;</span>, <span style="color:#e6db74">&#39;Thi&#39;</span>, <span style="color:#e6db74">&#39;Thiên&#39;</span>, <span style="color:#e6db74">&#39;Mỹ&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; love_codes <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>1111112, 2111014, 3451524, 4512244<span style="color:#f92672">]</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; def show_list_crush<span style="color:#f92672">()</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>13<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; def main<span style="color:#f92672">()</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>16<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>17<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; main<span style="color:#f92672">()</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+--Call--
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>13<span style="color:#f92672">)</span>main<span style="color:#f92672">()</span>
+-&gt; def main<span style="color:#f92672">()</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>14<span style="color:#f92672">)</span>main<span style="color:#f92672">()</span>
+-&gt; show_list_crush<span style="color:#f92672">()</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+--Call--
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>show_list_crush<span style="color:#f92672">()</span>
+-&gt; def show_list_crush<span style="color:#f92672">()</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>5<span style="color:#f92672">)</span>show_list_crush<span style="color:#f92672">()</span>
+-&gt; print<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;List crush: &#39;</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> step
+List crush:
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>6<span style="color:#f92672">)</span>show_list_crush<span style="color:#f92672">()</span>
+-&gt; <span style="color:#66d9ef">for</span> crush in list_crush:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+.
+.
+.
+.
+</code></pre></div><p>Bây giờ, chạy lại toàn bộ chương trình, nhưng lần này sử dụng lệnh <code>next</code> thay vì <code>step</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; list_crush <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;Lê&#39;</span>, <span style="color:#e6db74">&#39;Thi&#39;</span>, <span style="color:#e6db74">&#39;Thiên&#39;</span>, <span style="color:#e6db74">&#39;Mỹ&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> next
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; love_codes <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>1111112, 2111014, 3451524, 4512244<span style="color:#f92672">]</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> next
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>4<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; def show_list_crush<span style="color:#f92672">()</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> next
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>13<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; def main<span style="color:#f92672">()</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> next
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>16<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> next
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>17<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>
+-&gt; main<span style="color:#f92672">()</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span> next
+List crush:
+Lê
+Thi
+Thiên
+Mỹ
+code of loves:
+<span style="color:#ae81ff">1111112</span>
+<span style="color:#ae81ff">2111014</span>
+<span style="color:#ae81ff">3451524</span>
+<span style="color:#ae81ff">4512244</span>
+--Return--
+&gt; /home/nguyenmanh/projects/test/loves.py<span style="color:#f92672">(</span>17<span style="color:#f92672">)</span>&lt;module&gt;<span style="color:#f92672">()</span>-&gt;None
+-&gt; main<span style="color:#f92672">()</span>
+<span style="color:#f92672">(</span>Pdb<span style="color:#f92672">)</span>
+</code></pre></div><p>Bây giờ chúng ta sẽ phân tích xem chúng khác nhau như thế nào. Đối với <code>step</code>, bạn có thể thấy rằng khi <code>show_list_crush</code> nó di chuyển bên trong hàm và lặp qua <code>step</code>, cho chúng ta thấy chính xác những gì xảy ra bên trong mỗi bước.</p>
+<p>Tuy nhiên, <code>next</code> khi gọi hàm <code>main</code>, nó sẽ không cho chúng ta thấy điều gì xảy ra bên trong hàm đó (tức là gọi một cách trực tiếp), và sau đó in trực tiếp kết quả cuối cùng trong một bước duy nhất.</p>
+<h2 id="kết-luận">kết luận</h2>
+<p>Trong phần hướng dẫn này, tôi đã hướng dẫn các bạn tìm hiểu về các gỡ lỗi với module python PDB. Hi vọng sẽ giúp cho các bạn lập trình python gỡ được nhiều lỗi hơn =))</p>
+<p>Cuối cùng, cảm ơn các bạn đọc bài, chúc các bạn thành công!</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/python/">python</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/" data-tooltip="Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/" data-tooltip="Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F08%2Fco-pdb-debug-python-khong-con-kho-khan%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F08%2Fco-pdb-debug-python-khong-con-kho-khan%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F08%2Fco-pdb-debug-python-khong-con-kho-khan%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/08\/co-pdb-debug-python-khong-con-kho-khan\/';
+          
+            this.page.identifier = '\/2019\/08\/co-pdb-debug-python-khong-con-kho-khan\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

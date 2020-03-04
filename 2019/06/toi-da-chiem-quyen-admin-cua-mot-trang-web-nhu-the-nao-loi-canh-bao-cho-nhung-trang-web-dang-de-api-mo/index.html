@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="Lời giới thiệu đầy ngọt ngào Một ngày đẹp trời, team của chúng tôi (Sun*$hell) được thách thức pentest cho một trang web chuẩn bị release, chính xác là còn 2 tiếng đồng hồ nữa là release. Chúng tôi đã không ngần ngại nhận lời thách thức này :D
+Sau một thời gian cật lực tìm kiếm lỗ hổng nào là XSS, Sql injection,&hellip; (một danh sách lỗi hay gặp ở trên web) thì cũng thấy đội devs kiểm tra khá là tốt giá trị từ người dùng, và hầu như không gặp một lỗi cơ bản nào.">
+
+
+<meta property="og:description" content="Lời giới thiệu đầy ngọt ngào Một ngày đẹp trời, team của chúng tôi (Sun*$hell) được thách thức pentest cho một trang web chuẩn bị release, chính xác là còn 2 tiếng đồng hồ nữa là release. Chúng tôi đã không ngần ngại nhận lời thách thức này :D
+Sau một thời gian cật lực tìm kiếm lỗ hổng nào là XSS, Sql injection,&hellip; (một danh sách lỗi hay gặp ở trên web) thì cũng thấy đội devs kiểm tra khá là tốt giá trị từ người dùng, và hầu như không gặp một lỗi cơ bản nào.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tôi đã chiếm quyền admin của một trang web như thế nào? Lời cảnh báo cho những trang web đang để api mở!">
+<meta name="twitter:title" content="Tôi đã chiếm quyền admin của một trang web như thế nào? Lời cảnh báo cho những trang web đang để api mở!">
+<meta property="og:url" content="https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+<meta property="twitter:url" content="https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Lời giới thiệu đầy ngọt ngào Một ngày đẹp trời, team của chúng tôi (Sun*$hell) được thách thức pentest cho một trang web chuẩn bị release, chính xác là còn 2 tiếng đồng hồ nữa là release. Chúng tôi đã không ngần ngại nhận lời thách thức này :D
+Sau một thời gian cật lực tìm kiếm lỗ hổng nào là XSS, Sql injection,&hellip; (một danh sách lỗi hay gặp ở trên web) thì cũng thấy đội devs kiểm tra khá là tốt giá trị từ người dùng, và hầu như không gặp một lỗi cơ bản nào.">
+<meta name="twitter:description" content="Lời giới thiệu đầy ngọt ngào Một ngày đẹp trời, team của chúng tôi (Sun*$hell) được thách thức pentest cho một trang web chuẩn bị release, chính xác là còn 2 tiếng đồng hồ nữa là release. Chúng tôi đã không ngần ngại nhận lời thách thức này :D
+Sau một thời gian cật lực tìm kiếm lỗ hổng nào là XSS, Sql injection,&hellip; (một danh sách lỗi hay gặp ở trên web) thì cũng thấy đội devs kiểm tra khá là tốt giá trị từ người dùng, và hầu như không gặp một lỗi cơ bản nào.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-06-10T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-06-10T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Pentest web">
+    
+  
+  
+    
+      <meta property="article:tag" content="pentest web">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/chiem-quyen-admin/loi-mat-quyen-admin-1.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/chiem-quyen-admin/loi-mat-quyen-admin-1.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Tôi đã chiếm quyền admin của một trang web như thế nào? Lời cảnh báo cho những trang web đang để api mở!</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Tôi đã chiếm quyền admin của một trang web như thế nào? Lời cảnh báo cho những trang web đang để api mở!
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-06-10T00:00:00Z">
+        
+  tháng 6 10, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/pentest-web">Pentest web</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h2 id="lời-giới-thiệu-đầy-ngọt-ngào">Lời giới thiệu đầy ngọt ngào</h2>
+<p>Một ngày đẹp trời, team của chúng tôi (Sun*$hell) được thách thức pentest cho một trang web chuẩn bị release, chính xác là còn 2 tiếng đồng hồ nữa là release. Chúng tôi đã không ngần ngại nhận lời thách thức này :D</p>
+<p>Sau một thời gian cật lực tìm kiếm lỗ hổng nào là XSS, Sql injection,&hellip; (một danh sách lỗi hay gặp ở trên web) thì cũng thấy đội devs kiểm tra khá là tốt giá trị từ người dùng, và hầu như không gặp một lỗi cơ bản nào.</p>
+<p>Vậy thì kịch hay ở đây là gì, các bạn hãy đọc tiếp để rõ hồi kết.</p>
+<h2 id="quá-trình">Quá trình</h2>
+<p>OK, không có lỗi phía người dùng thì tôi tìm cách mò tới sâu hơn là admin, tôi có lục lọi tất cả mọi thứ và biết được web dùng reactjs để làm front-end. Đã thế tôi sẽ dùng <code>sources</code> trong f12 của trình duyệt để xem sources của nó xem thế nào. Vì web viết bằng reactjs và dùng webpack để build nên khi mở lên sẽ có như hình dưới.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/source-react.png" alt="Sources" title="Source reactjs"></p>
+<p>Tôi bắt đầu lục lọi, bới móc để tìm các endpoint, tôi tìm được một số endpoint khá thú vị</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/end-point.png" alt="Endpoint" title="Endpoint"></p>
+<p>Vậy là chúng ta có những endpoint api:</p>
+<ul>
+<li>GET: /api/users/list</li>
+<li>POST: /api/users/store</li>
+<li>DELETE: /api/users/delete/${id}</li>
+<li>GET: /api/users/get/${id}</li>
+<li>PATCH: /api/users/edit/${data.userId}</li>
+</ul>
+<p>Và, điều quan trọng là trong quá trình đọc qua về code thì tôi không thấy có chỗ nào yêu cầu xác thực cho cái đống API trên. Cũng có vẻ nghi ngờ, tôi liền dùng postman để get thử 1 API <code>/api/users/list</code> để kiểm tra sự nghi ngờ của mình. Thật bất ngờ, API trả về danh sách users có role là    <code>admin</code> mà không cần một chút xác thực nào. VẬY LÀ LỘ THÔNG TIN MỘT CÁC TRẮNG TRỢN RỒI.</p>
+<p>Nhưng chưa dừng ở đó, tôi bắt đầu thử với endpoint có tác động tới dữ liệu database như POST, PATCH, nhưng vì được khuyến cáo trước là không được chỉnh sửa dữ liệu nên tôi đành tạo mới vậy :v . Vậy là bắt tay vào chọc ngoáy endpoint <code>/api/users/store</code> chính xác là endpoint dùng để tạo mới user admin.</p>
+<p>Tôi thử dùng postman bắn một request gồm các trường của user tôi đã biết khi xem <code>list</code> lên thử:</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/store-test.png" alt="Store test" title="Store test"></p>
+<p>Ouch! 419 ư, nhìn giao diện 419 quen quá trời, hóa ra là của <code>laravel</code>. Vậy xác định backend là laravel. Thì 419 chính là lỗi khi không có <code>CSRF</code> trong laravel. Ok, vậy tìm xem trong web thì họ để CSRF token vào đâu.</p>
+<p>Đây là đoạn code để đặt <code>CSRF token</code> vào lúc gọi API.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/acios-header.png" alt="Axios headers" title="Axios headers"></p>
+<p>Đây là phần <code>CSRF token</code> sinh ra trên trang.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/csrf-token.png" alt="csrf-token.png" title="csrf-token.png"></p>
+<p>Vậy chúng ta biết là sẽ phải truyền <code>X-CSRF-TOKEN</code> và headers lúc call lên API. Nên tôi đã thử đặt vào headers trong postman trường <code>X-CSRF-TOKEN</code> và gọi lại API một lần nữa, nhưng kết quả thì vẫn là <code>419</code>.</p>
+<p>Thôi được rồi, muốn chơi khó nhau thì mình sẽ chơi khó lại, mình tìm cách gọi trực tiếp ngay trên browser cho bõ tức. Nhưng vì không quen dùng <code>axios</code>, mà cũng không biết axios có dùng được trên browser hay không, nên mình quyết định dùng jquery.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/hr31.png" alt="hr31.png" title="hr31.png"></p>
+<p>Sau đó là đặt headers CSRF cho nó.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/set-header-jquery.png" alt="set-header-jquery.png" title="set-header-jquery.png"></p>
+<p>Rồi bắn request xem thì thấy đã pass qua được 419 nhưng lại bị dính lỗi <code>422 Uprocessable Entity</code>. Vậy là chúng ta đã đặt sai <code>data</code>.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/422-1.png" alt="422-1.png" title="422-1.png"></p>
+<p>Nhưng sai data thì làm sao cho đúng bây giờ, vậy là sau một tý tầm 2phút vắt óc suy nghĩ, mình đã nghĩ ra ý tưởng viết thêm 1 hàm <code>error</code> và cho request ajax và sẽ hiển thị lên lỗi trả về. Và thật may mắn lỗi trả về tất cả các trường mình sai và thiếu trong data lúc nãy request lên.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/func-error.png" alt="func-error.png" title="func-error.png"></p>
+<p>Đã biết được trường nào <code>required</code> khi tạo bản ghi mới rồi, nhưng sao lỗi lại là</p>
+<pre><code>data.email: [&quot;Email is required&quot;]
+data.name: [&quot;Name is required&quot;]
+data.password: [&quot;Password is required&quot;]
+data.role: [&quot;Role is required&quot;]
+</code></pre><p>Ồ, hóa ra là cần phải data bọc bên trong data đẩy lên nữa, cụ thể là</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Manh@123456&#34;</span>,
+        <span style="color:#a6e22e">user_name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nguyenmanh&#34;</span>,
+        <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nguyenmanh@xxx.com&#34;</span>,
+        <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;admin&#34;</span>,
+        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;manh hacker&#34;</span>
+    }
+}
+</code></pre></div><p>Bây giờ thì thử bắn lại phát đạn này xem sự lợi hại nào :v .</p>
+<p>Bing boong, tôi đã tạo được tài khoản admin.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/created-admin.png" alt="created-admin.png" title="created-admin.png"></p>
+<p>Và trở về quá khứ (khoảng vài phút trước, trong lúc lục lọi sources front-end thì mình thấy có path <code>/login</code>), bây giờ mình thử dùng trình duyệt vào <code>/login</code> bằng tài khoản vừa tạo xem thế nào.</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/login-ui2.png" alt="Giao dien login" title="Giao dien login"></p>
+<p>Và kết quả là</p>
+<p><img src="https://manhnv.com/images/posts/chiem-quyen-admin/admin-ui.png" alt="Giao dien admin" title="Giao dien admin"></p>
+<p>Đến đây thì còn gì để mà chọc ngoáy nữa, bây giờ toàn quyền là của mình :v . Bắt tay vào viết report và gửi cho đội dev thôi.</p>
+<h2 id="vấn-đề">Vấn đề</h2>
+<ul>
+<li>Như các bạn để ý thấy, thì tất cả những API mà front-end reactjs gọi đều không được xác thực (tức là ở trạng thái mở, bất cứ ai biết endpoint đều vào được). Điều này sẽ dẫn đến việc sẽ lộ dữ liệu khi dùng để lấy thông tin user, hoặc là mất toàn vẹn dữ liệu khi sử dụng các API đó để sửa đổi dữ liệu database nếu như gặp một kẻ tấn công thực sự khi sản phẩm đã release.</li>
+</ul>
+<h2 id="bài-học">Bài học</h2>
+<ul>
+<li>Hãy xác thực cho bất kỳ API nào liên quan đến dữ liệu nhạy cảm và những dữ liệu không muốn public.</li>
+<li>Đừng bao giờ nghĩ API gọi ngầm phía dưới lớp front-end ảo lòi kia thì không ai có thể nhìn thấy được, một khi đã gặp phải một kẻ chọc ngoáy thực sự (ý tôi là một kẻ tấn công nào đó) thì điều này rất là dễ dàng hơn bao giờ hết.</li>
+</ul>
+<p>Cuối cùng, cảm ơn các bạn đã đọc hết bài của mình. Mình cũng chỉ là một người mới tập tững vào nghề, còn trẻ người non dạ, nếu có gì chém gió quá đà mong các cao thủ bỏ qua :D .</p>
+<p>Học hỏi là chính chứ ganh nhau làm gì!</p>
+<p>Cảm ơn team <code>SUN*$hell</code> gồm:</p>
+<ul>
+<li>Nguyễn Anh Tiến (captain)</li>
+<li>Đoàn Đình Linh</li>
+<li>Ngụy Minh Tuấn</li>
+<li>Ngô Văn Nghĩa</li>
+<li>Me</li>
+</ul>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/pentest-web/">pentest web</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/" data-tooltip="Webshell là gì? Làm thể nào để upload/sử dụng một webshell?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/thuc-thi-ma-tu-xa-remote-code-execution/" data-tooltip="Thực thi mã từ xa - Remote code execution">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/" data-tooltip="Webshell là gì? Làm thể nào để upload/sử dụng một webshell?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/thuc-thi-ma-tu-xa-remote-code-execution/" data-tooltip="Thực thi mã từ xa - Remote code execution">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F06%2Ftoi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F06%2Ftoi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F06%2Ftoi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/06\/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo\/';
+          
+            this.page.identifier = '\/2019\/06\/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

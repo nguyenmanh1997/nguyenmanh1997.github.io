@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webshell on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/tags/webshell/</link>
+    <description>Recent content in webshell on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Tue, 18 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://manhnv.com/tags/webshell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Webshell là gì? Làm thể nào để upload/sử dụng một webshell?</title>
+      <link>https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/</guid>
+      <description>WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.</description>
+    </item>
+    
+  </channel>
+</rss>

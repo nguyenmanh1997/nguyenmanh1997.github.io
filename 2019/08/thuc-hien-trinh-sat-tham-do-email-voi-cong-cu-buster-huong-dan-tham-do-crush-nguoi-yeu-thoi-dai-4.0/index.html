@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="Trinh sát - thăm dò, là một bước quan trọng cần thiết trong hacking, mục đích là biết mọi thứ (càng nhiều càng tốt) về mục tiêu đang muốn khai thác.
+Tiếp nối sau thành công cũng khá là vang dội của bài viết Săn tìm tài khoản mạng xã hội bằng công cụ sherlock, bài viết mà đã bị trang t.o.p.d.e.v lấy về đổi tên thành Hướng dẫn stalk facebook của crush thời đại 4.">
+
+
+<meta property="og:description" content="Trinh sát - thăm dò, là một bước quan trọng cần thiết trong hacking, mục đích là biết mọi thứ (càng nhiều càng tốt) về mục tiêu đang muốn khai thác.
+Tiếp nối sau thành công cũng khá là vang dội của bài viết Săn tìm tài khoản mạng xã hội bằng công cụ sherlock, bài viết mà đã bị trang t.o.p.d.e.v lấy về đổi tên thành Hướng dẫn stalk facebook của crush thời đại 4.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.">
+<meta name="twitter:title" content="Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.">
+<meta property="og:url" content="https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+<meta property="twitter:url" content="https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Trinh sát - thăm dò, là một bước quan trọng cần thiết trong hacking, mục đích là biết mọi thứ (càng nhiều càng tốt) về mục tiêu đang muốn khai thác.
+Tiếp nối sau thành công cũng khá là vang dội của bài viết Săn tìm tài khoản mạng xã hội bằng công cụ sherlock, bài viết mà đã bị trang t.o.p.d.e.v lấy về đổi tên thành Hướng dẫn stalk facebook của crush thời đại 4.">
+<meta name="twitter:description" content="Trinh sát - thăm dò, là một bước quan trọng cần thiết trong hacking, mục đích là biết mọi thứ (càng nhiều càng tốt) về mục tiêu đang muốn khai thác.
+Tiếp nối sau thành công cũng khá là vang dội của bài viết Săn tìm tài khoản mạng xã hội bằng công cụ sherlock, bài viết mà đã bị trang t.o.p.d.e.v lấy về đổi tên thành Hướng dẫn stalk facebook của crush thời đại 4.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-08-07T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-08-07T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="security">
+    
+  
+  
+    
+      <meta property="article:tag" content="security">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/thumbnail-buster.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/thumbnail-buster.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-08-07T00:00:00Z">
+        
+  tháng 8 7, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/security">security</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p><code>Trinh sát - thăm dò, là một bước quan trọng cần thiết trong hacking, mục đích là biết mọi thứ (càng nhiều càng tốt) về mục tiêu đang muốn khai thác.</code></p>
+<p>Tiếp nối sau thành công cũng khá là vang dội của bài viết <a href="https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/">Săn tìm tài khoản mạng xã hội bằng công cụ sherlock</a>, bài viết mà đã bị trang <code>t.o.p.d.e.v</code> lấy về đổi tên thành <a href="https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/">Hướng dẫn stalk facebook của crush thời đại 4.0</a>. Hôm nay mình quyết định hướng dẫn cho các bạn một công cụ nâng cao hơn, sịn xò hơn công cụ ở bài kia với tiêu đề <strong>Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.</strong></p>
+<h2 id="i-thực-hiện-trinh-sát---thăm-dò-email-với-công-cụ-buster">I. Thực hiện trinh sát - thăm dò email với công cụ buster.</h2>
+<h3 id="thăm-dò-email">Thăm dò email.</h3>
+<p>Có nhiều cách để có được địa chỉ email của một người, từ các công cụ tìm kiếm trên các trang mạng truyền thông xã hội, nhưng hầu hết là không cung cấp phương thức này để bạn có thể tìm được email, vì nó còn liên quan đến bảo mật thông tin người dùng.</p>
+<p>Một các khác để có được email của một người là đoán nó. Mọi người có xu hướng đăng ký tài khoản email theo các mẫu cụ thể như: năm sinh hoặc ngày sinh ngay sau tên của họ. Ví dụ: <a href="mailto:nguyenmanh1997@gmail.com">nguyenmanh1997@gmail.com</a>, <a href="mailto:nguyen.manh.97@gmail.com">nguyen.manh.97@gmail.com</a>. Nhưng việc đoán biết một email như vậy bằng cách thủ công thì cũng khá tốn thời gian. Có lúc còn không tìm được.</p>
+<p>Vậy có một cách khả quan hơn là bạn dựa vào các nhà cũng cấp có dùng email để đăng ký tài khoản như facebook. Facebook thì khi bạn viết một tài khoản nào đó, bạn bấm vào khôi phục tài khoản thì sẽ có các thông tin như sau:</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/khoi-phuc-tai-khoan-facebook.png" alt="Khôi phục tài khoản facebook" title="Khôi phục tài khoản facebook"></p>
+<p>Bây giờ với việc dựa vào thông tin của tài khoản đó bằng cách xem profile có được: first name, laste name, ngày sinh, chúng ta có thể dễ dàng đoán được toàn bộ email một cách nhanh chóng với <code>Buster</code>.</p>
+<h3 id="buster-là-gì">Buster là gì?</h3>
+<p>Buster là một công cụ OSINT sử dụng để làm những việc như:</p>
+<ul>
+<li>Nhận diện tài khoản của một mạng xã hội khi biết <code>email</code>, có nhiều mạng xã hội như: <strong>gravatar, about.me, myspace, skype, github, linkedin,&hellip;</strong></li>
+<li>Lấy được đường link (liên kết) của những trang web mà có xuất hiện của <code>email</code>.</li>
+<li>Lấy được tên miền (domain) mà có sử dụng <code>email</code> để đăng ký (reverse whois)</li>
+<li>Generate ra những username và email có thể đăng ký của một người dựa vào thông tin: first name, middle name, birthdate, last name &hellip;</li>
+<li>Tìm email của một tài khoản trên mạng xã hội.</li>
+</ul>
+<p>=&raquo; Và rất nhiều tính năng khác mà mình chưa khám phá hết.</p>
+<h3 id="cài-đặt-buster">Cài đặt Buster</h3>
+<p>Clone the repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone git://github.com/sham00n/buster
+</code></pre></div><p>Khi đã clone xong buster bạn làm theo các bước sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd buster/
+python3 setup.py install
+</code></pre></div><p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/clone-buster.png" alt="Cài đặt Buster" title="Cài đặt Buster"></p>
+<p><strong>Lưu ý:</strong> Máy của bạn cần cài đặt python trước để chạy lệnh install của Buster.</p>
+<p>Sau khi cài đặt xong bạn có thể kiểm tra xem Buster đã chạy được cài đặt thành công chưa bằng cách gõ:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -h
+</code></pre></div><p>Nếu thấy kết quả như dưới thì đã thành công nha.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/buster-help.png" alt="Cài đặt Buster thành công" title="Cài đặt Buster thành công"></p>
+<h3 id="trải-nghiệm-buster">Trải nghiệm Buster</h3>
+<p>Trong một số ví dụ mình sẽ demo dưới đây, mình dùng email <code>nguyenmanh@gmail.com</code>.</p>
+<ol>
+<li>
+<p>Lấy thông tin của một email bất kỳ (kiểm tra xem nó tồn tại hay không, các trang mạng xã hội truyền thông mà email đăng ký, liên kết đến trang web có sự xuất hiện của email,&hellip;.).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -e nguyenmanh@gmail.com
+</code></pre></div><p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/buster-e-email.png" alt="Kiểm tra mail" title="Kiểm tra mail"></p>
+<p>Bạn cũng có thể liệt kê một danh sách mail vào file <code>.txt</code> để quét một danh sách mail.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">nguyenmanh@gmail.com
+manh@gmail.com
+....
+</code></pre></div><p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/buster-list-email.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+</li>
+<li>
+<p>Tạo email phù hợp với mẫu và kiểm tra xem chúng có tồn tại hay không (Sử dụng thêm tham số -a nếu bạn muốn thêm thông tin thêm, ví dụ: -a nickname phone).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -e n********7@g****.com -f nguyen -l manh -b ****1997
+</code></pre></div><p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/to-hop-mail.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+</li>
+<li>
+<p>Tạo username</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -f nguyen -l manh -b <span style="color:#ae81ff">28071997</span>
+</code></pre></div><p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/genarate-username.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+</li>
+<li>
+<p>Tạo email (sử dụng -v nếu muôn validate và lấy thông tin từng email)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -f nguyen -m van -l manh -b <span style="color:#ae81ff">28071997</span> -p gmail.com yahoo.com
+</code></pre></div></li>
+<li>
+<p>Tạo 100+ email theo định dạng <code>username@provider.com</code> và trả về những email hợp lệ ( sử dụng -p nếu bạn không muốn 100+ email)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -u nguyenmanh
+</code></pre></div><p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/buster-100-plus.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+</li>
+<li>
+<p>Tạo email công ty và trả về thông tin liên quan.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -f nguyen -l manh -c manhnv.com
+</code></pre></div></li>
+</ol>
+<h2 id="ii-hướng-dẫn-thăm-dò-crush-người-yêu-thời-đại-40">II. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.</h2>
+<p>Vậy thì, với những thứ mình viết rông dài ở bên trên thì có liên quan gì đến việc <code>Hướng dẫn thăm dò crush, người yêu thời đại 4.0</code>. Chúng ta hãy bắt đầu phần thú vị này nhé.</p>
+<p>Bài viết mình hướng dẫn bắt buộc phải biết một ít gì đó về crush hoặc người yêu của bạn rồi nhé, ví dụ như: hoặc là email, hoặc là tài khoản facebook. Nếu bạn crush người ta mà không biết được 1 tý gì về người ta trước thì đến trời cũng chịu. Mình chỉ hướng dẫn các bạn từ lượng thông tin ít ỏi đó thăm dò thêm nhiều thông tin khác thôi.</p>
+<h3 id="trường-hợp-1-bạn-đã-biết-email-crush-hoặc-người-yêu">Trường hợp 1: Bạn đã biết email crush hoặc người yêu.</h3>
+<p>Trường hợp này thì đơn giản nhất, các bạn chỉ cần chạy lệnh Buster lên và ngồi chờ quét hết xong tìm hiểu từng thứ một thôi.</p>
+<p>Ví dụ: người bạn đang định tìm hiểu có email <code>nguyenmanh0397@gmail.com</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -e nguyenmanh********@gmail.com -v
+</code></pre></div><p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/buster-nguyenmanh.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+<p>Kết quả như trên, thì các bạn có thể phân tích được là: người mình đang tìm hiểu có dùng pastebin, twitter, github, &hellip;. Các đường dẫn cũng như tài khoản github mà người đó đang hoạt động. Chúng ta đi tới các link đó để tìm hiểu thông tin sâu hơn nữa. Ở phần sources là những trang web có sự xuất hiện của mail, bạn vào 1 web bất kỳ xem nhé.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/package-laravel.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+<p>Ồ, thế là mình đã biết được một thông tin nữa là với email kia thì có từng submit một <code>pakage</code> cho <code>laravel</code> ở trên trang <code>packagist</code>. Vậy mục tiêu chắc chắn là một developer rồi (hoặc đã từng).</p>
+<p>=&gt; Với cách tìm hiểu từ từ với sự giúp sức của Buster các bạn sẽ biết thêm được nhiều thông tin về crush cũng như nửa kia hơn.</p>
+<h3 id="trường-hợp-2-bạn-chỉ-biết-tài-khoản-facebook-twitter-">Trường hợp 2: Bạn chỉ biết tài khoản facebook, twitter, &hellip;</h3>
+<p>Bạn vô tình gặp nửa kia ở nơi làm việc, ngoài đường, hay bất cứ đâu. Bạn gặp tình yêu sét đánh của đời mình, mò mẫm mãi cuối cùng cũng ra được tài khoản facebook của người ta. Nhưng trên trang cá nhân không có một thông tin gì hết, chỉ toàn đăng ảnh chó, mèo, hoa rơi cửa phật, &hellip; Nhưng bạn đâu ngờ rằng, có một số bạn nữ rất ít đăng ảnh cá nhân hay bất cứ gì liên quan đến đời sống lên facebook (vì nó quá public) mà chỉ đăng lên  instagram (private hơn một chút) thôi chẳng hạn.</p>
+<p>Vậy thì bạn làm sao có thể biết được thông tin về người ta, đến hỏi trực tiếp thì ngại, hỏi người quen cũng ngại. Hãy đọc tiếp bài cùa mình, mình sẽ hướng dẫn cho bạn cách thăm dò thông tin người đó.</p>
+<p>Ví dụ, đây là tài khoản facebook của người ấy khi vào profile.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/nguyenmanh.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+<p>Bạn nhìn thấy đường dẫn <code>https://www.facebook.com/nguyenmanh1997</code>, vậy tài khoản facebook của người đó là <code>nguyenmanh1997</code>.</p>
+<ol>
+<li>
+<p>Vào trang đăng nhập của facebook, nhập tài khoản vào ô email.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/login-facebook.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+</li>
+<li>
+<p>Bấm vào <code>Đăng nhập</code>. Vì chưa có mật khẩu nên lập tức facebook trả về một trang đăng nhập lại.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/re-login-facebook.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+</li>
+<li>
+<p>Bấm vào <code>Khôi phục tài khoản của bạn</code>. Bạn sẽ nhận được mẫu email dùng đăng ký tài khoản facebook đó.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/khoi-phuc-facebook.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+</li>
+<li>
+<p>Việc tiếp theo là dùng Buster để quét mẫu mail hợp lệ.
+Chắc chắn tài khoản là <code>nguyenmanh1997</code> thì phải sinh năm 1997. First name là <code>nguyen</code> và last name phải là <code>manh</code>. Câu lệnh sẽ là:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">buster -e n********7@g****.com -f nguyen -l manh -b ****1997
+</code></pre></div><p>Chạy ra kết quả:
+<img src="https://manhnv.com/images/posts/hacking/thuc-hien-trinh-sat-tham-do-email-va-cong-cu-buster/tham-do-final.png" alt="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0." title="Thực hiện trinh sát - thăm dò email và công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0."></p>
+<p>Như vậy rồi bạn chỉ việc chọn thông tin đúng với người mình đang muốn tìm hiểu thì đích thị là mail đó là của người đó rồi. Vì cũng chỉ có <code>18</code> email hợp lệ với điều kiện bạn đưa ra nên là cũng dễ tìm thủ công.</p>
+</li>
+</ol>
+<p>=&raquo; Đến đây thì đã quay trở lại với trường hợp <code>bạn đã có email</code>. Mình xin lỗi chỉ demo đến vậy thôi, vì nêu demo tiếp thì thông tin cá nhân của mình lộ hết =))</p>
+<h2 id="tổng-kết">Tổng kết</h2>
+<ul>
+<li>Bruster là một công cụ khá mạnh giúp cho việc thăm dò của bạn rất nhiều, nhưng điều kiện là bạn phải biết cách vận dụng nó như thế nào.</li>
+<li>Một bài viết nhằm giúp các bạn biết thêm về một công cụ mới, có những tính năng như trên.</li>
+</ul>
+<p>Cuối cùng vẫn là câu quen thuộc <code>Cảm ơn các bạn đọc bài viết của mình.</code>.</p>
+<p>Nếu thấy hay thì share cho nhiều người cùng đọc nhé. Trong lúc tìm hiểu về Buster các bạn phát hiện có tính năng nào hấp dẫn hơn có thể <code>bình luận</code> phía bên dưới để nhiều bạn khác được biết hơn.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/security/">security</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/" data-tooltip="Có PDB, debug python không còn khó khăn.">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/" data-tooltip="Săn tìm tài khoản mạng xã hội bằng công cụ sherlock">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/" data-tooltip="Có PDB, debug python không còn khó khăn.">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/" data-tooltip="Săn tìm tài khoản mạng xã hội bằng công cụ sherlock">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F08%2Fthuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F08%2Fthuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F08%2Fthuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/08\/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0\/';
+          
+            this.page.identifier = '\/2019\/08\/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

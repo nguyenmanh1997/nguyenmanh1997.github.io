@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.
+ Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé.">
+
+
+<meta property="og:description" content="Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.
+ Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc">
+<meta name="twitter:title" content="Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc">
+<meta property="og:url" content="https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+<meta property="twitter:url" content="https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.
+ Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé.">
+<meta name="twitter:description" content="Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.
+ Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-02-25T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-02-25T00:00:00">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="Terminal">
+    
+      <meta property="article:tag" content="Ubuntu">
+    
+      <meta property="article:tag" content="linux">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://images.viblo.asia/a57df286-516d-4254-8ac7-58cd97cc2386.png">
+  <meta property="twitter:image" content="https://images.viblo.asia/a57df286-516d-4254-8ac7-58cd97cc2386.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-02-25T00:00:00Z">
+        
+  tháng 2 25, 2019
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p><em>Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.</em></p>
+<p><img src="https://images.viblo.asia/7a8908ab-ff7d-47f6-8ab9-dd8c3d94334d.png" alt=""></p>
+<ul>
+<li>Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé. Còn vấn đề chính của mình trong bài viết này là mình sẽ hướng dẫn các bạn “Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc”.</li>
+</ul>
+<h1 id="vấn-đề-chính">VẤN ĐỀ CHÍNH</h1>
+<p>Tại sao phải tùy biến messages chào mừng khi mở terminal làm gì? tôi không hiểu?</p>
+<p>Câu trả lời là: các bạn có thể nhìn lên hình bên trên, đó là một hình mình đã mở terminal lên khi chưa có tùy biến gì hết ( dòng chữ “Đây là terminal nè các bạn” là mình viết vào sau khi mở đó, chứ mặc lúc mở lên nó ko có đâu nha ).</p>
+<p>Sau khi qua màn ảo thuật hô biến “úm bà là xì bùa” thì mình có thể làm cho nó xịn sò như thế này đây:</p>
+<p><img src="https://images.viblo.asia/a57df286-516d-4254-8ac7-58cd97cc2386.png" alt=""></p>
+<p>Anh/em thấy sao nào? Nếu thích thì đọc tiếp bài để tôi hướng dẫn cách làm nhé! :D</p>
+<h2 id="cách-làm-thủ-công--tự-thân-vận-động--không-dựa-dẫm-tools-">Cách làm thủ công ( tự thân vận động , không dựa dẫm tools )</h2>
+<h3 id="các-bước-làm">Các bước làm</h3>
+<ol>
+<li>Đầu tiên, mở terminal và mở tệp ./bashrc bằng bất kỳ trình soạn thảo nào bạn chọn: vim, gedit, sublime text, nano, pico, &hellip;v…v&hellip; (Ở đây minh sẽ sử dụng vim).</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim ~/.bashrc
+</code></pre></div><p>Tệp sẽ được mở bằng vim như trong hình bên dưới:</p>
+<p><img src="https://images.viblo.asia/813ae0dd-28b8-4f4c-b94c-e5a94fb703df.png" alt=""></p>
+<ol start="2">
+<li>Bây giờ, tôi sẽ thử hiển thị lời chào đơn giản, bằng việc thêm vào cuối file .bashrc đã mở:</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo “Xin chào, Nguyễn Mạnh”
+</code></pre></div><p>Hãy đóng terminal của bạn và bật lại, các bạn sẽ thấy nó như thế này đây:</p>
+<p><img src="https://images.viblo.asia/8e04d692-3a19-4daa-8769-f166e49d0d6f.png" alt=""></p>
+<blockquote>
+<p>BẠN ĐÃ LÀM ĐƯỢC :)</p>
+</blockquote>
+<h2 id="sử-dụng-tools">Sử dụng tools</h2>
+<p>Có một cách thú vị khác để làm cho nó thật là bá cháy thì bạn  có thể dùng tools cài đặt trên mạng, kết hợp với <code>~/.bashrc</code>.</p>
+<blockquote>
+<p>fortune và cowsay</p>
+</blockquote>
+<blockquote>
+<p>fortune: in ra một câu tục ngữ ngãu nhiên</p>
+</blockquote>
+<blockquote>
+<p>cowsay: Hiển thị một con bò biết nói :v:</p>
+</blockquote>
+<h3 id="các-bước-làm-1">Các bước làm</h3>
+<ol>
+<li>Trên ubuntu hoặc linux mint, hãy cài đặt coway.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install fortune cowsay
+</code></pre></div><ol start="2">
+<li>Bây giờ, hãy mở terminal và mở tệp ./bashrc bằng bất kỳ trình soạn thảo nào bạn chọn. (Ở đây, tôi tiếp tục sử dụng vim).</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim ~/.bashrc
+</code></pre></div><ol start="3">
+<li>Thêm dòng dưới đây vào cuối file <code>.bashrc </code>.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fortune | cowsay -pn
+</code></pre></div><ol start="4">
+<li>Bây giờ, tận hưởng thành quả thôi nào .</li>
+</ol>
+<p><img src="https://images.viblo.asia/c47f000b-77c7-47f8-ac63-aca9f7026f5b.png" alt=""></p>
+<blockquote>
+<p>Tuyệt vời, mọi thứ đều hoàn hảo :D</p>
+</blockquote>
+<h2 id="một-số-ví-dụ-cao-cấp-hơn">Một số ví dụ cao cấp hơn.</h2>
+<h3 id="ví-dụ-về-cách-thủ-công">Ví dụ về cách thủ công.</h3>
+<p><img src="https://images.viblo.asia/a57df286-516d-4254-8ac7-58cd97cc2386.png" alt=""></p>
+<ol>
+<li>Tạo một file &ldquo;buddha.py”, mình sử dụng python.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo touch buddha.py
+</code></pre></div><ol start="2">
+<li>Viết nội dung bên trong nó giống như vầy:</li>
+</ol>
+<p><img src="https://images.viblo.asia/e9939367-fcd6-437a-b3a7-aa4799ce4190.png" alt=""></p>
+<ol start="3">
+<li>Bây giờ, hãy mở terminal và mở tệp ./bashrc bằng bất kỳ trình soạn thảo nào bạn chọn. (Ở đây, tôi tiếp tục sử dụng vim).</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim ~/.bashrc
+</code></pre></div><ol start="4">
+<li>Thêm dòng dưới đây vào cuối file<code> .bashrc</code> vừa mở,</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python buddha.py
+</code></pre></div><ol start="5">
+<li>Hãy đóng terminal của bạn và bật lại, bạn sẽ thấy thành quả.</li>
+</ol>
+<p><img src="https://images.viblo.asia/a57df286-516d-4254-8ac7-58cd97cc2386.png" alt=""></p>
+<h3 id="ví-dụ-về-cách-dùng-tools">Ví dụ về cách dùng tools.</h3>
+<blockquote>
+<p>Bằng cách thay đổi thông số khác nhau thì “fortune and cowsay” có thể thay nhiều hình của nhiều con vật khác nhau chứ không chỉ mỗi con bò :3rd_place_medal:</p>
+</blockquote>
+<ol>
+<li>Hiển thị một Tux:  bằng các thêm <code>-f tux</code> với fortune | cowsay trong file <code> ~/.bashrc</code>.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fortune | cowsay -f tux
+</code></pre></div><p>Chúng ta đã có một kết quả mới:</p>
+<p><img src="https://images.viblo.asia/0052ef78-4ede-4664-8024-a07f2ca84b0f.png" alt="">
+2. Hiển thị khủng long: bằng các thêm <code>-f stegosaurus</code> với fortune | cowsay trong file <code> ~/.bashrc</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fortune | cowsay -f stegosaurus
+</code></pre></div><p><img src="https://images.viblo.asia/462ea189-108f-4c75-baf2-f47aaf9af2b7.png" alt=""></p>
+<ol start="3">
+<li>Tùy chỉnh messages hiển thị cùng con vật theo ý bạn:
+Chỉ cần thêm <code>cowsay -f tux &quot;Xin chào, Nguyễn Mạnh&quot;</code> vào cuối file <code>~/.bashrc</code> là chúng ta lại có kết quả như vầy nè:</li>
+</ol>
+<p><img src="https://images.viblo.asia/a713880f-7d3e-4e66-8d85-6280a4fc9feb.png" alt=""></p>
+<h1 id="tổng-kết">Tổng kết</h1>
+<ul>
+<li>
+<p>Mình đã hướng dẫn cho các bạn cách tùy biến làm sao cho khi mở terminal lên trông nó đẹp hơn, sịn sò hơn, nguy hiểm hơn.</p>
+</li>
+<li>
+<p>Những thứ mình hướng dẫn còn hạn hẹp, nhưng hi vọng giúp cho các bạn được phần nào đó để vọc vạch.</p>
+</li>
+<li>
+<p>Chúc các bạn thành công, và hãy tìm ra nhiều cách tùy biến cho các bạn đi nào :D</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>Nguồn tham khảo: <a href="https://www.geeksforgeeks.org/cool-custom-welcome-messages-linux-terminal/">https://www.geeksforgeeks.org/cool-custom-welcome-messages-linux-terminal/</a></li>
+</ul>
+</blockquote>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/terminal/">Terminal</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ubuntu/">Ubuntu</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/linux/">linux</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/" data-tooltip="Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi ">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/" data-tooltip="Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi ">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F02%2Ftuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F02%2Ftuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F02%2Ftuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/02\/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc\/';
+          
+            this.page.identifier = '\/2019\/02\/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

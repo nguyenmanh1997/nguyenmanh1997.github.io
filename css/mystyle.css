@@ -1,0 +1,33 @@
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+.sidebar-contents-of-table {
+  width: auto;
+  position: fixed;
+  z-index: 1;
+  top: 80px;
+  right: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 3px 0;
+}
+
+.sidebar-contents-of-table>nav#TableOfContents>ul>li>a{
+    display: none;
+}
+
+.sidebar-contents-of-table>nav#TableOfContents>ul{
+    list-style: none;
+}
+
+.sidebar-contents-of-table>nav#TableOfContents>ul>li>ul {
+    list-style-position: upper-roman;
+}
+
+.post-views{
+    display: inline-block;
+    margin-left: 20px;
+    cursor: pointer;
+}

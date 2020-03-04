@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>security on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/categories/security/</link>
+    <description>Recent content in security on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://manhnv.com/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.</title>
+      <link>https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/</guid>
+      <description>Trinh sát - thăm dò, là một bước quan trọng cần thiết trong hacking, mục đích là biết mọi thứ (càng nhiều càng tốt) về mục tiêu đang muốn khai thác.
+Tiếp nối sau thành công cũng khá là vang dội của bài viết Săn tìm tài khoản mạng xã hội bằng công cụ sherlock, bài viết mà đã bị trang t.o.p.d.e.v lấy về đổi tên thành Hướng dẫn stalk facebook của crush thời đại 4.</description>
+    </item>
+    
+    <item>
+      <title>Săn tìm tài khoản mạng xã hội bằng công cụ sherlock</title>
+      <link>https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/</guid>
+      <description>Các phương tiện truyền thông - Mạng xã hội là nơi mà những tin tặc lợi dụng để tìm hiểu thông tin về bất kỳ người hoặc mục tiêu cụ thể nào.
+Hôm nay - cũng như mọi ngày, tôi ngủ dậy, đánh răng rửa mặt, ăn sáng rồi đi làm. Và lúc đi làm thì mình có tìm hiểu khá nhiều thứ hay ho, sau đó lại chia sẻ cho các bạn cùng đọc để hiểu thêm.</description>
+    </item>
+    
+  </channel>
+</rss>

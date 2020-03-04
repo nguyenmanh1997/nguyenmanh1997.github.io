@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terminal on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/tags/terminal/</link>
+    <description>Recent content in Terminal on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Mon, 25 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://manhnv.com/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc</title>
+      <link>https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/</link>
+      <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/</guid>
+      <description>Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.
+ Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé.</description>
+    </item>
+    
+  </channel>
+</rss>

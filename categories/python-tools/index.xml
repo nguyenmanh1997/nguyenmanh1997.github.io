@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python tools on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/categories/python-tools/</link>
+    <description>Recent content in python tools on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Thu, 16 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://manhnv.com/categories/python-tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SỬ DỤNG ACUNETIX WEB VULNERABILITY SCANNER ĐỂ ĐÁNH GIÁ, PHÁT HIỆN ĐIỂM YẾU CỦA ỨNG DỤNG WEB</title>
+      <link>https://manhnv.com/2019/05/su-dung-acunetix-web-vulnerability-scanner-de-danh-gia-phat-hien-diem-yeu-cua-ung-web/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/05/su-dung-acunetix-web-vulnerability-scanner-de-danh-gia-phat-hien-diem-yeu-cua-ung-web/</guid>
+      <description>Yêu cầu   Yêu cầu phần cứng:
+ 01 máy tính với cấu hình tối thiểu: CPU 3.0 GHz, RAM 4GB, HDD 50GB    Yêu cầu phần mềm trên máy:
+ Hệ điều hành Windows XP/7/8 VMware Worstation 11.0 trở lên    Công cụ thực hành:
+ Máy ảo Vmware Windows 7. Bộ cài đặt Acunetix Web Vulnerability Scanner 9.5    Yêu cầu kết nối mạng LAN: có</description>
+    </item>
+    
+    <item>
+      <title>Hướng dẫn xóa database khách hàng đúng cách! và cú lừa thời đại 4.0</title>
+      <link>https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/</link>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/</guid>
+      <description>Hướng dẫn xóa database khách hàng đúng cách! Xin chào! Lại là mình đây, và mình là một thằng đi code thuê thôi :D Hôm nay mình sẽ viết về một chủ đề khá là hay, khá là kiểu giật tít như tiêu đề đấy. Không phải các bạn đọc nhầm đâu nhé.
+Nào bắt đầu thôi.
+Giới thiệu Bạn là lập trình viên? hoặc có thể là ai đó khác nhưng có động tới database, thì điều đầu tiên sợ nhất là một ngày nọ bạn nghịch ngu và xóa luôn database.</description>
+    </item>
+    
+    <item>
+      <title>Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi </title>
+      <link>https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/</guid>
+      <description>Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi Giới thiệu Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội có vẻ lặp từ xã hội - nhưng kệ đi =)). Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá!</description>
+    </item>
+    
+  </channel>
+</rss>

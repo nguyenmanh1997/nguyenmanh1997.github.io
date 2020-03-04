@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Nguyễn Mạnh">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="Bài viết mô tả về sql injection và cách để kiểm tra ứng dụng web có bị lỗi sql injection hay không.
+SQL injection được coi là một trong những cách tấn công phổ biến nhất vì nó có thể mang lại hậu quả nghiêm trọng và có hại cho hệ hệ thống và dữ liệu nhạy cảm của bạn
+SQL Injection là gì? SQL injection là một kỹ thuật tấn công vào hệ thống cơ sở dữ liệu của ứng dụng (web, mobile hoặc desktop &hellip;) thông qua việc kẻ tấn công lợi dụng lỗ hổng kiểm tra dữ liệu đầu vào và thi hành các câu lệnh SQL bất hợp pháp.">
+
+
+<meta property="og:description" content="Bài viết mô tả về sql injection và cách để kiểm tra ứng dụng web có bị lỗi sql injection hay không.
+SQL injection được coi là một trong những cách tấn công phổ biến nhất vì nó có thể mang lại hậu quả nghiêm trọng và có hại cho hệ hệ thống và dữ liệu nhạy cảm của bạn
+SQL Injection là gì? SQL injection là một kỹ thuật tấn công vào hệ thống cơ sở dữ liệu của ứng dụng (web, mobile hoặc desktop &hellip;) thông qua việc kẻ tấn công lợi dụng lỗ hổng kiểm tra dữ liệu đầu vào và thi hành các câu lệnh SQL bất hợp pháp.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mô tả SQL Injection là gì và cách kiểm tra">
+<meta name="twitter:title" content="Mô tả SQL Injection là gì và cách kiểm tra">
+<meta property="og:url" content="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+<meta property="twitter:url" content="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Bài viết mô tả về sql injection và cách để kiểm tra ứng dụng web có bị lỗi sql injection hay không.
+SQL injection được coi là một trong những cách tấn công phổ biến nhất vì nó có thể mang lại hậu quả nghiêm trọng và có hại cho hệ hệ thống và dữ liệu nhạy cảm của bạn
+SQL Injection là gì? SQL injection là một kỹ thuật tấn công vào hệ thống cơ sở dữ liệu của ứng dụng (web, mobile hoặc desktop &hellip;) thông qua việc kẻ tấn công lợi dụng lỗ hổng kiểm tra dữ liệu đầu vào và thi hành các câu lệnh SQL bất hợp pháp.">
+<meta name="twitter:description" content="Bài viết mô tả về sql injection và cách để kiểm tra ứng dụng web có bị lỗi sql injection hay không.
+SQL injection được coi là một trong những cách tấn công phổ biến nhất vì nó có thể mang lại hậu quả nghiêm trọng và có hại cho hệ hệ thống và dữ liệu nhạy cảm của bạn
+SQL Injection là gì? SQL injection là một kỹ thuật tấn công vào hệ thống cơ sở dữ liệu của ứng dụng (web, mobile hoặc desktop &hellip;) thông qua việc kẻ tấn công lợi dụng lỗ hổng kiểm tra dữ liệu đầu vào và thi hành các câu lệnh SQL bất hợp pháp.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2019-05-23T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-05-23T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Pentest web">
+    
+  
+  
+    
+      <meta property="article:tag" content="pentest web">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/sql-injection.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/sql-injection.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+  <meta property="twitter:image" content="https://manhnv.com/images/about/nguyenmanh.jpg">
+
+
+    <title>Mô tả SQL Injection là gì và cách kiểm tra</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Nguyễn Mạnh</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Mô tả SQL Injection là gì và cách kiểm tra
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-23T00:00:00Z">
+        
+  tháng 5 23, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/pentest-web">Pentest web</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Bài viết mô tả về sql injection và cách để kiểm tra ứng dụng web có bị lỗi sql injection hay không.</p>
+<p>SQL injection được coi là một trong những cách tấn công phổ biến nhất vì nó có thể mang lại hậu quả nghiêm trọng và có hại cho hệ hệ thống và dữ liệu nhạy cảm của bạn</p>
+<p><img src="https://manhnv.com/images/posts/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/sql-injection.jpg?raw=true" alt="Sql Injection" title="SQL injection"></p>
+<h2 id="sql-injection-là-gì">SQL Injection là gì?</h2>
+<p>SQL injection là một kỹ thuật tấn công vào hệ thống cơ sở dữ liệu của ứng dụng (web, mobile hoặc desktop &hellip;) thông qua việc kẻ tấn công lợi dụng lỗ hổng kiểm tra dữ liệu đầu vào và thi hành các câu lệnh SQL bất hợp pháp. Hậu quả của hành động này có thể đáng báo động.</p>
+<p>Như chính tên của nó, mục đích của cuộc tấn công SQL injection là tiêm mã SQL bất hợp pháp, độc hại vào ứng dụng.</p>
+<p>Trong các ứng dụng có dữ liệu này được chỉ định đi đến cơ sở dữ liệu như:</p>
+<ul>
+<li>Biểu mẫu (form) đăng nhập - người dùng nhập dữ liệu đăng nhập</li>
+<li>Biểu mẫu tìm kiếm - người dùng nhập dữ liệu tìm kiếm</li>
+</ul>
+<p>Thay vì nhập dữ liệu chính xác, kẻ tấn cống sẽ nhập một câu lệnh truy vấn độc hại bất kỳ nào vào, thì có khả năng xảy ra một số thiệt hại nghiêm trọng đối với cơ sở dữ liệu và toàn bộ hệ thống.</p>
+<p>SQL injection được thực hiện với ngôn ngữ lập trình SQL. SQL (Structured Query Language) được sử dụng để quản lý dữ liệu được giữ trong cơ sở dữ liệu được lưu trong cơ sở dữ liệu. Do đó, trong cuộc tấn công SQL injection này, câu lệnh của SQL được sử dụng như một mã độc hại.</p>
+<p>Đây được coi là tấn công phổ biến nhất, vì cơ sở dữ liệu được sử dụng hầu hết cho tất cả các công nghệ.</p>
+<h2 id="hậu-quả-khi-bị-tấn-công-sql-injection">Hậu quả khi bị tấn công SQL injection</h2>
+<p>Mục đích chính của tấn công này là hack cơ sở dữ liệu của hệ thống, vì hầu hết hệ thống hiện nay đều có cơ sở dữ liệu để lưu thông tin. Do đó hậu quả của cuộc tấn công này thực sự rất lớn.</p>
+<p>Những điều sau đây có thể là kết quả của tấn công SQL injection:</p>
+<ul>
+<li>Hack tài khoản của người khác.</li>
+<li>Ăn cắp và sao chép dữ liệu nhạy cảm của trang web hoặc hệ thống.</li>
+<li>Thay đổi dữ liệu của hệ thống, gây ra sai lệch dữ liệu.</li>
+<li>Kẻ tấn công có thể đăng nhập với tư cách người dùng hợp pháp, ngay cả với tư cách quản trị viên.</li>
+<li>Kẻ tấn công có thể xem thông tin cá nhân thuộc về người dùng khác, ví dụ: chi tiết về hồ sơ (profile) của người dùng khác, chi tiết về giao dịch của họ, v.v..</li>
+<li>Kẻ tấn công có thể thay đổi thông tin cấu hình ứng dụng và dữ liệu của những người dùng khác.</li>
+<li>Kẻ tấn công có thể sửa đổi cấu trúc cơ sở dữ liệu; thậm chí xóa các bảng trong cơ sở dữ liệu của ứng dụng.</li>
+<li>Kẻ tấn công có thể kiểm soát máy chủ cơ sở dữ liệu và thực hiện các lệnh trên theo ý muốn.</li>
+</ul>
+<p>Những hậu quả được liệt kê ở trên thực sự có thể coi là nghiêm trọng, vì việc khôi phục cơ sở dữ liệu có thể tốn rất nhiều chi phí. Nó có thể khiến công ty mất danh tiếng. Do đó, việc bảo vệ hệ thống trước loại tấn công này và coi thử nghiệm bảo mật là một điều cần thiết hàng đầu và là một khoản đầu tư tốt cho danh tiếng sản phẩm và công ty.</p>
+<h2 id="bản-chất-của-tấn-công-sql-injection">Bản chất của tấn công SQL injection</h2>
+<p>Để kiểm tra, trước tiên bạn cần tìm các phần hệ thống dễ bị tổn thương (vulnerable) và sau đó thử gửi một đoạn mã SQL độc hại thông qua các ô nhập dữ liệu đầu vào. Nếu hệ thống có lỗi này thì mã SQL độc hại được tiêm vào sẽ được gửi tới truy vấn cơ sở dữ liệu trong ứng dụng và thực thi nó.</p>
+<p>Bất kỳ vị trí nào có nhập dữ liệu đầu vào và có liên kết với cơ sở dữ liệu thì nên kiểm tra bằng cách: Thay vì nhập một dữ liệu chính xác tôi sẽ nhập bất kỳ một mã SQL độc hại nào và thấy hệ thống thực thi mã được nhập vào thì chính xác là đã gặp lỗi SQL injection.</p>
+<p>Để thực hiện cuộc tấn công này, phải thay đổi hành động và mục đích của một truy vấn cơ sở dữ liệu thích hợp với từng hoàn cảnh. Một trong những phương pháp khả thi để thực hiện nó là làm cho truy vấn luôn luôn đúng và sau đó chèn mã độc. Thay đổi truy vấn thành luôn luôn đúng có thể được thực hiện bằng một mã đơn giản <code>' OR 1 = 1; --</code></p>
+<p>Người thực hiện kiểm tra nên ghi nhớ rằng trong khi kiểm tra xem việc đổi truy vấn thành luôn luôn đúng có thể được thực hiện hay không, thì nên thử các trích dẫn khác nhau - đơn và đôi. Dó đó , nếu đã thử một mã <code>' OR 1=1;--</code>, cũng nên thử với <code>&quot; OR 1=1;--</code></p>
+<p><strong>Ví dụ:</strong> Hãy giả sử rằng có một truy vấn, đó là tìm kiếm từ đã nhập trong bảng cơ sở dữ liệu:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> notes nt <span style="color:#66d9ef">where</span> nt.subject <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span>search_word<span style="color:#960050;background-color:#1e0010">‘</span>;
+</code></pre></div><p>Thay vì tìm từ tìm kiếm, hãy nhập truy vấn SQL injection <code>' OR 1=1;--</code>, thì truy vấn sẽ luôn luôn đúng. Và sẽ trở thành</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> notes nt <span style="color:#66d9ef">where</span> nt.subject <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">‘</span> <span style="color:#960050;background-color:#1e0010">‘</span> <span style="color:#66d9ef">or</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;<span style="color:#75715e">--
+</span></code></pre></div><p>Trong trường hợp này, tham số  <code>subject</code> của người dùng được đóng với <code>'</code> và sau đó chúng ra có mã <code>or 1=1</code>, điều này làm cho một truy vấn luôn luôn đúng. Với ký hiệu <code>--</code> sẽ <code>comment</code> phần còn lại của mã truy vấn sẽ, và phần mã phía sau sẽ không được thực thi. Đây là một trong những cách phổ biến nhất và dễ nhất để bắt đầu kiểm soát truy vấn.</p>
+<p><strong>Một số mã khác cũng có thể được sử dụng để làm cho truy vấn luôn luôn đúng, như:</strong></p>
+<ul>
+<li><code>‘ or ‘abc‘=‘abc‘;--</code></li>
+<li><code>‘ or ‘ ‘=‘ ‘;--</code></li>
+</ul>
+<p>Phần quan trọng nhất ở đây là sau khi có dấu phẩy, chúng ta có thể nhập bất kỳ mã độc nào, mà chúng ta muốn nó được thực thi.
+<strong>Ví dụ:</strong> Nó có thể là <code>‘ or 1=1; drop table users; --</code>
+Nếu câu lệnh tiêm trên được thực thi, thì bằng <code>users</code> trong cơ sở dữ liệu sẽ bị xóa.
+Nếu việc câu lệnh trên có thể chạy thì bất kỳ mã độc nào khác cũng có thể được viết vào. Trogn trường hợp này phụ thuộc vào kiến thức và mục đích của kẻ tấn công.</p>
+<h2 id="cách-kiểm-tra-sql-injection">Cách kiểm tra SQL injection</h2>
+<p>Kiểm tra lỗ hổng này có thể được thực hiện rất dễ dàng. Đôi khi nó chỉ cần nhập một dấu hiệu bất thường nào như <code>‘ or “</code>. Nếu nó trả về bất kỳ thông báo bất ngờ (unexpected) nào, thì chúng ta chắc chắn rằng trường hợp này là SQL injection.
+<strong>Ví dụ:</strong>: Nếu nhận được thông báo lỗi như <code>Internal Server Error</code> trong kết quả tìm kiếm, thì có thể khẳng định rằng cuộc tấn công SQL injection này có thể xảy ra trong hệ thống.</p>
+<p><strong>Các kết quả khác, có thể thông báo rằng có thể tấn công SQL injection:</strong></p>
+<ul>
+<li>Trả về một trang trống.</li>
+<li>Không có thông báo lỗi hoặc thành công - chức năng và trang không phản ứng với đầu vào.</li>
+<li>Thông báo thành công cho mã độc được nhập vào.</li>
+</ul>
+<p>Hãy dựa vào trường hợp thực tế để đoán biết.</p>
+<p><strong>Ví dụ:</strong> Hãy kiểm tra xem cửa sổ đăng nhập có đễ bị tấn công đối với SQL injection không.
+Trong trường hợp này, trường username và mật khẩu, chỉ cần nhập dấu <code>'</code> như ảnh bên dưới.</p>
+<p><img src="https://manhnv.com/images/posts/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/login-sql-injection.png?raw=true" alt="Sql Injection login" title="SQL injection login"></p>
+<p>Nếu đầu vào trả về thông báo lỗi hoặc bất kỳ kết quả không phù hợp nào khác, thì có thể đoán chắc chắn rằng cuộc tấn công SQL injection có thể xảy ra. Thông báo lỗi giống với ảnh</p>
+<p><img src="https://manhnv.com/images/posts/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/notify-sql-injection-login.png?raw=true" alt="Thông báo lỗi" title="Thông báo lỗi"></p>
+<p>Kiểm tra <code>SQL injection</code> bằng một trích dẫn <code>'</code> là một cách đáng tin cậy để kiểm tra xem cuộc tấn công này có khả thi hay không.</p>
+<p>Nếu trích dẫn đơn <code>'</code> không trả về bất kỳ kết quả không phù hợp nào, thì có thể thử nhập dấu nháy kép <code>&quot;</code> và kiểm tra kết quả.</p>
+<p>Ngoài ra, mã SQL để thay đổi truy vấn luôn luôn đúng <code>'OR 1=1;--</code> có thể được coi là một cách để kiểm tra xem cuộc tấn công này có khả thi hay không. Nó đóng tham số và thay đổi truy vấn thành <code>True</code>. Do đó, nếu không được xác thực, đầu vào như vậy cũng có thể trả về bất kỳ kết quả không mong muốn nào và thông báo tương tự, và khẳng định rằng cuộc tấn công SQL injection có thể xảy ra trong trường hợp này.</p>
+<p>Kiểm tra các cuộc tấn công SQL có thể được thực hiện từ liên kết của trang web. Giả sử chúng tôi có một liên kết <code>http://35.190.155.168/cf5ef2940d/fetch?id=1</code> trả về nội dung của một file ảnh. Trong trường hợp này, <code>id</code> là tham số và <code>1</code> là giá trị của nó.</p>
+<p><img src="https://manhnv.com/images/posts/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/sql-injection-url1.png?raw=true" alt="Sql url" title="SQL url"></p>
+<p>Nếu trong liên kết, chúng tôi sẽ điền <code>'</code> thay vì <code>1</code> để kiểm tra.
+Trong trường hợp này, nếu liên kết <code>http://35.190.155.168/cf5ef2940d/fetch?id='</code> trả về một thông báo lỗi <code>Internal Server Error</code> hoặc một trang trống hoặc bất kỳ thông báo lỗi không mong muốn nào khác, thì chắc chắn đây  là SQL injection. Có thể gửi mã SQL phức tạp hơn.</p>
+<p><img src="https://manhnv.com/images/posts/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/sql-injection-url-error.png?raw=true" alt="Sql url" title="SQL url"></p>
+<p>Không chỉ có thông báo lỗi không mong muốn mới có thể được coi là lỗ hổng SQL injejction. Nhiều người kiểm tra kiểm tra các cuộc tấn công có thể chỉ theo thông báo lỗi. Tuy nhiên, cần nhớ rằng, không có thông báo lỗi xác thực hoặc thông báo thành công nào cho mã cũng có thể là một dấu hiệu, rằng cuộc tấn công này khả thi.</p>
+<h2 id="tổng-kết">Tổng kết</h2>
+<ul>
+<li>Qua bài viết mình đã giới thiệu về SQL injection, bản chất và cách kiểm tra một ứng dụng có lỗi SQL injection hay không.</li>
+<li>Từ đây có thể áp dụng để thực thi những câu lệnh SQL phức tạp hơn</li>
+</ul>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/pentest-web/">pentest web</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/" data-tooltip="Blind SQL injection là gì? Blind injection khác với các loại SQL injection khác như thế nào?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/05/su-dung-acunetix-web-vulnerability-scanner-de-danh-gia-phat-hien-diem-yeu-cua-ung-web/" data-tooltip="SỬ DỤNG ACUNETIX WEB VULNERABILITY SCANNER ĐỂ ĐÁNH GIÁ, PHÁT HIỆN ĐIỂM YẾU CỦA ỨNG DỤNG WEB">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/" data-tooltip="Blind SQL injection là gì? Blind injection khác với các loại SQL injection khác như thế nào?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2019/05/su-dung-acunetix-web-vulnerability-scanner-de-danh-gia-phat-hien-diem-yeu-cua-ung-web/" data-tooltip="SỬ DỤNG ACUNETIX WEB VULNERABILITY SCANNER ĐỂ ĐÁNH GIÁ, PHÁT HIỆN ĐIỂM YẾU CỦA ỨNG DỤNG WEB">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2019%2F05%2Fmo-ta-sql-injection-la-gi-va-cach-kiem-tra%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2019%2F05%2Fmo-ta-sql-injection-la-gi-va-cach-kiem-tra%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2019%2F05%2Fmo-ta-sql-injection-la-gi-va-cach-kiem-tra%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/images/about/nguyenmanh.jpg" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Nguyễn Mạnh</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Dev
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2019\/05\/mo-ta-sql-injection-la-gi-va-cach-kiem-tra\/';
+          
+            this.page.identifier = '\/2019\/05\/mo-ta-sql-injection-la-gi-va-cach-kiem-tra\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

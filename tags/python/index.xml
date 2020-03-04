@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/tags/python/</link>
+    <description>Recent content in python on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://manhnv.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Có PDB, debug python không còn khó khăn.</title>
+      <link>https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/</guid>
+      <description>PDB là viết tắt của &amp;quot;Python Debugger&amp;quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...
+Giới thiệu Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm.</description>
+    </item>
+    
+    <item>
+      <title>Hướng dẫn xóa database khách hàng đúng cách! và cú lừa thời đại 4.0</title>
+      <link>https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/</link>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/</guid>
+      <description>Hướng dẫn xóa database khách hàng đúng cách! Xin chào! Lại là mình đây, và mình là một thằng đi code thuê thôi :D Hôm nay mình sẽ viết về một chủ đề khá là hay, khá là kiểu giật tít như tiêu đề đấy. Không phải các bạn đọc nhầm đâu nhé.
+Nào bắt đầu thôi.
+Giới thiệu Bạn là lập trình viên? hoặc có thể là ai đó khác nhưng có động tới database, thì điều đầu tiên sợ nhất là một ngày nọ bạn nghịch ngu và xóa luôn database.</description>
+    </item>
+    
+    <item>
+      <title>Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi </title>
+      <link>https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/</guid>
+      <description>Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi Giới thiệu Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội có vẻ lặp từ xã hội - nhưng kệ đi =)). Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá!</description>
+    </item>
+    
+  </channel>
+</rss>

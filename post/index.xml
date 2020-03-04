@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/post/</link>
+    <description>Recent content in Posts on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://manhnv.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Có PDB, debug python không còn khó khăn.</title>
+      <link>https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/08/co-pdb-debug-python-khong-con-kho-khan/</guid>
+      <description>PDB là viết tắt của &amp;quot;Python Debugger&amp;quot;, nó là trình gỡ lỗi (debug) source code tích hợp nhiều tính năng như: tạm dừng chương trình, xem các biến trong môi trường hợp cụ thể, thay đổi các giá trị của biến đó, ...
+Giới thiệu Gỡ lỗi (Debugging) là một trong những điều kinh khủng, khó ưa nhất trong phát triển phần mềm, nhưng điều ngang trái thay nó lại là một trong những thứ quan trọng bậc nhất trong vòng đời phát triển phần mềm.</description>
+    </item>
+    
+    <item>
+      <title>Thực hiện trinh sát - thăm dò email với công cụ buster. Hướng dẫn thăm dò crush, người yêu thời đại 4.0.</title>
+      <link>https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/08/thuc-hien-trinh-sat-tham-do-email-voi-cong-cu-buster-huong-dan-tham-do-crush-nguoi-yeu-thoi-dai-4.0/</guid>
+      <description>Trinh sát - thăm dò, là một bước quan trọng cần thiết trong hacking, mục đích là biết mọi thứ (càng nhiều càng tốt) về mục tiêu đang muốn khai thác.
+Tiếp nối sau thành công cũng khá là vang dội của bài viết Săn tìm tài khoản mạng xã hội bằng công cụ sherlock, bài viết mà đã bị trang t.o.p.d.e.v lấy về đổi tên thành Hướng dẫn stalk facebook của crush thời đại 4.</description>
+    </item>
+    
+    <item>
+      <title>Săn tìm tài khoản mạng xã hội bằng công cụ sherlock</title>
+      <link>https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/08/san-tim-tai-khoan-mang-xa-hoi-bang-sherlock-tool/</guid>
+      <description>Các phương tiện truyền thông - Mạng xã hội là nơi mà những tin tặc lợi dụng để tìm hiểu thông tin về bất kỳ người hoặc mục tiêu cụ thể nào.
+Hôm nay - cũng như mọi ngày, tôi ngủ dậy, đánh răng rửa mặt, ăn sáng rồi đi làm. Và lúc đi làm thì mình có tìm hiểu khá nhiều thứ hay ho, sau đó lại chia sẻ cho các bạn cùng đọc để hiểu thêm.</description>
+    </item>
+    
+    <item>
+      <title>Những ví dụ thực tế tốt nhất mà mọi lập trình viên php nên biết</title>
+      <link>https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/</link>
+      <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/07/nhung-vi-du-thuc-te-tot-nhat-ma-moi-lap-trinh-vien-php-nen-biet/</guid>
+      <description>PHP là ngôn ngữ được sử dụng rất nhiều trong lập trình web. Dưới đây là những ví dụ thực tế tốt nhất mà mọi lập trình viên đều nên biết và làm theo.
+Từng là một lập trình viên PHP, cũng làm những dự án lớn nhỏ của cá nhân, của công ty các thứ. Thì sau một thời gian dựa vào kinh nghiệm bản thân cũng như tìm hiểu qua bác google, mình cũng đúc rút ra được một số thứ hay ho muốn chia sẻ cho mọi người cùng đọc.</description>
+    </item>
+    
+    <item>
+      <title>CVE-2019-7164: Lỗ hổng trong SQLALchemy (version 1.2.17 và 1.3.x đến 1.3.0b2) cho phép SQL injection thông qua tham số order_by.</title>
+      <link>https://manhnv.com/2019/07/cve-2019-7164-sqlalchemy-dinh-loi-sqlinjection-thong-qua-tham-so-cua-orderby/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/07/cve-2019-7164-sqlalchemy-dinh-loi-sqlinjection-thong-qua-tham-so-cua-orderby/</guid>
+      <description>CVE-2019-7164: Lỗ hổng trong SQLALchemy (version 1.2.17 và 1.3.x đến 1.3.0b2) cho phép SQL injection thông qua tham số order_by.
+Lời mở đầu Câu chuyện nó không có gì thú vị lắm nếu như tối không ngồi rảnh tay bấm vào xem source code của từng project cũ tôi từng viết trên github.
+Một ngày trời mưa ( theo tôi thì Hà Nội nắng nóng lâu rồi nên hôm nào mưa chính là ngày đẹp trời ), tôi vào xem lại từng project đã từng viết trong github của mình và nhận được một alert từ github: We found potential security vulnerabilities in your dependencies.</description>
+    </item>
+    
+    <item>
+      <title>Lỗ hổng Heartbleed là gì? Heartbleed hoạt động như thế nào?</title>
+      <link>https://manhnv.com/2019/07/lo-hong-heartbleed-la-gi-heartbleed-hoat-dong-nhu-the-nao/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/07/lo-hong-heartbleed-la-gi-heartbleed-hoat-dong-nhu-the-nao/</guid>
+      <description>&amp;quot;Heartbleed - Trái tim rỉ máu&amp;quot; là một lỗ hổng bảo mật rất nghiêm trọng, có mức độ ảnh hưởng đến 2/3 thiết bị internet trên toàn cầu. Vậy thì &#39;Heartbleed&#39; là gì? cũng như cách hoạt động của nó như thế nào? Các bạn hãy đọc tiếp bài viết này của mình để biết chi tiết hơn.
+![Heartbleed](/images/posts/lo-hong-heartbleed-la-gi-heartbleed-hoat-dong-nhu-the-nao/heartbleed2.jpg?raw=true &amp;ldquo;Heartbleed - Trái tim rỉ máu&amp;rdquo; là một lỗ hổng bảo mật rất nghiêm trọng, có mức độ ảnh hưởng đến 2/3 thiết bị internet trên toàn cầu.</description>
+    </item>
+    
+    <item>
+      <title>CSRF (cross site request forgery) là gì? Làm thế nào để ngăn chặn tấn công CSRF?</title>
+      <link>https://manhnv.com/2019/06/csrf-cross-site-request-forgery-la-gi-lam-the-nao-de-ngan-chan-tan-cong-csrf/</link>
+      <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/06/csrf-cross-site-request-forgery-la-gi-lam-the-nao-de-ngan-chan-tan-cong-csrf/</guid>
+      <description>Cross Site Request Forgery viết tắt là CSRF.
+CSRF là một trong những hình thức tấn công phổ biến nhất của những kẻ gửi thư rác và những kẻ lừa đảo trực tuyến. Cách khai thác tấn công CSRF khá là phức tạp nhưng nó lại rất phổ biến.
+Nhưng các cuộc tấn công CSRF có thể rất dễ dự đoán và vì vậy mức ảnh hưởng của nó ở mức vừa phải.</description>
+    </item>
+    
+    <item>
+      <title>Webshell là gì? Làm thể nào để upload/sử dụng một webshell?</title>
+      <link>https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/06/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/</guid>
+      <description>WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.</description>
+    </item>
+    
+    <item>
+      <title>Tôi đã chiếm quyền admin của một trang web như thế nào? Lời cảnh báo cho những trang web đang để api mở!</title>
+      <link>https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/</link>
+      <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/06/toi-da-chiem-quyen-admin-cua-mot-trang-web-nhu-the-nao-loi-canh-bao-cho-nhung-trang-web-dang-de-api-mo/</guid>
+      <description>Lời giới thiệu đầy ngọt ngào Một ngày đẹp trời, team của chúng tôi (Sun*$hell) được thách thức pentest cho một trang web chuẩn bị release, chính xác là còn 2 tiếng đồng hồ nữa là release. Chúng tôi đã không ngần ngại nhận lời thách thức này :D
+Sau một thời gian cật lực tìm kiếm lỗ hổng nào là XSS, Sql injection,&amp;hellip; (một danh sách lỗi hay gặp ở trên web) thì cũng thấy đội devs kiểm tra khá là tốt giá trị từ người dùng, và hầu như không gặp một lỗi cơ bản nào.</description>
+    </item>
+    
+    <item>
+      <title>Thực thi mã từ xa - Remote code execution</title>
+      <link>https://manhnv.com/2019/06/thuc-thi-ma-tu-xa-remote-code-execution/</link>
+      <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/06/thuc-thi-ma-tu-xa-remote-code-execution/</guid>
+      <description>Mô tả Thực thi mã từ xa - Remote Code Execution tên viết tắt là RCE.
+Có thể hiểu là bạn sử dụng một số kỹ thuật nào đó để có thể chiếm được quyền điều khiển trên máy nạn nhân, thông qua đó có thể thực thi những câu lệnh shell, bash &amp;hellip;, hoặc thực thi code của những ngôn ngữ kịch bản (script) như python, perl, php, javascript, &amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Blind SQL injection là gì? Blind injection khác với các loại SQL injection khác như thế nào?</title>
+      <link>https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/05/blind-sql-injection-la-gi-blind-injection-khac-voi-cac-loai-sql-injection-khac-nhu-the-nao/</guid>
+      <description>Lỗ hổng SQL Injection (SQLI) là một trong những vấn đề bảo mật web lâu đời và phổ biến nhất. Mình đã có một bài viết Mô tả SQL Injection là gì và cách kiểm tra, các bạn có thể đọc kỹ hơn để biết.
+Trong bài viết này mình sẽ nói đến một trong các loại SQL injection đó là Blind SQL injection.
+Blind SQL injection là gì? Blind SQL injection là một kiểu tấn công SQL injection truy vấn cơ sở dữ liệu sử dụng các mệnh đề để đoán biết.</description>
+    </item>
+    
+    <item>
+      <title>Mô tả SQL Injection là gì và cách kiểm tra</title>
+      <link>https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/</link>
+      <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/</guid>
+      <description>Bài viết mô tả về sql injection và cách để kiểm tra ứng dụng web có bị lỗi sql injection hay không.
+SQL injection được coi là một trong những cách tấn công phổ biến nhất vì nó có thể mang lại hậu quả nghiêm trọng và có hại cho hệ hệ thống và dữ liệu nhạy cảm của bạn
+SQL Injection là gì? SQL injection là một kỹ thuật tấn công vào hệ thống cơ sở dữ liệu của ứng dụng (web, mobile hoặc desktop &amp;hellip;) thông qua việc kẻ tấn công lợi dụng lỗ hổng kiểm tra dữ liệu đầu vào và thi hành các câu lệnh SQL bất hợp pháp.</description>
+    </item>
+    
+    <item>
+      <title>SỬ DỤNG ACUNETIX WEB VULNERABILITY SCANNER ĐỂ ĐÁNH GIÁ, PHÁT HIỆN ĐIỂM YẾU CỦA ỨNG DỤNG WEB</title>
+      <link>https://manhnv.com/2019/05/su-dung-acunetix-web-vulnerability-scanner-de-danh-gia-phat-hien-diem-yeu-cua-ung-web/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/05/su-dung-acunetix-web-vulnerability-scanner-de-danh-gia-phat-hien-diem-yeu-cua-ung-web/</guid>
+      <description>Yêu cầu   Yêu cầu phần cứng:
+ 01 máy tính với cấu hình tối thiểu: CPU 3.0 GHz, RAM 4GB, HDD 50GB    Yêu cầu phần mềm trên máy:
+ Hệ điều hành Windows XP/7/8 VMware Worstation 11.0 trở lên    Công cụ thực hành:
+ Máy ảo Vmware Windows 7. Bộ cài đặt Acunetix Web Vulnerability Scanner 9.5    Yêu cầu kết nối mạng LAN: có</description>
+    </item>
+    
+    <item>
+      <title>Hướng dẫn xóa database khách hàng đúng cách! và cú lừa thời đại 4.0</title>
+      <link>https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/</link>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/03/huong-dan-xoa-database-khach-hang-dung-cach-va-cu-lua-thoi-dai-4.0/</guid>
+      <description>Hướng dẫn xóa database khách hàng đúng cách! Xin chào! Lại là mình đây, và mình là một thằng đi code thuê thôi :D Hôm nay mình sẽ viết về một chủ đề khá là hay, khá là kiểu giật tít như tiêu đề đấy. Không phải các bạn đọc nhầm đâu nhé.
+Nào bắt đầu thôi.
+Giới thiệu Bạn là lập trình viên? hoặc có thể là ai đó khác nhưng có động tới database, thì điều đầu tiên sợ nhất là một ngày nọ bạn nghịch ngu và xóa luôn database.</description>
+    </item>
+    
+    <item>
+      <title>Khi lập trình viên chơi facebook - Biến Facebook messenger thành bot tra cứu tử vi </title>
+      <link>https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/03/khi-lap-trinh-vien-choi-facebook-bien-facebook-messenger-thanh-bot-tra-cuu-tu-vi/</guid>
+      <description>Khi lập trình viên chơi facebook - Biến Facebook messager thành bot tra cứu tử vi Giới thiệu Ở trong cái xã hội mà nhà nhà, người người, từ trẻ nhỏ tới người già, từ nông thông tới thành thị đều dùng mạng xã hội có vẻ lặp từ xã hội - nhưng kệ đi =)). Đặc biệt thứ mà nhiều người đa số đều dùng đó chính là facebook. Nên là facebook là gì hay là làm thế nào chơi facebook thì mình sẽ không đề cập ở trong bài viết này, thế nhá!</description>
+    </item>
+    
+    <item>
+      <title>Tùy biến messages khi bạn mở terminal trên ubuntu sao cho đẹp và độc</title>
+      <link>https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/</link>
+      <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/</guid>
+      <description>Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.
+ Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé.</description>
+    </item>
+    
+  </channel>
+</rss>
