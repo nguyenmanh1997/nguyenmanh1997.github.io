@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>aaa<script><script>alert(1)</script><script><img src=xss onerror=alert(1) ></title>
+    <meta property="og:url"                content="<script>alert(1)</script>" />
+<meta property="og:type"               content="aaa<script><script>alert(1)</script><script><img src=xss onerror=alert(1) >" />
+<meta property="og:title"              content="aaa<script><script>alert(1)</script><script><img src=xss onerror=alert(1) >When Great Minds Don’t Think Alikeaaa<script><script>alert(1)</script><script><img src=xss onerror=alert(1) >" />
+<meta property="og:description"        content="aaa<script><script>alert(1)</script><script><img src=xss onerror=alert(1) >How much does culture influence creative thinking? " />
+<meta property="og:image"              content="aaa<script><script>alert(1)</script><script><img src=xss onerror=alert(1) >http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
