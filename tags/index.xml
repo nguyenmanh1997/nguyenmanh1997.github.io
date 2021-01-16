@@ -6,10 +6,42 @@
     <description>Recent content in Tags on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hacking</title>
+      <link>https://manhnv.com/tags/hacking/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/hacking/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://manhnv.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>laravel RCE</title>
+      <link>https://manhnv.com/tags/laravel-rce/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/laravel-rce/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>OSWE</title>
+      <link>https://manhnv.com/tags/oswe/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/oswe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RCE</title>
+      <link>https://manhnv.com/tags/rce/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/rce/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>python</title>

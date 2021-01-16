@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Mạnh">
 <meta name="keywords" content=", development, cyber security">
 <meta name="description" content="Hướng dẫn xóa database khách hàng đúng cách! Xin chào! Lại là mình đây, và mình là một thằng đi code thuê thôi :D Hôm nay mình sẽ viết về một chủ đề khá là hay, khá là kiểu giật tít như tiêu đề đấy. Không phải các bạn đọc nhầm đâu nhé.
@@ -315,24 +315,24 @@ Hôm nay mình sẽ viết về một chủ đề khá là hay, khá là kiểu 
 <ul>
 <li>Nội dung file <code>.env</code></li>
 </ul>
-<pre><code class="language-env" data-lang="env">#Config Mail
-SMTP_SERVER=&quot;smtp.gmail.com&quot;
-SMTP_PORT=&quot;465&quot;
-SSL_TLS=ssl
-FROM_MAIL=&quot;&quot;
-MAIL_PASSWORD=&quot;&quot;
-MAIL_ENCRYPTION=ssl
-MAIL_RECEIVED=&quot;&quot;
-MAIL_SUBJECT=&quot;Backup Databases&quot;
-MAIL_MSG=&quot;Databases đã được backup!&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#75715e">#Config Mail</span>
+SMTP_SERVER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;smtp.gmail.com&#34;</span>
+SMTP_PORT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;465&#34;</span>
+SSL_TLS<span style="color:#f92672">=</span>ssl
+FROM_MAIL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+MAIL_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+MAIL_ENCRYPTION<span style="color:#f92672">=</span>ssl
+MAIL_RECEIVED<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+MAIL_SUBJECT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Backup Databases&#34;</span>
+MAIL_MSG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Databases đã được backup!&#34;</span>
 
-#Config Database
-DB_HOST=&quot;localhost&quot;
-DB_USER=&quot;&quot;
-DB_PASSWORD=&quot;&quot;
-#DB_BACKUP_NAME có nhiều db, giữa 2 db cách nhau 1 dấu ,
-DB_BACKUP_NAME=&quot;&quot;
-</code></pre><ul>
+<span style="color:#75715e">#Config Database</span>
+DB_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;localhost&#34;</span>
+DB_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+DB_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+<span style="color:#75715e">#DB_BACKUP_NAME có nhiều db, giữa 2 db cách nhau 1 dấu ,</span>
+DB_BACKUP_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+</code></pre></div><ul>
 <li>Code <code>backup.py</code></li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
@@ -635,7 +635,7 @@ load_dotenv()
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+    &copy; 2021 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
   </span>
 </footer>
 

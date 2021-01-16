@@ -6,10 +6,16 @@
     <description>Recent content on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Tue, 30 Jul 2019 08:47:03 +0700</lastBuildDate>
-    
-	<atom:link href="https://manhnv.com/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chỉ một buổi chiều, Tôi đã chiếm quyền điều khiển server của 8 website như thế nào?</title>
+      <link>https://manhnv.com/2021/01/chi-mot-buoi-chieu-toi-da-chiem-quyen-dieu-khien-server-cua-8-website-nhu-the-nao/</link>
+      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/01/chi-mot-buoi-chieu-toi-da-chiem-quyen-dieu-khien-server-cua-8-website-nhu-the-nao/</guid>
+      <description>Xin chào, xin chào các bạn. Lâu lâu lâu lắm rồi mình mới có thời gian để viết bài, vì bận quá (thực ra là vì lười quá).
+Chuyện là gần đây mình có hay lượn lờ đọc mấy bài về lập trình web (lại là câu chuyện về web đấy các bạn). Thì mình cũng chiếm được cái server nho nhỏ của 1 website (Tại sao tiêu đề là 8 mà đây mình lại ghi là 1, thì xem hồi sau sẽ rõ).</description>
+    </item>
     
     <item>
       <title>Có PDB, debug python không còn khó khăn.</title>

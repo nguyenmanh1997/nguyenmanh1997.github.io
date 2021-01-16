@@ -5,10 +5,6 @@
     <link>https://manhnv.com/archives/</link>
     <description>Recent content in Archives on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>vi</language>
-    
-	<atom:link href="https://manhnv.com/archives/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>vi</language><atom:link href="https://manhnv.com/archives/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
