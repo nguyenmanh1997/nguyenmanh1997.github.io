@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Mạnh">
 <meta name="keywords" content=", development, cyber security">
 <meta name="description" content="PHP là ngôn ngữ được sử dụng rất nhiều trong lập trình web. Dưới đây là những ví dụ thực tế tốt nhất mà mọi lập trình viên đều nên biết và làm theo.
@@ -278,167 +278,167 @@ Từng là một lập trình viên PHP, cũng làm những dự án lớn nhỏ
 <p><strong>Một lần nữa, mình xin nhắc lại là khi project của bạn đã public thì bạn nên tắt <code>error reporting</code> đi, vì nếu không tắt đi thì các lỗi có trong project sẽ hiển thị lên cho người dùng thấy, và kéo theo đó bao nhiêu vấn đề.</strong></p>
 <h2 id="khuyến-khích-sử-dụng-php-">Khuyến khích sử dụng <!-- raw HTML omitted --></h2>
 <p>Có một số cách để để viết code php như:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">//-------- kiểu 1 --------
-<span style="color:#75715e">&lt;?php</span> <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>; <span style="color:#75715e">?&gt;</span>
-
-//-------- kiểu 2 --------
-<span style="color:#75715e">&lt;?</span>   <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>; <span style="color:#75715e">?&gt;</span>
-
-//-------- kiểu 3 --------
-<span style="color:#75715e">&lt;?</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>; <span style="color:#75715e">?&gt;</span>
-
-//-------- kiểu 4 --------
-<span style="color:#960050;background-color:#1e0010">&lt;</span>% echo &#34;manhnv.com&#34;; %&gt;
-</code></pre></div><p>Tất cả 4 kiểu trên đều hiển thị ra là <code>manhnv.com</code>. Nhưng chỉ có một kiểu <code>&lt;?php ?&gt;</code> là mặc định, còn lại những kiểu còn lại đều bị vô hiệu hóa, nếu bạn muốn sử dụng thì bắt buộc bạn phải kích hoạt nó lên bằng cách cấu hình server PHP với tùy chọn <code>short_open_tag</code>. Do đó, cách tốt nhất để đảm bảo code của bạn chạy tốt trên tất cả mọi server, cũng như mọi phiên bản nếu có cập nhật lên cao hơn nữa, thì mình khuyên bạn nên sử dụng định dạng <code>&lt;?php ?&gt;</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">//-------- kiểu 1 --------
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>; <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">//-------- kiểu 2 --------
+</span><span style="color:#960050;background-color:#1e0010">&lt;?   echo &#34;manhnv.com&#34;; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">//-------- kiểu 3 --------
+</span><span style="color:#960050;background-color:#1e0010">&lt;?= &#34;manhnv.com&#34;; ?&gt;
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">//-------- kiểu 4 --------
+</span><span style="color:#960050;background-color:#1e0010">&lt;% echo &#34;manhnv.com&#34;; %&gt;
+</span></code></pre></div><p>Tất cả 4 kiểu trên đều hiển thị ra là <code>manhnv.com</code>. Nhưng chỉ có một kiểu <code>&lt;?php ?&gt;</code> là mặc định, còn lại những kiểu còn lại đều bị vô hiệu hóa, nếu bạn muốn sử dụng thì bắt buộc bạn phải kích hoạt nó lên bằng cách cấu hình server PHP với tùy chọn <code>short_open_tag</code>. Do đó, cách tốt nhất để đảm bảo code của bạn chạy tốt trên tất cả mọi server, cũng như mọi phiên bản nếu có cập nhật lên cao hơn nữa, thì mình khuyên bạn nên sử dụng định dạng <code>&lt;?php ?&gt;</code>.</p>
 <p>Nhưng nếu tự triển khai một server PHP của bản thân, hoặc một server bạn có quyền điều khiển, và muốn sử dụng kiểu 1,2,3 thì bạn có thể tự cấu hình cho server của mình sử dụng thẻ nào ngắn gọn và thuận tiện hơn. Nhưng hãy nhớ rằng thẻ <code>&lt;? ?&gt;</code> có thể xung đột với XML và <code>&lt;% %&gt;</code> là kiểu viết của ASP.</p>
 <h2 id="sử-dụng-tên-biến-tên-class-có-ý-nghĩa-và-nhất-quán">Sử dụng tên biến, tên class có ý nghĩa và nhất quán</h2>
 <p>Có hai chuẩn đặt tên phổ biến:</p>
 <ul>
 <li><strong>camelCase:</strong> Chữ cái đầu tiên của mỗi từ được viết hoa, trừ từ đầu tiên.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$urlBlog = &#34;https://manhnv.com&#34;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$urlBlog <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://manhnv.com&#34;</span>;
 
-function showUrlBlog(){
-    echo $urlBlog;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showUrlBlog</span>(){
+    <span style="color:#66d9ef">echo</span> $urlBlog;
 }
 </code></pre></div><ul>
 <li><strong>underscores:</strong> Thêm dấu gạch dưới giữa các từ.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$url_blog = &#34;https://manhnv.com&#34;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$url_blog <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://manhnv.com&#34;</span>;
 
-function show_url_blog(){
-    echo $url_blog;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">show_url_blog</span>(){
+    <span style="color:#66d9ef">echo</span> $url_blog;
 }
 </code></pre></div><p>Trên đây là 2 chuẩn phổ biến nhất, bạn nên chọn cho mình 1 trong 2 quy ước để code. Tuy nhiên, hãy dùng một cách nhất quá, tức là dùng 1 chuẩn cho từ đầu đến cuối project, không nên dùng nửa vời kiểu này sang kiểu kia.</p>
 <p>Mình thì lúc code php mình sẽ dùng kiểu <code>camelCase</code> nhưng lúc code ngôn ngữ khác như python thì lại dùng <code>underscores</code>.</p>
 <p>Hoặc các bạn cũng có thể kết hợp 2 chuẩn lại với nhau theo kiểu: biến thì chuẩn <code>underscores</code> và các function chuẩn <code>camelCase</code>, và ngược lại. Nhưng chắc chắn rằng bạn phải đảm bảo code nhất quán trong project, ví dụ: biến dùng <code>underscores</code> thì phải dùng <code>underscores</code> từ đầu cho đến cuối project.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$url_blog = &#34;https://manhnv.com&#34;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$url_blog <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://manhnv.com&#34;</span>;
 
-function showUrlBlog(){
-    echo $url_blog;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">showUrlBlog</span>(){
+    <span style="color:#66d9ef">echo</span> $url_blog;
 }
 </code></pre></div><h2 id="đừng-nên-viết-code-lồng-nhau-quá-nhiều-mức">Đừng nên viết code lồng nhau quá nhiều mức</h2>
 <p>Lồng nhau quá nhiều mức sẽ làm cho code trở nên khó đọc, ví dụ như vầy:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">function writeFileFunction() {
-// ...
-if (is_writable($folder)) {
-    if ($fp = fopen($file_path,&#39;w&#39;)) {
-       if ($stuff = extractSomeStuff()) {
-         if (fwrite($fp,$stuff)) {
-         // ...
-         } else {
-            return false;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">writeFileFunction</span>() {
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">is_writable</span>($folder)) {
+    <span style="color:#66d9ef">if</span> ($fp <span style="color:#f92672">=</span> <span style="color:#a6e22e">fopen</span>($file_path,<span style="color:#e6db74">&#39;w&#39;</span>)) {
+       <span style="color:#66d9ef">if</span> ($stuff <span style="color:#f92672">=</span> <span style="color:#a6e22e">extractSomeStuff</span>()) {
+         <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fwrite</span>($fp,$stuff)) {
+         <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>         } <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
          }
-      } else {
-       return false;
+      } <span style="color:#66d9ef">else</span> {
+       <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
      }
-    } else {
-     return false;
+    } <span style="color:#66d9ef">else</span> {
+     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
     }
-  } else {
-   return false;
+  } <span style="color:#66d9ef">else</span> {
+   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
  }
 }
 </code></pre></div><p>Các có thấy, đoạn code trên rất khó đọc, khó hiểu, và khó maintain. Để code dễ đọc hơn, dễ maintain hơn thì hãy giảm mức độ lồng nhau lại, như:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">function writeFileFunction() {
-// ...
-  if (!is_writable($folder)) {
-    return false;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">writeFileFunction</span>() {
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">is_writable</span>($folder)) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
   }
 
-  if (!$fp = fopen($file_path,&#39;w&#39;)) {
-    return false;
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$fp <span style="color:#f92672">=</span> <span style="color:#a6e22e">fopen</span>($file_path,<span style="color:#e6db74">&#39;w&#39;</span>)) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
   }
 
-  if (!$stuff = extractSomeStuff()) {
-    return false;
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$stuff <span style="color:#f92672">=</span> <span style="color:#a6e22e">extractSomeStuff</span>()) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
   }
 
-  if (fwrite($fp,$stuff)) {
-   // ...
-  } else {
-    return false;
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fwrite</span>($fp,$stuff)) {
+   <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">else</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
   }
 }
 </code></pre></div><h2 id="hãy-nhớ-comment-comment-và-comment-đầy-đủ-khi-code">Hãy nhớ Comment, Comment và Comment đầy đủ khi code.</h2>
 <p>Hãy nhớ <code>Comment</code> đẩy đủ khi code. Nó rất là quan trọng khi dự án có thể dài hơi kéo dài tận 5, 10 hay 15 năm thì chắc chắn đội phát triển dự án sẽ thay đổi rất nhiều và khi bạn comment thì những người vào dự án sau sẽ hiểu được code của bạn đã từng code như thế nào, và khi dự án đã relase nhưng sau một thời gian xảy ra lỗi thì đội phát triển nhận project để maintain có thể hiểu code nó hoạt động như thế nào, và sửa lỗi một cách nhanh chóng và dễ dàng.</p>
 <p>Và cả khi dự án là của cá nhân, không cần làm việc nhóm thì bạn cũng nên comment lại chức năng mình làm, vì có thể sau một thời gian đọc lại code mà không có comment thì bạn sẽ không biết là mình đã từng code cái gì nữa.</p>
 <p>Ví dụ đây là một chức năng tạo mới user:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">    <span style="color:#e6db74">/**
+</span><span style="color:#e6db74">     * Create a new user instance after a valid registration.
+</span><span style="color:#e6db74">     *
+</span><span style="color:#e6db74">     * @param  array  $data
+</span><span style="color:#e6db74">     * @return \App\User
+</span><span style="color:#e6db74">     */</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">create</span>(<span style="color:#66d9ef">array</span> $data)
     {
-        return User::create([
-            &#39;name&#39; =&gt; $data[&#39;name&#39;],
-            &#39;email&#39; =&gt; $data[&#39;email&#39;],
-            &#39;password&#39; =&gt; Hash::make($data[&#39;password&#39;]),
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">User</span><span style="color:#f92672">::</span><span style="color:#a6e22e">create</span>([
+            <span style="color:#e6db74">&#39;name&#39;</span> <span style="color:#f92672">=&gt;</span> $data[<span style="color:#e6db74">&#39;name&#39;</span>],
+            <span style="color:#e6db74">&#39;email&#39;</span> <span style="color:#f92672">=&gt;</span> $data[<span style="color:#e6db74">&#39;email&#39;</span>],
+            <span style="color:#e6db74">&#39;password&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Hash</span><span style="color:#f92672">::</span><span style="color:#a6e22e">make</span>($data[<span style="color:#e6db74">&#39;password&#39;</span>]),
         ]);
     }
 </code></pre></div><h2 id="không-đặt-phpinfo-trong-webroot-của-bạn">Không đặt phpinfo() trong webroot của bạn</h2>
 <p>Phpinfo là một chức năng rất hữu ích. Đơn giản là bạn tạo một tệp PHP có</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span> <span style="color:#a6e22e">phpinfo</span>(); <span style="color:#75715e">?&gt;</span>
-</code></pre></div><p>và bạn đặt nó vào ở đâu đó trên server, bạn có thể biết mọi thứ về môi trường server của mình. Tuy nhiên, rất nhiều lập trình viên sẽ đặt tệp chứa <code>phpinfo()</code> trong webroot. Thực tế điều này sẽ không an toàn một tý nào. Hãy xóa nó sau khi bạn xem xong thông tin cần thiết.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">phpinfo</span>(); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>và bạn đặt nó vào ở đâu đó trên server, bạn có thể biết mọi thứ về môi trường server của mình. Tuy nhiên, rất nhiều lập trình viên sẽ đặt tệp chứa <code>phpinfo()</code> trong webroot. Thực tế điều này sẽ không an toàn một tý nào. Hãy xóa nó sau khi bạn xem xong thông tin cần thiết.</p>
 <h2 id="không-bao-giờ-tin-tưởng-người-dùng">Không bao giờ tin tưởng người dùng</h2>
 <p>Nếu ứng dụng của bạn có chỗ cho người dùng nhập dữ liệu vào, bạn phải luôn nghĩ là họ sẽ cố gắng nhập mọi thứ gây lỗi cho hệ thống. Cách tốt nhất để giữ cho trang web của bạn không bị các hacker tấn công XSS hay <a href="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/" title="Mô tả SQL Injection là gì và cách kiểm tra">SQLinjection</a>, là luôn kiểm tra mọi dữ liệu người dùng nhập vào.</p>
 <p>Ví dụ một đoạn code thể hiện chức năng lấy thông tin một bài viết không kiểm tra đầu vào và dẫn tới lỗ hổng SQLinjection:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  $server = &#34;localhost&#34;;
-  $user = &#34;manhnv.com&#34;;
-  $password = &#34;manhnv.com&#34;;
-  $db = &#34;manhnv.com&#34;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  $server <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;localhost&#34;</span>;
+  $user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>;
+  $password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>;
+  $db <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;manhnv.com&#34;</span>;
 
-  // // Create connection
-  $conn = new mysqli($server, $user, $password, $db);
-  // Check connection
-  if ($conn-&gt;connect_error) {
-    die(&#34;Connection failed: &#34; . $conn-&gt;connect_error);
+  <span style="color:#75715e">// // Create connection
+</span><span style="color:#75715e"></span>  $conn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">mysqli</span>($server, $user, $password, $db);
+  <span style="color:#75715e">// Check connection
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> ($conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">connect_error</span>) {
+    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Connection failed: &#34;</span> <span style="color:#f92672">.</span> $conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">connect_error</span>);
   }
 
-  // Câu lệnh sql có lỗi sql injection
-  $query = &#34;SELECT * FROM posts WHERE id=&#34;. $_GET[&#39;id&#39;];
-  $result = $conn-&gt;query($query);
-  // var_dump($result-&gt;fetch_assoc());
-
-  if ($result-&gt;num_rows &gt; 0) {
-    // output data of each row
-    while($row = $result-&gt;fetch_assoc()) {
-        echo &#34;id: &#34; . $row[&#34;id&#34;]. &#34; - title: &#34; . $row[&#34;content&#34;]. &#34; &#34; . $row[&#34;description&#34;]. &#34;&lt;<span style="color:#f92672">br</span>&gt;&#34;;
+  <span style="color:#75715e">// Câu lệnh sql có lỗi sql injection
+</span><span style="color:#75715e"></span>  $query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT * FROM posts WHERE id=&#34;</span><span style="color:#f92672">.</span> $_GET[<span style="color:#e6db74">&#39;id&#39;</span>];
+  $result <span style="color:#f92672">=</span> $conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">query</span>($query);
+  <span style="color:#75715e">// var_dump($result-&gt;fetch_assoc());
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">if</span> ($result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">num_rows</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#75715e">// output data of each row
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span>($row <span style="color:#f92672">=</span> $result<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetch_assoc</span>()) {
+        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;id: &#34;</span> <span style="color:#f92672">.</span> $row[<span style="color:#e6db74">&#34;id&#34;</span>]<span style="color:#f92672">.</span> <span style="color:#e6db74">&#34; - title: &#34;</span> <span style="color:#f92672">.</span> $row[<span style="color:#e6db74">&#34;content&#34;</span>]<span style="color:#f92672">.</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">.</span> $row[<span style="color:#e6db74">&#34;description&#34;</span>]<span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;&lt;br&gt;&#34;</span>;
     }
-  } else {
-    echo &#34;0 results&#34;;
+  } <span style="color:#66d9ef">else</span> {
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;0 results&#34;</span>;
   }
-  $conn-&gt;close();
+  $conn<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">close</span>();
 </code></pre></div><p>Các bạn có thể thấy câu lệnh <code>$sql = &quot;SELECT * FROM posts WHERE id=&quot;. $_GET['id'];</code> biến <code>$_GET['id']</code> được lấy trực tiếp truy vấn vào database mà không lọc dữ liệu, những kẻ tấn công có thể dựa vào đó thể injection nhưng câu lệnh sql đọc hại vào.</p>
 <p>Sau đây mình có 3 cách để bảo vệ được câu lệnh trên:</p>
 <ul>
 <li>Dùng PDO PHP Data Objects)</li>
 </ul>
 <p>PDO là một phần tiện ích mở rộng của PHP, nó giúp website bạn trở nên nhanh và an toàn hơn</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$results = $db-&gt;prepare(&#39;SELECT * FROM posts WHERE id = :id&#39;);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$results <span style="color:#f92672">=</span> $db<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">prepare</span>(<span style="color:#e6db74">&#39;SELECT * FROM posts WHERE id = :id&#39;</span>);
 
-$results-&gt;execute(array(&#39;:id&#39; =&gt; $_GET[&#39;id&#39;]));
+$results<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">execute</span>(<span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;:id&#39;</span> <span style="color:#f92672">=&gt;</span> $_GET[<span style="color:#e6db74">&#39;id&#39;</span>]));
 
-$rows = $results-&gt;fetchAll();
+$rows <span style="color:#f92672">=</span> $results<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">fetchAll</span>();
 </code></pre></div><ul>
 <li>Sử dụng hàm <code>mysqli_real_escape_string()</code></li>
 </ul>
 <p>Hàm này giúp bạn loại bỏ những kí tự không cần thiết trước khi xử lí câu lệnh SQL.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  $con=nmysqli_connect(&#34;localhost&#34;,&#34;my_user&#34;,&#34;my_password&#34;,&#34;my_db&#34;);
-  $id = mysql_real_escape_string($conn, $_GET[&#39;id&#39;]);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">  $con<span style="color:#f92672">=</span><span style="color:#a6e22e">nmysqli_connect</span>(<span style="color:#e6db74">&#34;localhost&#34;</span>,<span style="color:#e6db74">&#34;my_user&#34;</span>,<span style="color:#e6db74">&#34;my_password&#34;</span>,<span style="color:#e6db74">&#34;my_db&#34;</span>);
+  $id <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_real_escape_string</span>($conn, $_GET[<span style="color:#e6db74">&#39;id&#39;</span>]);
 
-  $query = mysql_query($conn, &#34;SELECT * FROM posts where id = &#34;&#39; .$id. &#39;&#34;);
-</code></pre></div><ul>
+  $query <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>($conn, <span style="color:#e6db74">&#34;SELECT * FROM posts where id = &#34;</span><span style="color:#e6db74">&#39; .$id. &#39;</span><span style="color:#e6db74">&#34;);
+</span></code></pre></div><ul>
 <li>Sử dụng hàm <code>preg_replace()</code></li>
 </ul>
 <p><code>preg_replace()</code> giúp bạn loại bỏ những kí tự được chỉ định giúp câu lệnh trở nên an toàn hơn.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">// Câu lệnh giúp bạn loại bỏ các chữ số chính xác là từ 0-9.
-$id = preg_replace(&#34;/[^0-9]/&#34;,&#34;&#34;, $_GET[&#39;id&#39;]);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">// Câu lệnh giúp bạn loại bỏ các chữ số chính xác là từ 0-9.
+</span><span style="color:#75715e"></span>$id <span style="color:#f92672">=</span> <span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#34;/[^0-9]/&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>, $_GET[<span style="color:#e6db74">&#39;id&#39;</span>]);
 
-$query = mysqli_query($conn, &#34;SELECT * FROM posts where id = &#34;&#39; .$id. &#39;&#34;);
-</code></pre></div><h2 id="sử-dụng-cơ-chế-bộ-nhớ-cache">Sử dụng cơ chế bộ nhớ cache</h2>
+$query <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysqli_query</span>($conn, <span style="color:#e6db74">&#34;SELECT * FROM posts where id = &#34;</span><span style="color:#e6db74">&#39; .$id. &#39;</span><span style="color:#e6db74">&#34;);
+</span></code></pre></div><h2 id="sử-dụng-cơ-chế-bộ-nhớ-cache">Sử dụng cơ chế bộ nhớ cache</h2>
 <p>Bộ nhớ cache web (hoặc bộ nhớ cache HTTP) hay còn gọi là Web caching là một công nghệ thông tin để lưu trữ tạm thời (lưu trữ) các dữ liệu web như: các trang và hình ảnh HTML, để giảm tải băng thông, giảm tải máy chủ. Một hệ thống lưu trữ web lưu trữ bản sao các dữ liệu đi qua nó.</p>
 <p>Một số hệ thống bộ nhớ cache mạnh mẽ có miễn phí:</p>
 <ul>
@@ -450,23 +450,23 @@ $query = mysqli_query($conn, &#34;SELECT * FROM posts where id = &#34;&#39; .$id
 <h2 id="giữ-các-function-chạy-ở-bên-ngoài-vòng-lặp-loops">Giữ các function chạy ở bên ngoài vòng lặp (loops)</h2>
 <p>Project của bạn sẽ giảm hiệu suất rất nhiều khi bạn lạm dụng đưa các function vào bên trong vòng lặp. Vòng lặp càng lớn, thời gian thực hiện càng lâu. Vì vậy nên đặt các function bên ngoài vòng lặp nếu có thể.</p>
 <p>Một ví dụ tệ hết sức tệ khi đặt function vào trong vòng lặp:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">for ($i = 0; $i &lt; <span style="color:#f92672">count</span><span style="color:#960050;background-color:#1e0010">($</span><span style="color:#a6e22e">array</span><span style="color:#960050;background-color:#1e0010">);</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">i</span><span style="color:#960050;background-color:#1e0010">++)</span> <span style="color:#960050;background-color:#1e0010">{</span>
-  <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#a6e22e">manhnv</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">com</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">phần</span> <span style="color:#a6e22e">code</span> <span style="color:#a6e22e">cần</span> <span style="color:#a6e22e">chạy</span>
-<span style="color:#960050;background-color:#1e0010">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">for</span> ($i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; $i <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">count</span>($array); $i<span style="color:#f92672">++</span>) {
+  <span style="color:#75715e">//manhnv.com @phần code cần chạy
+</span><span style="color:#75715e"></span>}
 </code></pre></div><p>Bạn có thể viết lại đoạn code trên để code tường mình cũng như hiệu suất tốt hơn.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$count = count($array);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$count <span style="color:#f92672">=</span> <span style="color:#a6e22e">count</span>($array);
 
-for($i = 0; $i <span style="color:#960050;background-color:#1e0010">&lt;</span> $count; $i++) {
-  //manhnv.com @phần code cần chạy
-}
+<span style="color:#66d9ef">for</span>($i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; $i <span style="color:#f92672">&lt;</span> $count; $i<span style="color:#f92672">++</span>) {
+  <span style="color:#75715e">//manhnv.com @phần code cần chạy
+</span><span style="color:#75715e"></span>}
 </code></pre></div><h2 id="không-sao-chép-các-biến-phụ-nếu-không-cần-thiết">Không sao chép các biến phụ nếu không cần thiết</h2>
 <p>Một số bạn muốn làm cho code trông kinh khủng hơn, nhiều dòng hơn (để người khác nhìn vào cho ngầu) bằng cách sao chép các biến có trước vào một biến mới. Tuy nhiên, thực sự không tốt khi làm như vậy vì nó làm giảm hiệu suất và khả năng tăng gấp đôi bộ nhớ khi chạy lệnh.</p>
 <p>Một ví dụ minh họa cho điều mình nói bên trên:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$description = strip_tags($_POST[&#39;description&#39;]);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$description <span style="color:#f92672">=</span> <span style="color:#a6e22e">strip_tags</span>($_POST[<span style="color:#e6db74">&#39;description&#39;</span>]);
 
-echo $description;
+<span style="color:#66d9ef">echo</span> $description;
 </code></pre></div><p>Các bạn có thể viết thành như vầy để code được tối ưu hơn nè:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">echo strip_tags($_POST[&#39;description&#39;]);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">strip_tags</span>($_POST[<span style="color:#e6db74">&#39;description&#39;</span>]);
 </code></pre></div><h2 id="sử-dụng-framework">Sử dụng framework</h2>
 <p>Một khi bạn đã biết cơ bản về PHP rồi thì mình khuyên bạn nên học lấy 1 framework của PHP để làm việc tốt hơn. Có rất nhiều framework PHP khác nhau. Tuy nhiên, đã số được thiết kế dựa trên kiến trúc Model-View-Controller (MVC). Một trong framework đang được sử dụng phổ biến đó là bởi vì kiến trúc MVC đảm bảo sự phân chia rõ ràng giữa dữ liệu. logic và template, đảm bảo dễ dàng duy trì và phát triển. Ngoài ra còn một số điểm mạnh khác như:</p>
 <ul>
@@ -592,7 +592,7 @@ echo $description;
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+    &copy; 2021 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
   </span>
 </footer>
 

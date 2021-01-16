@@ -6,11 +6,7 @@
     <description>Recent content in CVE on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Wed, 10 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://manhnv.com/categories/cve/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 10 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/categories/cve/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2019-7164: Lỗ hổng trong SQLALchemy (version 1.2.17 và 1.3.x đến 1.3.0b2) cho phép SQL injection thông qua tham số order_by.</title>
       <link>https://manhnv.com/2019/07/cve-2019-7164-sqlalchemy-dinh-loi-sqlinjection-thong-qua-tham-so-cua-orderby/</link>
