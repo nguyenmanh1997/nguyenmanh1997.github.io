@@ -67,6 +67,30 @@
   </head>
 
   <body>
+    
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v9.0'
+        });
+      };
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="447047472469512"
+theme_color="#20cef5"></div>
+
     <div id="blog">
       <header id="header" data-behavior="2">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
@@ -463,6 +487,10 @@ Giới thiệu Bạn là lập trình viên? hoặc có thể là ai đó khác 
 <script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
+  
+    <script src="https://manhnv.com/js/scripts.js"></script>
+  
+
 <script lang="javascript">
 window.onload = updateMinWidth;
 window.onresize = updateMinWidth;
@@ -497,4 +525,3 @@ $(document).ready(function() {
     
   </body>
 </html>
-
