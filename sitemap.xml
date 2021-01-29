@@ -3,22 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/tags/bypass-authen/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/tags/bypass-waf/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://manhnv.com/categories/</loc>
-    <lastmod>2021-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://manhnv.com/</loc>
-    <lastmod>2021-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://manhnv.com/2021/01/chi-mot-buoi-chieu-toi-da-chiem-quyen-dieu-khien-server-cua-8-website-nhu-the-nao/</loc>
-    <lastmod>2021-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://manhnv.com/tags/hacking/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/tags/oswe/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/categories/oswe/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/post/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/tags/rce/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/tags/</loc>
+    <lastmod>2021-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/2021/01/chi-mot-buoi-chieu-toi-da-chiem-quyen-dieu-khien-server-cua-8-website-nhu-the-nao/</loc>
     <lastmod>2021-01-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -29,26 +69,6 @@
   
   <url>
     <loc>https://manhnv.com/tags/laravel-rce/</loc>
-    <lastmod>2021-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://manhnv.com/tags/oswe/</loc>
-    <lastmod>2021-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://manhnv.com/post/</loc>
-    <lastmod>2021-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://manhnv.com/tags/rce/</loc>
-    <lastmod>2021-01-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://manhnv.com/tags/</loc>
     <lastmod>2021-01-16T00:00:00+00:00</lastmod>
   </url>
   

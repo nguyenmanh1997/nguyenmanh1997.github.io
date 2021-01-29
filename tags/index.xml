@@ -6,13 +6,49 @@
     <description>Recent content in Tags on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sat, 16 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bypass authen</title>
+      <link>https://manhnv.com/tags/bypass-authen/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/bypass-authen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bypass waf</title>
+      <link>https://manhnv.com/tags/bypass-waf/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/bypass-waf/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>hacking</title>
       <link>https://manhnv.com/tags/hacking/</link>
-      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://manhnv.com/tags/hacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OSWE</title>
+      <link>https://manhnv.com/tags/oswe/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/oswe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RCE</title>
+      <link>https://manhnv.com/tags/rce/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/tags/rce/</guid>
       <description></description>
     </item>
     
@@ -22,24 +58,6 @@
       <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://manhnv.com/tags/laravel-rce/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>OSWE</title>
-      <link>https://manhnv.com/tags/oswe/</link>
-      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://manhnv.com/tags/oswe/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RCE</title>
-      <link>https://manhnv.com/tags/rce/</link>
-      <pubDate>Sat, 16 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://manhnv.com/tags/rce/</guid>
       <description></description>
     </item>
     
