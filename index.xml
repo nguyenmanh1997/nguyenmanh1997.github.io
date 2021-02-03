@@ -62,7 +62,7 @@ Hôm nay - cũng như mọi ngày, tôi ngủ dậy, đánh răng rửa mặt, �
       <pubDate>Tue, 30 Jul 2019 08:47:03 +0700</pubDate>
       
       <guid>https://manhnv.com/copyrights/</guid>
-      <description>Bản quyền và cộng tác Toàn bộ nội dung trong trang manhnv.com, source code (trừ những nội dung trích dẫn) đều thuộc bản quyền của Nguyễn Văn Mạnh - Manhnv.
+      <description>Bản quyền và cộng tác Toàn bộ nội dung trong trang manhnv.com, source code (trừ những nội dung trích dẫn) đều thuộc bản quyền của Nguyễn Mạnh - Manhnv.
 Tôi rất mong kiến thức tôi viết trong blog của mình đến được với nhiều người. Tuy nhiên, tôi rất ghét bất kỳ một hình thức sao chép nào không trích dẫn nguồn. Trang web nào muốn đăng bài viết, trích dẫn bài viết của tôi cần nêu rõ tên blog (manhnv.</description>
     </item>
     
@@ -208,6 +208,15 @@ Giới thiệu Bạn là lập trình viên? hoặc có thể là ai đó khác 
       <guid>https://manhnv.com/2019/02/tuy-bien-messages-khi-mo-terminal-ubuntu-sao-cho-dep-va-doc/</guid>
       <description>Như các bạn đã biết ( nếu chưa biết thì mình nói cho mà biết ) đối với những ai sử dụng các hệ điều hành linux thì không thể thiếu “chương trình giao diện cửa sổ dòng lệnh” (command line interface), trong ubuntu thì có một chương trình có tên là “terminal”.
  Việc tại sao, vì sao hay why sử dụng “chương trình giao diện cửa sổ dòng lệnh” là điều không thể thiếu đối với hệ điều hành linux, thì mình xin được nhường lại cho các bạn tự tìm hiểu nhé.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://manhnv.com/donate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/donate/</guid>
+      <description></description>
     </item>
     
   </channel>
