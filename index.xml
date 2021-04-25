@@ -8,6 +8,18 @@
     <language>vi</language>
     <lastBuildDate>Sun, 25 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>[Cyber Apocalypse 2021]- Misc &#39;Build yourself in&#39; writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/</guid>
+      <description>Đề bài Cũng như mấy bài misc khác, bài này cũng chỉ cho 1 ip và port để có thể connect vào.
+Khi tôi connect vào và điền một vài thứ ngớ ngẩn vào để thăm dò cách hoạt động của server, thì tôi nhận được một thông báo lỗi như sau:
+Đúng vậy, đó là một chương trình chạy bằng python gồm một số thống tin như sau:
+ File python: /app/build_yourself_in.</description>
+    </item>
+    
+    <item>
       <title>[Cyber Apocalypse 2021]- Misc Alien Camp and Input as a Service writeup</title>
       <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-alien-camp-and-input-as-a-service-writeup/</link>
       <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>

