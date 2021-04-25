@@ -8,6 +8,17 @@
     <language>vi</language>
     <lastBuildDate>Sun, 25 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>[Cyber Apocalypse 2021]- Web Daas writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/</guid>
+      <description>1. Đề bài Đề bài cho một web như vầy, không có một chức năng gì hết và đây là một bài blackbox không có source code.
+Web black box
+2. Giải quyết Vì web không có chức năng nào khác ngoài cái trang welcome mặc định của framework laravel nằm lù lù ra đó. Nên tôi quyết định săm soi một lúc thì chợt phát hiện ra vài thứ hay hay.</description>
+    </item>
+    
+    <item>
       <title>[Cyber Apocalypse 2021]- Web emoji voting writeup</title>
       <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/</link>
       <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>

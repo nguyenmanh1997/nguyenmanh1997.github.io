@@ -8,34 +8,26 @@
 <meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="Manh NV">
 <meta name="keywords" content=", development, cyber security">
-<meta name="description" content="1. Đề bài Cho web có tên là “emoji voting”
-Source code emoji voting
-2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
-Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
-Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
+<meta name="description" content="1. Đề bài Đề bài cho một web như vầy, không có một chức năng gì hết và đây là một bài blackbox không có source code.
+Web black box
+2. Giải quyết Vì web không có chức năng nào khác ngoài cái trang welcome mặc định của framework laravel nằm lù lù ra đó. Nên tôi quyết định săm soi một lúc thì chợt phát hiện ra vài thứ hay hay.">
 
 
-<meta property="og:description" content="1. Đề bài Cho web có tên là “emoji voting”
-Source code emoji voting
-2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
-Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
-Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
+<meta property="og:description" content="1. Đề bài Đề bài cho một web như vầy, không có một chức năng gì hết và đây là một bài blackbox không có source code.
+Web black box
+2. Giải quyết Vì web không có chức năng nào khác ngoài cái trang welcome mặc định của framework laravel nằm lù lù ra đó. Nên tôi quyết định săm soi một lúc thì chợt phát hiện ra vài thứ hay hay.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Cyber Apocalypse 2021]- Web emoji voting writeup">
-<meta name="twitter:title" content="[Cyber Apocalypse 2021]- Web emoji voting writeup">
-<meta property="og:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
-<meta property="twitter:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+<meta property="og:title" content="[Cyber Apocalypse 2021]- Web Daas writeup">
+<meta name="twitter:title" content="[Cyber Apocalypse 2021]- Web Daas writeup">
+<meta property="og:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
+<meta property="twitter:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
 <meta property="og:site_name" content="Chia sẻ là niềm vui">
-<meta property="og:description" content="1. Đề bài Cho web có tên là “emoji voting”
-Source code emoji voting
-2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
-Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
-Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
-<meta name="twitter:description" content="1. Đề bài Cho web có tên là “emoji voting”
-Source code emoji voting
-2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
-Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
-Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
+<meta property="og:description" content="1. Đề bài Đề bài cho một web như vầy, không có một chức năng gì hết và đây là một bài blackbox không có source code.
+Web black box
+2. Giải quyết Vì web không có chức năng nào khác ngoài cái trang welcome mặc định của framework laravel nằm lù lù ra đó. Nên tôi quyết định săm soi một lúc thì chợt phát hiện ra vài thứ hay hay.">
+<meta name="twitter:description" content="1. Đề bài Đề bài cho một web như vầy, không có một chức năng gì hết và đây là một bài blackbox không có source code.
+Web black box
+2. Giải quyết Vì web không có chức năng nào khác ngoài cái trang welcome mặc định của framework laravel nằm lù lù ra đó. Nên tôi quyết định săm soi một lúc thì chợt phát hiện ra vài thứ hay hay.">
 <meta property="og:locale" content="vi">
 
   
@@ -71,8 +63,8 @@ Api với endpoint “/api/list” có nhận giá trị “order“ từ body c
 
 
 
-  <meta property="og:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png">
-  <meta property="twitter:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png">
+  <meta property="og:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/daas.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/daas.png">
 
 
 
@@ -82,14 +74,14 @@ Api với endpoint “/api/list” có nhận giá trị “order“ từ body c
   <meta property="twitter:image" content="https://manhnv.com/favicon.png">
 
 
-    <title>[Cyber Apocalypse 2021]- Web emoji voting writeup</title>
+    <title>[Cyber Apocalypse 2021]- Web Daas writeup</title>
 
     <link rel="icon" href="https://manhnv.com/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+    <link rel="canonical" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -295,7 +287,7 @@ logged_out_greeting="Hi! How can I help you?">
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      [Cyber Apocalypse 2021]- Web emoji voting writeup
+      [Cyber Apocalypse 2021]- Web Daas writeup
     </h1>
   
   
@@ -323,48 +315,36 @@ logged_out_greeting="Hi! How can I help you?">
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <h3 id="1-đềbài">1. Đề bài</h3>
-<p>Cho web có tên là “emoji voting”</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png"></p>
-<p>Source code emoji voting</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/source-code.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/source-code.png"></p>
+<p>Đề bài cho một web như vầy, không có một chức năng gì hết và đây là một bài blackbox không có source code.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/daas.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Daas/daas.png"></p>
+<p>Web black box</p>
 <h3 id="2-giảiquyết">2. Giải quyết</h3>
-<p>Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.</p>
-<p>Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/getEmojis.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/getEmojis.png"></p>
-<p>Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/select-database.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/select-database.png"></p>
-<p>Xác định ngay và luôn là SQL injection (Thực ra là SQLite injection).</p>
-<p>Vấn đề bây giờ là SQL injection với ORDER BY, nghe có vẻ khoai khoai, và tôi chọn câu lệnh để thực thi SQL injection là “CASE…WHEN”. Hiểu nôm na của câu lệnh này là “trong trường hợp như thế nào đó thì trả về cả gì đó”. Ví dụ: Khi bạn đọc bài của tôi, bạn sẽ thu về được kiến thức. =&gt; Đại loại thế.</p>
-<p>Trước tiên tôi phải thử xem api này đang hoạt động như thế nào, và trả về cái gì đã, nên tôi intercept bằng burpsuite. Giá trị api list trả về.</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/api-return.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/api-return.png"></p>
-<p>Vấn của tôi bây giờ là sẽ phải bruteforce flag, mà để bruteforce flag thì phải biết tên bảng chứa flag, vì trong code có một đoạn tạo bảng cho database như vầy.</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/create-table-flag.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/create-table-flag.png"></p>
-<p>Vậy là bảng chứa flag sẽ được tạo bằng cách cộng chuỗi “flag_” với một chuỗi random.</p>
-<hr>
-<p><strong>Ý tưởng:</strong> Tôi có 2 trường hợp để phân biệt câu lệnh đúng và câu lệnh sai.</p>
-<p>Khi tôi request với order là “id” thì kết quả trả về emoji có id = 1 sẽ ở vị trí đầu tiên trong json trả về.</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true.png"></p>
-<p>Khi tôi request với order là “count” thì kết quả trả về emoji có id = 3 sẽ ở vị trí đầu tiên trong json trả về.</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false.png"></p>
-<p>Như vậy sẽ thực hiện, khi câu lệnh đúng thì order “id”, khi câu lệnh sai thì order “count”.</p>
-<p>Như hình trên, tôi biết chữ cái đầu tiên của bảng chứa flag là “f”, vậy tôi kiểm chứng ý tưởng của tôi xem đúng không nhé.</p>
-<p>Thực hiện gửi request với body</p>
-<pre><code>{&quot;order&quot;:&quot;case when (SELECT substr(tbl_name,1,1) FROM sqlite_master  WHERE type='table' and tbl_name like 'flag_%')='f' then id else count end&quot;}
-</code></pre><p>Là một câu lệnh đúng nên kết quả trả về là</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true-with-payload.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true-with-payload.png"></p>
-<p>Thực hiện gửi request với body</p>
-<pre><code>{&quot;order&quot;:&quot;case when (SELECT substr(tbl_name,1,1) FROM sqlite_master  WHERE type='table' and tbl_name like 'flag_%')='l' then id else count end&quot;}
-</code></pre><p>Là một câu lệnh sai nên kết quả trả về là</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false-with-payload.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false-with-payload.png"></p>
-<hr>
-<p>Vậy tôi viết được poc để bruteforce tên bảng như sau</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-table-flag-name.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-table-flag-name.png"></p>
-<p>Poc get flag table name</p>
-<p>Sau khi có tên bảng là: <em>flag_aade53e551,</em> tôi tiến hành bruteforce flag với POC như sau.</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-flag.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-flag.png"></p>
-<p>Chạy và chờ kết quả thôi</p>
-<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/flag.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/flag.png"></p>
-<p><code>&gt; Flag là: CHTB{order_me_this_juicy_info}</code></p>
+<p>Vì web không có chức năng nào khác ngoài cái trang welcome mặc định của framework laravel nằm lù lù ra đó. Nên tôi quyết định săm soi một lúc thì chợt phát hiện ra vài thứ hay hay.</p>
+<p>Ngay tại góc dưới cùng bên phải có hiển thị version của laravel: Laravel v8.35.1 (PHP v7.4.16)</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/version.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Daas/version.png"></p>
+<p>Laravel v8.35.1 (PHP v7.4.16)</p>
+<p>Được rồi, có vẻ hay rồi đây, vì tôi chợt nhớ gần đây laravel có một lỗi có thể RCE được, nó có tên là:</p>
+<blockquote>
+<p>LARAVEL &lt;= V8.4.2 DEBUG MODE: REMOTE CODE EXECUTION</p>
+</blockquote>
+<p>Thì đó, trong tên có nói luôn kìa, là những version laravel 8.4.2 có khả năng gặp lỗi này. Cụ thể về lỗi này thì các bạn đọc ở đây nha: <a href="https://www.ambionics.io/blog/laravel-debug-rce">Laravel &lt;= v8.4.2 debug mode: Remote code execution (ambionics.io)</a></p>
+<p>Còn tôi giờ chỉ quan tâm chạy được để lấy flag thật nhanh thôi.</p>
+<blockquote>
+<p>Điểm cần lưu ý ở lỗi này của laravel là web chạy laravel đó phải đang bật debug. Vậy để chắc chắn là web được cho có bật debug hay không thì tôi thử thay vì vào web bằng phương thức GET, tôi chuyển nó thành POST (Tôi sử dụng burpsuite nha).</p>
+</blockquote>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/debug-mode.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Daas/debug-mode.png"></p>
+<p>Debug được bật</p>
+<p>Trước tiên là tìm exploit trên mạng và tải về nào.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/laravel-exploit.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Daas/laravel-exploit.png"></p>
+<p>Tạo file .phar với lệnh <em>find / -name “flag</em>”* để tìm file flag trên server nhé.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/find-flag-file.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Daas/find-flag-file.png"></p>
+<p>Tìm flag file</p>
+<p>Bây giờ thì tạo lại file .phar với lệnh <em>cat</em> để đọc file flag, sau đó là chạy exploit và lấy flag.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Daas/get-flag.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Daas/get-flag.png"></p>
+<p>Exploit get flag</p>
+<blockquote>
+<p>Flag là: CHTB{wh3n_7h3_d3bu663r_7urn5_4641n57_7h3_d3bu6633}</p>
+</blockquote>
 
               
             </div>
@@ -396,7 +376,7 @@ logged_out_greeting="Hi! How can I help you?">
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web Daas writeup">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -404,7 +384,7 @@ logged_out_greeting="Hi! How can I help you?">
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/" data-tooltip="[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/" data-tooltip="[Cyber Apocalypse 2021]- Web emoji voting writeup">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -422,19 +402,19 @@ logged_out_greeting="Hi! How can I help you?">
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -482,7 +462,7 @@ logged_out_greeting="Hi! How can I help you?">
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web Daas writeup">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
@@ -490,7 +470,7 @@ logged_out_greeting="Hi! How can I help you?">
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/" data-tooltip="[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/" data-tooltip="[Cyber Apocalypse 2021]- Web emoji voting writeup">
               
                   <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
                   <i class="fa fa-angle-right"></i>
@@ -508,19 +488,19 @@ logged_out_greeting="Hi! How can I help you?">
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -550,19 +530,19 @@ logged_out_greeting="Hi! How can I help you?">
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-emoji-voting-writeup.md%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-daas-writeup%2F">
           <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-emoji-voting-writeup.md%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-daas-writeup%2F">
           <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-emoji-voting-writeup.md%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-daas-writeup%2F">
           <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
         </a>
       </li>
@@ -658,9 +638,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/manhnv.com\/2021\/04\/cyber-apocalypse-2021-web-emoji-voting-writeup.md\/';
+          this.page.url = 'https:\/\/manhnv.com\/2021\/04\/cyber-apocalypse-2021-web-daas-writeup\/';
           
-            this.page.identifier = '\/2021\/04\/cyber-apocalypse-2021-web-emoji-voting-writeup.md\/'
+            this.page.identifier = '\/2021\/04\/cyber-apocalypse-2021-web-daas-writeup\/'
           
         };
         (function() {
