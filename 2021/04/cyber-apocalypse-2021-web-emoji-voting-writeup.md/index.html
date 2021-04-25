@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Manh NV">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="1. Đề bài Cho web có tên là “emoji voting”
+Source code emoji voting
+2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
+Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
+Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
+
+
+<meta property="og:description" content="1. Đề bài Cho web có tên là “emoji voting”
+Source code emoji voting
+2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
+Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
+Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Cyber Apocalypse 2021]- Web emoji voting writeup">
+<meta name="twitter:title" content="[Cyber Apocalypse 2021]- Web emoji voting writeup">
+<meta property="og:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+<meta property="twitter:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="1. Đề bài Cho web có tên là “emoji voting”
+Source code emoji voting
+2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
+Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
+Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
+<meta name="twitter:description" content="1. Đề bài Cho web có tên là “emoji voting”
+Source code emoji voting
+2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
+Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
+Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2021-04-25T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-04-25T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="ctf">
+    
+  
+  
+    
+      <meta property="article:tag" content="ctf">
+    
+      <meta property="article:tag" content="Cyber Apocalypse 2021">
+    
+      <meta property="article:tag" content="ctf web writeup">
+    
+      <meta property="article:tag" content="writeup">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/favicon.png">
+  <meta property="twitter:image" content="https://manhnv.com/favicon.png">
+
+
+    <title>[Cyber Apocalypse 2021]- Web emoji voting writeup</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    <meta property="fb:pages" content="447047472469512" />
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v9.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="fb-customerchat"
+  attribution="setup_tool"
+  page_id="447047472469512"
+theme_color="#20cef5"
+logged_in_greeting="Hi! How can I help you?"
+logged_out_greeting="Hi! How can I help you?">
+</div>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Manh NV</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/donate.html">
+    
+      <i class="sidebar-button-icon fa fa-usd"></i>
+      
+      <span class="sidebar-button-desc">Donate</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/manhnv.sec" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Cyber Apocalypse 2021]- Web emoji voting writeup
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-04-25T00:00:00Z">
+        
+  tháng 4 25, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/ctf">ctf</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h3 id="1-đềbài">1. Đề bài</h3>
+<p>Cho web có tên là “emoji voting”</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/Web-emoji-voting.png"></p>
+<p>Source code emoji voting</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/source-code.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/source-code.png"></p>
+<h3 id="2-giảiquyết">2. Giải quyết</h3>
+<p>Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.</p>
+<p>Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/getEmojis.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/getEmojis.png"></p>
+<p>Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/select-database.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/select-database.png"></p>
+<p>Xác định ngay và luôn là SQL injection (Thực ra là SQLite injection).</p>
+<p>Vấn đề bây giờ là SQL injection với ORDER BY, nghe có vẻ khoai khoai, và tôi chọn câu lệnh để thực thi SQL injection là “CASE…WHEN”. Hiểu nôm na của câu lệnh này là “trong trường hợp như thế nào đó thì trả về cả gì đó”. Ví dụ: Khi bạn đọc bài của tôi, bạn sẽ thu về được kiến thức. =&gt; Đại loại thế.</p>
+<p>Trước tiên tôi phải thử xem api này đang hoạt động như thế nào, và trả về cái gì đã, nên tôi intercept bằng burpsuite. Giá trị api list trả về.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/api-return.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/api-return.png"></p>
+<p>Vấn của tôi bây giờ là sẽ phải bruteforce flag, mà để bruteforce flag thì phải biết tên bảng chứa flag, vì trong code có một đoạn tạo bảng cho database như vầy.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/create-table-flag.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/create-table-flag.png"></p>
+<p>Vậy là bảng chứa flag sẽ được tạo bằng cách cộng chuỗi “flag_” với một chuỗi random.</p>
+<hr>
+<p><strong>Ý tưởng:</strong> Tôi có 2 trường hợp để phân biệt câu lệnh đúng và câu lệnh sai.</p>
+<p>Khi tôi request với order là “id” thì kết quả trả về emoji có id = 1 sẽ ở vị trí đầu tiên trong json trả về.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true.png"></p>
+<p>Khi tôi request với order là “count” thì kết quả trả về emoji có id = 3 sẽ ở vị trí đầu tiên trong json trả về.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false.png"></p>
+<p>Như vậy sẽ thực hiện, khi câu lệnh đúng thì order “id”, khi câu lệnh sai thì order “count”.</p>
+<p>Như hình trên, tôi biết chữ cái đầu tiên của bảng chứa flag là “f”, vậy tôi kiểm chứng ý tưởng của tôi xem đúng không nhé.</p>
+<p>Thực hiện gửi request với body</p>
+<pre><code>{&quot;order&quot;:&quot;case when (SELECT substr(tbl_name,1,1) FROM sqlite_master  WHERE type='table' and tbl_name like 'flag_%')='f' then id else count end&quot;}
+</code></pre><p>Là một câu lệnh đúng nên kết quả trả về là</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true-with-payload.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/true-with-payload.png"></p>
+<p>Thực hiện gửi request với body</p>
+<pre><code>{&quot;order&quot;:&quot;case when (SELECT substr(tbl_name,1,1) FROM sqlite_master  WHERE type='table' and tbl_name like 'flag_%')='l' then id else count end&quot;}
+</code></pre><p>Là một câu lệnh sai nên kết quả trả về là</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false-with-payload.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/false-with-payload.png"></p>
+<hr>
+<p>Vậy tôi viết được poc để bruteforce tên bảng như sau</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-table-flag-name.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-table-flag-name.png"></p>
+<p>Poc get flag table name</p>
+<p>Sau khi có tên bảng là: <em>flag_aade53e551,</em> tôi tiến hành bruteforce flag với POC như sau.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-flag.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/poc-get-flag.png"></p>
+<p>Chạy và chờ kết quả thôi</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/flag.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Cyber-Apocalypse-2021-Web-emoji-voting-writeup/flag.png"></p>
+<p><code>&gt; Flag là: CHTB{order_me_this_juicy_info}</code></p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf/">ctf</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/cyber-apocalypse-2021/">Cyber Apocalypse 2021</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf-web-writeup/">ctf web writeup</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/writeup/">writeup</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/" data-tooltip="[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://facebook.com/manhnv.sec">Manhnv</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/" data-tooltip="[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-emoji-voting-writeup.md%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-emoji-voting-writeup.md%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-emoji-voting-writeup.md%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Manh NV</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Viết blog dạo
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://manhnv.com/js/scripts.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2021\/04\/cyber-apocalypse-2021-web-emoji-voting-writeup.md\/';
+          
+            this.page.identifier = '\/2021\/04\/cyber-apocalypse-2021-web-emoji-voting-writeup.md\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

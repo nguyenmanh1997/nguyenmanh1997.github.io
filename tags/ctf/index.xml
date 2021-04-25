@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ctf on Chia sẻ là niềm vui</title>
+    <link>https://manhnv.com/tags/ctf/</link>
+    <description>Recent content in ctf on Chia sẻ là niềm vui</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi</language>
+    <lastBuildDate>Sun, 25 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Cyber Apocalypse 2021]- Web emoji voting writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/</guid>
+      <description>1. Đề bài Cho web có tên là “emoji voting”
+Source code emoji voting
+2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
+Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
+Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.</description>
+    </item>
+    
+  </channel>
+</rss>

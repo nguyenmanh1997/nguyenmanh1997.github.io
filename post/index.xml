@@ -6,7 +6,20 @@
     <description>Recent content in Posts on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Cyber Apocalypse 2021]- Web emoji voting writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-emoji-voting-writeup.md/</guid>
+      <description>1. Đề bài Cho web có tên là “emoji voting”
+Source code emoji voting
+2. Giải quyết Dạo quanh source code một vòng và tôi phát hiện ra một số thứ như vầy.
+Api với endpoint “/api/list” có nhận giá trị “order“ từ body của request (giá trị này người dùng kiểm soát được) và gửi tới function “getEmojis()” để truy vấn database
+Đi vào function “getEmojis()”, thì thấy câu truy vấn database được nối chuỗi, và không có filters hay encode gì cả.</description>
+    </item>
+    
     <item>
       <title>[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng</title>
       <link>https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/</link>
