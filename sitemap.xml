@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-alien-camp-writeup/</loc>
+    <lastmod>2021-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/</loc>
     <lastmod>2021-04-25T00:00:00+00:00</lastmod>
   </url>
@@ -39,6 +44,11 @@
   
   <url>
     <loc>https://manhnv.com/categories/ctf/</loc>
+    <lastmod>2021-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://manhnv.com/tags/ctf-misc-writeup/</loc>
     <lastmod>2021-04-25T00:00:00+00:00</lastmod>
   </url>
   

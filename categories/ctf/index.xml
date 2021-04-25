@@ -8,6 +8,18 @@
     <language>vi</language>
     <lastBuildDate>Sun, 25 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>[Cyber Apocalypse 2021]- Misc Alien Camp writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-alien-camp-writeup/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-alien-camp-writeup/</guid>
+      <description>Bài này đơn giản là cho một server với 1 port mở như vầy.
+Đây là yêu cầu của đề bài
+Khi connect vào server thì có các thông tin sau. Đơn giản và dễ hiểu thì là tính toán và gửi kết quả cho nó. Nó có tận 500 bài toán lận.
+Bài này thiên về kiểu viết code để tính toán, logic tý là ra nên khỏi phải giải thích nhiều.</description>
+    </item>
+    
+    <item>
       <title>[Cyber Apocalypse 2021]- Web Daas writeup</title>
       <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/</link>
       <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
