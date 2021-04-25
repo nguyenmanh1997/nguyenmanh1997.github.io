@@ -32,6 +32,21 @@ Api với endpoint “/api/list” có nhận giá trị “order“ từ body c
     </item>
     
     <item>
+      <title>[Cyber Apocalypse 2021]- Web MiniSTRyplace writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-ministryplace-writeup/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-ministryplace-writeup/</guid>
+      <description>1. Đề bài Đề bài cho một trang web như vầy
+Web MiniSTRyplace
+Và source code như vầy
+Source code MiniSTRyplace
+2. Giải quyết Nhìn vào hình source code bên trên, điều đầu tiên đập vào mắt là dòng code số 17.
+include(&#39;pages/&#39; . (isset($_GET[&#39;lang&#39;]) ? str_replace(&#39;../&#39;, &#39;&#39;, $_GET[&#39;lang&#39;]) : $lang[array_rand($lang)])); Đúng vậy, đoán ngay ra luôn là dạng LFI rồi.
+Có 1 điểm cần lưu ý ở đây, là giá trị của $_GET[‘lang’] sẽ bị replace chuỗi ‘.</description>
+    </item>
+    
+    <item>
       <title>[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng</title>
       <link>https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/</link>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
