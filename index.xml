@@ -47,6 +47,17 @@ Có 1 điểm cần lưu ý ở đây, là giá trị của $_GET[‘lang’] s�
     </item>
     
     <item>
+      <title>[Cyber Apocalypse 2021]- Web Starfleet writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/</guid>
+      <description>1. Đề bài Bài này cho một web như vầy.
+Cho luôn source code như vầy Vậy bài này lại là một bài review source code.
+2. Giải quyết Các bạn để ý thì ảnh trên, bài thi cho địa chỉ web, khi truy cập vào thì có chức năng enroll với input cần điền vào là một email. Đọc vào source code thì có luôn chức năng send mail.</description>
+    </item>
+    
+    <item>
       <title>[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng</title>
       <link>https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/</link>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>

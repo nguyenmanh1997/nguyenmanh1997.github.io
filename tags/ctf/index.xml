@@ -46,5 +46,16 @@ include(&#39;pages/&#39; . (isset($_GET[&#39;lang&#39;]) ? str_replace(&#39;../&
 Có 1 điểm cần lưu ý ở đây, là giá trị của $_GET[‘lang’] sẽ bị replace chuỗi ‘.</description>
     </item>
     
+    <item>
+      <title>[Cyber Apocalypse 2021]- Web Starfleet writeup</title>
+      <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-starfleet-writeup/</guid>
+      <description>1. Đề bài Bài này cho một web như vầy.
+Cho luôn source code như vầy Vậy bài này lại là một bài review source code.
+2. Giải quyết Các bạn để ý thì ảnh trên, bài thi cho địa chỉ web, khi truy cập vào thì có chức năng enroll với input cần điền vào là một email. Đọc vào source code thì có luôn chức năng send mail.</description>
+    </item>
+    
   </channel>
 </rss>
