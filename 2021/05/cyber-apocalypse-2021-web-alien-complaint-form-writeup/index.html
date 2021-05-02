@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Manh NV">
+<meta name="keywords" content=", manhnv, development, cyber security, hacker, CTF, CTF writeup">
+<meta name="description" content="1. Đề bài Đề bài web này 1 lần nữa lại là một bài review source code. Mình rất hứng thú với mấy bài review source code, vì có vẻ nó là sở trường của mình.
+Source code cho như dưới đây.
+2. Nào! Chúng ta cùng đục nó Khi dạo qua một vòng code thì mình thấy một file bot.js.
+Giải thích Ứng dụng sẽ dùng thư viện puppeteer để tạo một browser và thực hiện mở các đường dẫn như http://127.">
+
+
+<meta property="og:description" content="1. Đề bài Đề bài web này 1 lần nữa lại là một bài review source code. Mình rất hứng thú với mấy bài review source code, vì có vẻ nó là sở trường của mình.
+Source code cho như dưới đây.
+2. Nào! Chúng ta cùng đục nó Khi dạo qua một vòng code thì mình thấy một file bot.js.
+Giải thích Ứng dụng sẽ dùng thư viện puppeteer để tạo một browser và thực hiện mở các đường dẫn như http://127.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup">
+<meta name="twitter:title" content="[Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup">
+<meta property="og:url" content="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/">
+<meta property="twitter:url" content="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="1. Đề bài Đề bài web này 1 lần nữa lại là một bài review source code. Mình rất hứng thú với mấy bài review source code, vì có vẻ nó là sở trường của mình.
+Source code cho như dưới đây.
+2. Nào! Chúng ta cùng đục nó Khi dạo qua một vòng code thì mình thấy một file bot.js.
+Giải thích Ứng dụng sẽ dùng thư viện puppeteer để tạo một browser và thực hiện mở các đường dẫn như http://127.">
+<meta name="twitter:description" content="1. Đề bài Đề bài web này 1 lần nữa lại là một bài review source code. Mình rất hứng thú với mấy bài review source code, vì có vẻ nó là sở trường của mình.
+Source code cho như dưới đây.
+2. Nào! Chúng ta cùng đục nó Khi dạo qua một vòng code thì mình thấy một file bot.js.
+Giải thích Ứng dụng sẽ dùng thư viện puppeteer để tạo một browser và thực hiện mở các đường dẫn như http://127.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2021-05-02T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-05-02T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="ctf">
+    
+  
+  
+    
+      <meta property="article:tag" content="ctf">
+    
+      <meta property="article:tag" content="Cyber Apocalypse 2021">
+    
+      <meta property="article:tag" content="ctf web writeup">
+    
+      <meta property="article:tag" content="writeup">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.27.37.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.27.37.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/favicon.png">
+  <meta property="twitter:image" content="https://manhnv.com/favicon.png">
+
+
+    <title>[Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://manhnv.com/css/mystyle.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-128983514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    <meta property="fb:pages" content="447047472469512" />
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v9.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=289802794723623&autoLogAppEvents=1" nonce="mBBqfgRB"></script>
+
+
+<div class="fb-customerchat"
+  attribution="setup_tool"
+  page_id="447047472469512"
+theme_color="#20cef5"
+logged_in_greeting="Hi! How can I help you?"
+logged_out_greeting="Hi! How can I help you?">
+</div>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Manh NV</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/donate.html">
+    
+      <i class="sidebar-button-icon fa fa-usd"></i>
+      
+      <span class="sidebar-button-desc">Donate</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/manhnv.sec" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-05-02T00:00:00Z">
+        
+  tháng 5 2, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/ctf">ctf</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h2 id="1-đề-bài">1. Đề bài</h2>
+<p>Đề bài web này 1 lần nữa lại là một bài review source code. Mình rất hứng thú với mấy bài review source code, vì có vẻ nó là sở trường của mình.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.27.37.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.27.37.png"></p>
+<p>Source code cho như dưới đây.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.28.24.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.28.24.png"></p>
+<h2 id="2-nào-chúng-ta-cùng-đục-nó">2. Nào! Chúng ta cùng đục nó</h2>
+<p>Khi dạo qua một vòng code thì mình thấy một file <code>bot.js</code>.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.28.52.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.28.52.png"></p>
+<p><strong>Giải thích</strong> Ứng dụng sẽ dùng thư viện <code>puppeteer</code> để tạo một browser và thực hiện mở các đường dẫn như <code>http://127.0.0.1:1337</code> và <code>http://127.0.0.1:1337/list</code>, tuy nhiên điểm cần lưu ý là: Ở dòng 131 sau khi truy cập vào <code>http://127.0.0.1:1337</code> thì browser sẽ <code>setCookie</code> và trong cookies đó có chưa flag (dòng 21 đến 24). Và sau đó sẽ đi tiếp đến đường dẫn <code>http://127.0.0.1:1337/list</code>. Khi đã load được trang web thì browser sẽ đóng và datbase sẽ được <code>migrate</code> lại (tức là xóa đi dữ thêm mới vào, chỉ giữ lại giữ liệu khởi tạo DB) dòng 37, 38.</p>
+<p>Vậy qua đó, chúng ta cần làm rõ tiếp 2 điều:</p>
+<ol>
+<li>Hàm <code>purgeHumanEntries</code> đang được sử dụng (call) ở đâu?</li>
+<li><code>http://127.0.0.1:1337/list</code> (URI: /list) là chức năng gì, trả về cái gì?</li>
+</ol>
+<h3 id="21-đi-tìm-chân-lý">2.1 Đi tìm chân lý</h3>
+<p>Và tôi đã thấy nó trong file <code>routes/index.js</code>.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-index-first.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-index-first.png"></p>
+<ul>
+<li>Từ dòng 10 đến dòng 15 là chức năng của URI /list</li>
+<li>Dòng 23 là nơi gọi (call) đến function <code>purgeHumanEntries</code></li>
+</ul>
+<h4 id="211-tìm-hiểu-chức-năng-của-list">2.1.1 Tìm hiểu chức năng của /list</h4>
+<p>Đường dẫn chỉ cho phép truy cập từ local, thể hiện ở dòng 11. Nếu <code>request.ip != '127.0.0.1'</code> thì ứng dụng sẽ trả về <code>Only localhost is allowed</code>. Nhớ lại bên trên, chúng ta đã có một browser có truy cập đến đường dẫn <code>/list</code> này và browser do ứng dụng tạo ra nên nó là truy cập từ local -&gt; Chúng ta tìm hiểu làm sao để có thể thực thi hàm <code>purgeHumanEntries</code> nữa là ăn chắc rồi.</p>
+<p>Nếu truy đường dẫn bằng local thì ứng dụng sẽ render file <code>list.html</code>. Chúng ta xem xét file <code>list.html</code>.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-list-html.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-list-html.png"></p>
+<p><code>list.html</code> chỉ là một file html bình thường, tuy nhiên tôi đã thấy nó sử dụng file javascript <code>list.js</code> ở dòng 42. Tôi tiếp tục tìm hiểu xem trong đó có gì không?</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-list-js.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-list-js.png"></p>
+<p>Và &lsquo;tôi đã thấy cái gì đó, điều làm tôi điên lên vì nó&rsquo;. Tôi đã thấy từ dòng 1 đến dòng 15, code javascript dùng để render html danh sách <code>feedback</code>, và sử dụng <code>${}</code> - Tôi đã nghĩ ngay đến XSS.</p>
+<p>Tuy nhiên ở file <code>list.html</code> dòng số 6. Chúng ta có thể thấy có dòng code.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Content-Security-Policy&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;default-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;none&#39;; style-src &#39;self&#39; https://fonts.googleapis.com; font-src &#39;self&#39; https://fonts.gstatic.com&#34;</span>&gt;
+</code></pre></div><p>Như vậy, đối với file <code>list.html</code> hay nói cách khác <code>/list</code> chỉ có thể chạy được javascript được tải từ cùng một tên miền qua tham số: <code>default-src 'self';</code>. Các bạn có thể tìm hiểu rõ hơn về CSP ở đây <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP</a></p>
+<p>Nhưng thật may mắn khi có thể thấy từ dòng 17-29 của file <code>list.js</code> có khởi tạo và sử dụng jsonp. JsonP là gì thì các bạn tham khảo: <a href="https://www.w3schools.com/js/js_json_jsonp.asp">https://www.w3schools.com/js/js_json_jsonp.asp</a> . Thứ tôi quan tâm trong bài này là JSONP có thể <code>Creating a Dynamic Script Tag</code>. Vậy thử xem nó hoạt động như nào nha.</p>
+<p>Source code của <code>/api/jsonp</code> sẽ lấy callback từ query param cùng với list feedback từ trong database và trả về với format</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">reply</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">callback</span><span style="color:#e6db74">}</span><span style="color:#e6db74">(</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">feedback</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">)`</span>);
+</code></pre></div><p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-jsonp.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/source-code-jsonp.png"></p>
+<p>Đây là kết quả khi chạy /api/jsonp</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/jsonp.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/jsonp.png"></p>
+<p>Và chúng ta thấy, trong kết quả trả về vùng khoanh tròn màu đỏ là callback, còn lại là danh sách feedback. Vì callback được lấy từ query param nên ta có thể thử kiểm soát nó.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/kiem-soat-callback.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/kiem-soat-callback.png"></p>
+<p>Chúng ta thấy, <code>/api/jsonp</code> được call trong file <code>list.js</code>, là nếu như kết quả nó trả về là mã javascript thì sao? Thì tất nhiên là nó có thể thực thi được, đúng không? Vậy để cho kết quả trả về là mã javascript hợp lệ thì tôi thử thêm <code>//</code> để comment đi các dữ liệu phía sau.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/comment-jsonp.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/comment-jsonp.png"></p>
+<p>Để chứng minh điều này đúng, tôi đã thử tạo 1 file html và chạy nó lên như sau:</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/alert.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/alert.png"></p>
+<p>Tuyệt vời, nó đã chạy đúng với suy nghĩ của tôi.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/alert-run.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/alert-run.png"></p>
+<p>Tuy nhiên, vì <code>/api/json</code> được call trong <code>list.js</code>, mà <code>list.js</code> lại được sử dụng trong <code>list.html</code>, tiếp tục <code>list.html</code> được trả về khi đi tới đường dẫn <code>/list</code>. Vậy chúng ta có thể sử dụng <code>/list?callback={payload javascript}</code> để kiểm soát <code>/api/jsonp</code> gọi trong nó. Để chứng minh điều này, tôi đã dựng lại source code dưới local và thử.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/alert-success.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/alert-success.png"></p>
+<p><strong>Kết luận sau khi đi hết 2.1.1:</strong></p>
+<ul>
+<li>Chức năng <code>/list</code> được <code>bot</code> gọi tới</li>
+<li>Chức năng <code>/list</code> có injection được html tag</li>
+<li>Chức năng <code>/api/jsonp?callback=?</code> có thể tạo ra mã javascript tùy ý bằng param <code>callback</code></li>
+<li>Chức năng <code>/list</code> có thể thực thi mã javascript tùy ý bằng cách thêm param <code>callback</code></li>
+</ul>
+<h4 id="212-tìm-hiểu-nơi-call-purgehumanentries">2.1.2 Tìm hiểu nơi call <code>purgeHumanEntries</code></h4>
+<p>Như đề bài ta thấy trang web có chức năng submit feedback như vầy, khi nhập vào form và bấm submit thì sẽ được call tới <code>/api/submit</code></p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.27.37.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.27.37.png"></p>
+<p>Tôi thấy chức năng <code>purgeHumanEntries</code> được sử dụng trong file <code>routes/index.js</code> và được sử dụng trong chức năng <code>/api/submit</code></p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/purgeHumanEntries.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/purgeHumanEntries.png"></p>
+<p><strong>Giải thích qua cách hoạt động một xíu:</strong> Biến <code>complaint</code> được lấy từ <code>request.body</code> và sẽ được lưu vào database thông qua hàm <code>db.addFeedback(complaint)</code>, khi lưu vào database xong thì bot sẽ được call với hàm <code>bot.purgeHumanEntries(db)</code>. Vậy là chúng ta có thể kiểm soát <code>complaint</code>. Bây giờ đi sâu vào 2 function là <code>db.addFeedback(complaint)</code>.</p>
+<p>Với <code>db.addFeedback(complaint)</code>. <code>complaint</code> sẽ được thêm vào table <code>feedback</code> trong database.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/add-feedback.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/add-feedback.png"></p>
+<p><strong>Như ta đã biết phía trên, thì database feedback được lấy ra vào hiển thị ở URI <code>/list</code></strong></p>
+<h3 id="3-kết-luận-luồng-suy-nghĩ-và-tạo-payload">3. Kết luận luồng suy nghĩ và tạo payload</h3>
+<h4 id="31-kết-luận-suy-nghĩ">3.1 Kết luận suy nghĩ</h4>
+<p>Vậy qua các bước đi vòng vòng vòng tìm kiếm các thứ, tôi tạm hiểu web đang hoạt động như sau:</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/IMG_2077.jpg" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/IMG_2077.jpg"></p>
+<p>Suy nghĩ về exploit:</p>
+<ol>
+<li>Tạo một payload javascript steal cookie để inject form submit feedback bằng chức năng <code>/api/jsonp</code></li>
+<li>Payload javascript sẽ được lưu vào database</li>
+<li>Bot sẽ đi tới <code>/list</code> và javascript sẽ được thực thi</li>
+<li>Có được cookie chứa flag</li>
+</ol>
+<h4 id="32-tạo-payload">3.2 Tạo payload</h4>
+<p>Đến đây, tôi nhớ đến lại chức năng của bot như sau:</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.28.52.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.28.52.png"></p>
+<p>Bot chỉ đi tới <code>http://127.0.0.1:1337/list</code>, vậy thì làm sao tôi có thể thêm <code>?callback</code> vào sau để mà thực thi javascript?</p>
+<p>Câu trả lời là, ở <code>/list</code> chúng ta có thể inject html tag, nên tôi sử dụng thẻ <code>iframe</code> để làm điều đó. Tôi có <code>iframe</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">iframe</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/list?callback={payload javascript}&#34;</span>&gt;&lt;/<span style="color:#f92672">iframe</span>&gt;
+</code></pre></div><p>Như vậy, khi bot đi tới <code>/list</code> thì <code>iframe</code> sẽ load <code>/list?callback={payload javascript}</code>, như vậy payload javascript đã được thực thi trong <code>iframe</code>.</p>
+<p><strong>Đoạn này giải thích ngắn gọn một điểm lưu ý như vầy:</strong> Khi tôi cố tạo payload là 1 mã javascript call ra domain của tôi kèm theo cookie, nhưng đã không thành công vì challenge này đã chặn call ra internet. Vì vậy tôi đã phải bỏ qua suy nghĩ đó, và tìm cách khác để steal cookie.</p>
+<p>Vậy thì phải làm gì tiếp theo?</p>
+<p>Nhìn lại bên trên, chúng ta có <code>/api/jsonp</code> sẽ trả về danh sách <code>feedback</code> lấy được từ trong database. Đến đây đã có ý tưởng là tạo payload javascript call <code>/api/submit</code> để thêm cookies vào database <code>feedback</code>, và sau đó đi tới <code>/api/jsonp</code> để xem flag. Ý tưởng hoàn hảo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;/api/submit&#34;</span>,{<span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {<span style="color:#e6db74">&#39;Accept&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;application/json&#39;</span>,<span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;application/json&#39;</span>},<span style="color:#a6e22e">method</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;POST&#34;</span>,<span style="color:#a6e22e">body</span><span style="color:#f92672">:</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({<span style="color:#a6e22e">complaint</span><span style="color:#f92672">:</span> document.<span style="color:#a6e22e">cookie</span>})});
+</code></pre></div><p>Nhưng đến đây, tôi lại gặp vấn đề là sau khi bot đi đến <code>/list</code> thì ứng dụng sẽ <code>migrate</code> lại database, vậy thì cookies khi thêm vào sẽ bị xóa đi thì làm sao có thể xem được khi vào <code>/api/jsonp</code>. Tôi mở file <code>bot.js</code> và xem lại một lần nữa và chợt nhận điều đặc biệt.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/bot-await.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/bot-await.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">close</span>();
+<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">migrate</span>();
+</code></pre></div><p>Như vậy là, ứng dụng sẽ đợi cho <code>browser</code> đóng thì mới thực hiện <code>migrate</code> database. Thể hiện qua việc sử dụng hàm <code>await</code> (Nếu chưa biết <code>await</code> là gì thì tìm hiểu <code>await trong nodejs</code> nhé các bạn.). Đến đây lại nảy lên ý tưởng, vậy tôi thử làm cho browser đừng đóng lại, vậy là có thể đọc được flag trong database rồi. Đơn giản chỉ việc thêm <code>alert(1)</code> phía sau đoạn payload javascript submit là xong.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;/api/submit&#34;</span>,{<span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {<span style="color:#e6db74">&#39;Accept&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;application/json&#39;</span>,<span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;application/json&#39;</span>},<span style="color:#a6e22e">method</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;POST&#34;</span>,<span style="color:#a6e22e">body</span><span style="color:#f92672">:</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({<span style="color:#a6e22e">complaint</span><span style="color:#f92672">:</span> document.<span style="color:#a6e22e">cookie</span>})});<span style="color:#a6e22e">alert</span>(<span style="color:#ae81ff">1</span>)<span style="color:#75715e">//
+</span></code></pre></div><h4 id="33-thử-payload-cuối-cùng">3.3 Thử payload cuối cùng</h4>
+<p>Vậy payload cuối cùng hoàn chỉnh là</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">iframe</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/list?callback=
+</span><span style="color:#e6db74">fetch(&#34;</span><span style="color:#f92672">/</span><span style="color:#a6e22e">api</span><span style="color:#f92672">/</span><span style="color:#a6e22e">submit</span><span style="color:#e6db74">&#34;,{headers: {&#39;Accept&#39;:&#39;application/json&#39;,&#39;Content-Type&#39;:&#39;application/json&#39;},method:&#34;</span><span style="color:#a6e22e">POST</span><span style="color:#e6db74">&#34;,body:JSON.stringify({complaint: document.cookie})});alert(1)//&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/iframe&gt;</span>
+</code></pre></div><p>Thử nó thôi, submit payload vào form.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.37.47.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.37.47.png"></p>
+<p>Đi tới đường dẫn <code>/api/jsonp</code>, và lấy flag nào.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.38.16.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Alien-complaint-form/Screen_Shot_2021-04-24_at_23.38.16.png"></p>
+<p>Flag là: CHTB{CSP_4nd_Js0np_d0_n0t_alw4ys_g3t_al0ng}</p>
+<h3 id="kết-luận-cuối-cùng">Kết luận cuối cùng.</h3>
+<p>Bài CTF thôi nhưng cũng phải áp dụng cả một chuỗi lỗi để có thể khai thác thành công, một bài khá là hay.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf/">ctf</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/cyber-apocalypse-2021/">Cyber Apocalypse 2021</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf-web-writeup/">ctf web writeup</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/writeup/">writeup</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+    
+        <nav >
+          <ul class="post-actions post-action-nav">
+            
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                  </a>
+              </li>
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Misc &#39;Build yourself in&#39; writeup">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+              </li>
+            
+          </ul>
+        </nav>
+      <ul class="post-actions post-action-share" >
+        
+          <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+              <i class="fa fa-share-alt"></i>
+            </a>
+          </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/">
+                <i class="fa fa-facebook-official"></i>
+              </a>
+            </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          
+        
+        
+        
+            
+            
+            
+        <li class="post-action">
+            <a class="post-action-btn btn btn--default" href="#post-comments">
+                <i class="fa fa-comment-o"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default" href="#">
+          
+            <i class="fa fa-list"></i>
+          </a>
+        </li>
+      </ul>
+    
+  </div>
+  
+            <div id="post-comments">
+                
+                
+
+                <div class="fb-comments" data-href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/" data-width="100%" data-numposts="5"></div>
+                
+            </div>
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://manhnv.com">Manhnv</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+    
+        <nav >
+          <ul class="post-actions post-action-nav">
+            
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                  </a>
+              </li>
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/04/cyber-apocalypse-2021-misc-build-yourself-in-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Misc &#39;Build yourself in&#39; writeup">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+              </li>
+            
+          </ul>
+        </nav>
+      <ul class="post-actions post-action-share" >
+        
+          <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+              <i class="fa fa-share-alt"></i>
+            </a>
+          </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/">
+                <i class="fa fa-facebook-official"></i>
+              </a>
+            </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          
+        
+        
+        
+            
+            
+            
+        <li class="post-action">
+            <a class="post-action-btn btn btn--default" href="#post-comments">
+                <i class="fa fa-comment-o"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default" href="#">
+          
+            <i class="fa fa-list"></i>
+          </a>
+        </li>
+      </ul>
+    
+  </div>
+  
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F05%2Fcyber-apocalypse-2021-web-alien-complaint-form-writeup%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F05%2Fcyber-apocalypse-2021-web-alien-complaint-form-writeup%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Manh NV</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Viết blog dạo
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://manhnv.com/js/scripts.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

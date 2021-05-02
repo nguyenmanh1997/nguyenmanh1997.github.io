@@ -6,7 +6,19 @@
     <description>Recent content in ctf web writeup on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 25 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/ctf-web-writeup/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/ctf-web-writeup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup</title>
+      <link>https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/</link>
+      <pubDate>Sun, 02 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/</guid>
+      <description>1. Đề bài Đề bài web này 1 lần nữa lại là một bài review source code. Mình rất hứng thú với mấy bài review source code, vì có vẻ nó là sở trường của mình.
+Source code cho như dưới đây.
+2. Nào! Chúng ta cùng đục nó Khi dạo qua một vòng code thì mình thấy một file bot.js.
+Giải thích Ứng dụng sẽ dùng thư viện puppeteer để tạo một browser và thực hiện mở các đường dẫn như http://127.</description>
+    </item>
+    
     <item>
       <title>[Cyber Apocalypse 2021]- Web Daas writeup</title>
       <link>https://manhnv.com/2021/04/cyber-apocalypse-2021-web-daas-writeup/</link>
