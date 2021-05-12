@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.1 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="Manh NV">
+<meta name="keywords" content=", manhnv, development, cyber security, hacker, CTF, CTF writeup">
+<meta name="description" content="Chào các bạn đã quay trở lại với chanel youtube của mình!
+Ý lộn, sửa
+Chào các bạn đã quay trở lại với blog của mình manhnv.com.
+Cũng đã lâu rồi, được hẳn 1 tuần rồi mình chưa ra bài viết nào vì mình hết ý tưởng viết bài rồi (sad x3000). Nửa đêm vỗ gối ruột đau như cắt, nước mắt đầm đìa, chỉ hận không có nhiều ý tưởng hơn để viết thật nhiều bài cho các bạn đọc cho vui, nhất là dịp covid này thì phải có bài mới cho mọi người đọc đỡ buồn đúng không nào.">
+
+
+<meta property="og:description" content="Chào các bạn đã quay trở lại với chanel youtube của mình!
+Ý lộn, sửa
+Chào các bạn đã quay trở lại với blog của mình manhnv.com.
+Cũng đã lâu rồi, được hẳn 1 tuần rồi mình chưa ra bài viết nào vì mình hết ý tưởng viết bài rồi (sad x3000). Nửa đêm vỗ gối ruột đau như cắt, nước mắt đầm đìa, chỉ hận không có nhiều ý tưởng hơn để viết thật nhiều bài cho các bạn đọc cho vui, nhất là dịp covid này thì phải có bài mới cho mọi người đọc đỡ buồn đúng không nào.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thử học làm hacker | Hack tài khoản ngân hàng chứa hơn 66996 USD">
+<meta name="twitter:title" content="Thử học làm hacker | Hack tài khoản ngân hàng chứa hơn 66996 USD">
+<meta property="og:url" content="https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/">
+<meta property="twitter:url" content="https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/">
+<meta property="og:site_name" content="Chia sẻ là niềm vui">
+<meta property="og:description" content="Chào các bạn đã quay trở lại với chanel youtube của mình!
+Ý lộn, sửa
+Chào các bạn đã quay trở lại với blog của mình manhnv.com.
+Cũng đã lâu rồi, được hẳn 1 tuần rồi mình chưa ra bài viết nào vì mình hết ý tưởng viết bài rồi (sad x3000). Nửa đêm vỗ gối ruột đau như cắt, nước mắt đầm đìa, chỉ hận không có nhiều ý tưởng hơn để viết thật nhiều bài cho các bạn đọc cho vui, nhất là dịp covid này thì phải có bài mới cho mọi người đọc đỡ buồn đúng không nào.">
+<meta name="twitter:description" content="Chào các bạn đã quay trở lại với chanel youtube của mình!
+Ý lộn, sửa
+Chào các bạn đã quay trở lại với blog của mình manhnv.com.
+Cũng đã lâu rồi, được hẳn 1 tuần rồi mình chưa ra bài viết nào vì mình hết ý tưởng viết bài rồi (sad x3000). Nửa đêm vỗ gối ruột đau như cắt, nước mắt đầm đìa, chỉ hận không có nhiều ý tưởng hơn để viết thật nhiều bài cho các bạn đọc cho vui, nhất là dịp covid này thì phải có bài mới cho mọi người đọc đỡ buồn đúng không nào.">
+<meta property="og:locale" content="vi">
+
+  
+    <meta property="article:published_time" content="2021-05-12T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2021-05-12T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="security">
+    
+  
+  
+    
+      <meta property="article:tag" content="security">
+    
+      <meta property="article:tag" content="hacking">
+    
+      <meta property="article:tag" content="pentest web">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/bank-account.png">
+  <meta property="twitter:image" content="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/bank-account.png">
+
+
+
+
+
+  <meta property="og:image" content="https://manhnv.com/favicon.png">
+  <meta property="twitter:image" content="https://manhnv.com/favicon.png">
+
+
+    <title>Thử học làm hacker | Hack tài khoản ngân hàng chứa hơn 66996 USD</title>
+
+    <link rel="icon" href="https://manhnv.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://manhnv.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://manhnv.com/css/mystyle.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-128983514-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    <meta property="fb:pages" content="447047472469512" />
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v9.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=289802794723623&autoLogAppEvents=1" nonce="mBBqfgRB"></script>
+
+
+<div class="fb-customerchat"
+  attribution="setup_tool"
+  page_id="447047472469512"
+theme_color="#20cef5"
+logged_in_greeting="Hi! How can I help you?"
+logged_out_greeting="Hi! How can I help you?">
+</div>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://manhnv.com/">Chia sẻ là niềm vui</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://manhnv.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://manhnv.com/#about">
+          <img class="sidebar-profile-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+        </a>
+        <h4 class="sidebar-profile-name">Manh NV</h4>
+        
+          <h5 class="sidebar-profile-bio">Chia sẻ là niềm vui</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/donate.html">
+    
+      <i class="sidebar-button-icon fa fa-usd"></i>
+      
+      <span class="sidebar-button-desc">Donate</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Trang chủ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Danh mục</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Thẻ thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Lưu trữ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Thông tin</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://manhnv.com/copyrights">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-copyright"></i>
+      
+      <span class="sidebar-button-desc">Copyrights</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/nguyenmanh1997" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://facebook.com/manhnv.sec" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCEY3DBfSDupbSG96jfcSDwQ?sub_confirmation=1" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">Youtube</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Thử học làm hacker | Hack tài khoản ngân hàng chứa hơn 66996 USD
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-05-12T00:00:00Z">
+        
+  tháng 5 12, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>mục</span>
+    
+      <a class="category-link" href="https://manhnv.com/categories/security">security</a>
+    
+  
+
+     | 
+    <a href="https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/#post-comments">
+    <i class="fa fa-comments-o" aria-hidden="true"></i>
+    <span class="fb-comments-count" data-href="https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/"></span>
+</a>
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Chào các bạn đã quay trở lại với chanel youtube của mình!</p>
+<p>Ý lộn, sửa</p>
+<p>Chào các bạn đã quay trở lại với blog của mình <code>manhnv.com</code>.</p>
+<p>Cũng đã lâu rồi, được hẳn 1 tuần rồi mình chưa ra bài viết nào vì mình hết ý tưởng viết bài rồi (<strong>sad x3000</strong>). <code>Nửa đêm vỗ gối ruột đau như cắt, nước mắt đầm đìa, chỉ hận không có nhiều ý tưởng hơn để viết thật nhiều bài cho các bạn đọc cho vui</code>, nhất là dịp covid này thì phải có bài mới cho mọi người đọc đỡ buồn đúng không nào.</p>
+<p>Đó, thì cũng qua 1 tuần (6-7 đêm vỗ gối, nước mắt đầm đìa) thì hôm nay mình cũng có một ý tưởng mới để viết cho các bạn một bài đọc cho qua những ngày tháng covid nhé.</p>
+<p>Chúng ta bắt đầu thôi nhỉ! :D</p>
+<p>Lưu ý: Bài này có thể chỉ phù hợp với những bạn nào chưa biết gì về hack và đang muốn biết là để học hack thì học ở đâu, nên những cao thủ xin bỏ qua bài này nhé :D</p>
+<h2 id="đầu-tiên-vậy-thì-hack-là-gì-hacker-là-gì">Đầu tiên, vậy thì hack là gì? Hacker là gì?</h2>
+<p>Thực ra thì câu hỏi này có vẻ quá dư thừa trong bài này khi mà trên mạng biết bao nhiêu bài viết giải thích <code>Hack là gì?</code> hay <code>Hacker là gì?</code>, &hellip; các bạn chịu search google phát là ra hàng triệu kết quả tiếng Việt có, tiếng Anh có.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/hack-la-gi.png" alt="Hack là gì?" title="Hack là gì?"></p>
+<p>Nhưng, để tìm hiểu về hack thì cũng nên biết hack là gì, nên để hiểu đơn giản thì hack là: <code>Hack là việc lợi dụng những lỗ hổng bảo mật can thiệp một cách trái phép vào phần mềm, phần cứng, máy tính, hệ thống máy tính, mạng máy tính nhằm thay đổi các chức năng vốn có của nó.</code> - Nguồn: <a href="https://indianembassy-tm.org">https://indianembassy-tm.org</a></p>
+<p>Hacker là gì?  <code>Hacker là những người sử dụng các kỹ năng (lập trình, phần mềm, phần cứng, hệ thống mạng…) đồng thời lợi dụng những lỗ hổng bảo mật để can thiệp một cách trái phép vào phần mềm, phần cứng, máy tính, hệ thống máy tính, mạng máy tính nhằm thay đổi các chức năng vốn có của nó theo ý thích của bản thân mình.</code> - <a href="https://indianembassy-tm.org">https://indianembassy-tm.org</a></p>
+<p>Vậy là các bạn đã hiểu rõ sơ sơ về khái niệm rồi giờ chúng ta đi vào vấn đề chính là <code>Thử thách một ngày làm hacker cho người mới | Hack tài khoản ngân hàng chứa hơn 66996 USD</code>.</p>
+<h2 id="hack-hack-hack">Hack, Hack, hack</h2>
+<p>Chuyện là, mình có tìm ra được một website <code>https://www.hacksplaining.com/</code> này khá là hay, giúp các bạn có thể tập tập tành, đóng vai một hacker được thỏa sức học hỏi các lỗ hổng cơ bản nhất để có một cái nhìn nhất định về hack.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/hacksplaining.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Thế thì website này có gì vui?</p>
+<p>Trong đây có rất nhiều bài hướng dẫn về rất rất nhiều lỗi mà để có thể là một hacker các bạn phải biết.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/vuln1.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/vuln2.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Các lỗ hổng này đều dựa trên <code>OWASP TOP 10</code>.
+<code>Each year OWASP (the Open Web Application Security Project) publishes the top ten security vulnerabilities. It represents a broad consensus about the most critical security risks to web applications. Click through on the lessons below to learn more about how to protect against each security risk.</code></p>
+<p>Về cơ bản thì các bạn vào đây, sẽ được học về cách khai thác cũng như biết được vì sao sinh ra các lỗi bảo mật đó. Các bạn sẽ được dạy <code>step by step</code>, nên việc một bạn mới muốn tìm hiểu về hack có thể rất dễ để nắm bắt và làm theo.</p>
+<h2 id="thử-hack-tài-khoản-ngân-hàng-chứa-hơn-66996-usd">Thử hack tài khoản ngân hàng chứa hơn 66996 USD</h2>
+<p>Để hình dung cho các bạn cách mà <code>hacksplaining</code> hướng đẫn tìm hiểu về các lỗi bảo mật thì mình sẽ chọn đại một cái để làm cho các bạn xem qua.</p>
+<p>Ở đây, mình chọn lỗi <code>sql injection</code> - một lỗi kinh điển nhất mà cho đến nay nó vẫn đang còn xuất hiện rất nhiều.</p>
+<p>Khi chọn vào thì đầu tiên các bạn sẽ thấy các step và một application có lỗi bảo mật (ở đây được mô phỏng là một application của Bank) như khoanh đỏ trong hình.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/sql-injection.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Bấm next, các bạn sẽ thấy hiển thị một khung logs - Đây là khung mô phỏng lại logs khi mà application chạy.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/logs-sqli.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Tiếp theo, chúng ta được gợi ý là đăng nhập vào một tài khoản.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/login.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Tuy nhiên, khi đăng nhập vào thì được thông báo <code>Unknown email or password.</code> và một hướng dẫn kêu thử đăng nhập lại nhưng mật khẩu lần này thêm dấu <code>'</code> và phía sau. Tôi thử làm theo.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/login-fail.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Sau khi đăng nhập như gợi ý, thì có 2 thứ ta có thể thấy được:</p>
+<ul>
+<li>Được gợi ý là ứng dụng đã crasshed</li>
+<li>Nhìn vào khung logs sẽ thấy có logs của SQL bị lỗi</li>
+</ul>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/application-crashed.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Bấm tiếp tục để xem, thì chúng ta nhận được gợi ý rằng, với thông báo lỗi trong logs và hãy suy nghĩ một câu lệnh hoàn chỉnh trong ứng dụng sẽ là như hình.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/code-sqli.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+  <span style="color:#66d9ef">FROM</span> users
+ <span style="color:#66d9ef">WHERE</span> email <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user@gmail.com&#39;</span>
+   <span style="color:#66d9ef">AND</span> pass  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;password&#39;&#39; LIMIT 1
+</span></code></pre></div><p>Đây chính là một lỗi sql injection. Tiếp theo chúng ta sẽ được gợi ý cách khai thác là thử đăng nhập với mật khẩu là <code>' or 1=1;--</code></p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/exploit.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Câu lệnh SQL bây giờ luôn luôn đúng như sau:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+  <span style="color:#66d9ef">FROM</span> users
+ <span style="color:#66d9ef">WHERE</span> email <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user@gmail.com&#39;</span>
+   <span style="color:#66d9ef">AND</span> pass  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#66d9ef">or</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;<span style="color:#75715e">--&#39; LIMIT 1
+</span></code></pre></div><p>Thử đăng nhập lại, bây giờ đã đăng nhập thành công.</p>
+<p><img src="https://manhnv.com/images/posts/hacking/thu-thach-mot-ngay-lam-hacker-cho-nguoi-moi/login-success.png" alt="hacksplaining" title="hacksplaining.png"></p>
+<p>Như vậy chúng ta đã có thể đăng nhập vào một tài khoản ngân hàng có chứa <code>66996.4 USD</code> mà không cần biết mật khẩu của tài khoản đó.</p>
+<h2 id="giải-thích-về-câu-lệnh">Giải thích về câu lệnh</h2>
+<p>Trong ví dụ trên, chúng ta có thể tưởng tượng ra source code của ứng dụng đang được viết như vầy.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">username</span>; <span style="color:#75715e">// Lấy từ form bạn nhập vào
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">password</span>; <span style="color:#75715e">// Lấy từ form bạn nhập vào
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sql</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT * FROM users WHERE email = &#39;&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39; AND pass  = &#39;&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;LIMIT 1&#34;</span>;
+
+<span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">query</span>(<span style="color:#a6e22e">sql</span>);
+</code></pre></div><p>Vậy khi đăng nhập một cách bình thường là <code>username=user@email.com</code> và <code>password=password</code>, thì câu lệnh SQL sẽ là:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+  <span style="color:#66d9ef">FROM</span> users
+ <span style="color:#66d9ef">WHERE</span> email <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user@gmail.com&#39;</span>
+   <span style="color:#66d9ef">AND</span> pass  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;password&#39;</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>Khi câu lệnh này được truy vấn vào database, vì <code>password=password</code> không phải là của tài khoản <code>user@email.com</code> nên sẽ được database trả về rỗng. Như vậy thì không đăng nhập được, như ta thấy ở trên là được ứng dụng trả về <code>Unknown email or password.</code>.</p>
+<p>Vậy để cho câu lệnh luôn luôn đúng thì ta phải biến đổi được câu lệnh sql thành.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+  <span style="color:#66d9ef">FROM</span> users
+ <span style="color:#66d9ef">WHERE</span> email <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user@gmail.com&#39;</span>
+   <span style="color:#66d9ef">AND</span> pass  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;password&#39;</span> <span style="color:#66d9ef">or</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p><code>or 1=1</code> tương đương với điều kiện truy vấn luôn luôn đúng. Vậy là chỉ cần nhập bất kỳ sqli nào khiến cho câu lệnh sql luôn luôn đúng thì chúng ta đã thành công. Ví dụ 1 số payload như dưới đây:</p>
+<pre><code>password' or 1=1
+password' or 1=1;--
+
+' or 1=1'
+' or 1=1;--
+</code></pre><p>Dấu <code>;</code> dùng để kết thúc câu truy vấn sql
+Dấu <code>--</code> dùng để comment tất cả câu lệnh sql phía sau nó, nhằm mục đích ngăn việc gây ra lỗi nếu như phía sau nó còn có câu lệnh sql.</p>
+<p>Các bạn cũng có thể đọc qua bài này của mình để hiểu hơn về vấn đề này: <a href="https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/">https://manhnv.com/2019/05/mo-ta-sql-injection-la-gi-va-cach-kiem-tra/</a></p>
+<h2 id="kết-luận">Kết luận</h2>
+<p>Như vậy là mình đã giới thiệu cho các bạn cách để có thể trải nghiệm cũng như học làm hacker như thế nào. Các bạn chủ động tìm hiểu các lỗi còn lại nhé.</p>
+<p>Tuy nhiên, trang website mình giới thiệu các bạn chỉ là các lỗi cơ bản và cách khai thác cũng rất rất cơ bản nên việc để trở thành 1 hacker tay to các bạn cần học thêm nhiều nhiều nhiều nữa thì mới có thể xưng bá thiên hạ được nhé.</p>
+<p>Có thể bài này không hay như các bạn kỳ vọng, anyway &hellip;</p>
+<p>Cảm ơn các bạn đã đọc bài này của mình.</p>
+<p>Chúc các bạn sẽ đạt được thành tựu và xưng bá được thiên hạ nhé!</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">THẺ ĐÁNH DẤU</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/security/">security</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/hacking/">hacking</a>
+
+  <a class="tag tag--primary tag--small" href="https://manhnv.com/tags/pentest-web/">pentest web</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+    
+        <nav >
+          <ul class="post-actions post-action-nav">
+            
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                  </a>
+              </li>
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web &#39;Bug report&#39; writeup">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+              </li>
+            
+          </ul>
+        </nav>
+      <ul class="post-actions post-action-share" >
+        
+          <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+              <i class="fa fa-share-alt"></i>
+            </a>
+          </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/">
+                <i class="fa fa-facebook-official"></i>
+              </a>
+            </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          
+        
+        
+        
+            
+            
+            
+        <li class="post-action">
+            <a class="post-action-btn btn btn--default" href="#post-comments">
+                <i class="fa fa-comment-o"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default" href="#">
+          
+            <i class="fa fa-list"></i>
+          </a>
+        </li>
+      </ul>
+    
+  </div>
+  
+            <div id="post-comments">
+                
+                
+
+                <div class="fb-comments" data-href="https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/" data-width="100%" data-numposts="5"></div>
+                
+            </div>
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://manhnv.com">Manhnv</a><a href="//www.dmca.com/Protection/Status.aspx?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=26de1c55-21c3-4e09-9e8b-f7507ee02f5e"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+    
+        <nav >
+          <ul class="post-actions post-action-nav">
+            
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">Tiếp</span>
+                  </a>
+              </li>
+              <li class="post-action">
+                
+                  <a class="post-action-btn btn btn--default tooltip--top" href="https://manhnv.com/2021/05/cyber-apocalypse-2021-web-bug-report-writeup/" data-tooltip="[Cyber Apocalypse 2021]- Web &#39;Bug report&#39; writeup">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">Trước</span>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+              </li>
+            
+          </ul>
+        </nav>
+      <ul class="post-actions post-action-share" >
+        
+          <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+              <i class="fa fa-share-alt"></i>
+            </a>
+          </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/">
+                <i class="fa fa-facebook-official"></i>
+              </a>
+            </li>
+          
+            <li class="post-action hide-xs">
+              <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://manhnv.com/2021/05/thu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd/">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          
+        
+        
+        
+            
+            
+            
+        <li class="post-action">
+            <a class="post-action-btn btn btn--default" href="#post-comments">
+                <i class="fa fa-comment-o"></i>
+            </a>
+        </li>
+        
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default" href="#">
+          
+            <i class="fa fa-list"></i>
+          </a>
+        </li>
+      </ul>
+    
+  </div>
+  
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmanhnv.com%2F2021%2F05%2Fthu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd%2F">
+          <i class="fa fa-facebook-official"></i><span>Chia sẻ với Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmanhnv.com%2F2021%2F05%2Fthu-hoc-lam-hacker-hack-tai-khoan-ngan-hang-chua-hon-66996-usd%2F">
+          <i class="fa fa-twitter"></i><span>Chia sẻ với Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://manhnv.com/favicon.png" alt="Ảnh đại diện" />
+    
+    <h4 id="about-card-name">Manh NV</h4>
+    
+      <div id="about-card-bio">Chia sẻ là niềm vui</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Viết blog dạo
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        VietNam
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://manhnv.com/images/cover-v1.2.0.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://manhnv.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://manhnv.com/js/scripts.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
